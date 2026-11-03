@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="英语口语训练中心：美式音标、单词与口语。" />
+    <title>训练中心｜英语口语一对一定制服务</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="training-center.css" />
+    <link rel="stylesheet" href="task-center.css" />
+    <link rel="stylesheet" href="desktop-typography.css" />
+    <link rel="stylesheet" href="word-lookup.css" />
+    <link rel="stylesheet" href="site-header.css" />
+  </head>
+  <body class="training-page" data-access-protected>
+    <main class="training-shell">
+      <header class="training-header">
+        <a class="back-link" href="index.html">← 返回首页</a>
+        <div class="training-title-row">
+          <div><p class="section-kicker">YOUR PRACTICE SPACE</p><h1>训练中心</h1><p>每天练一点，把英语真正用起来。</p></div>
+        </div>
+      </header>
+
+      <nav class="level-nav" aria-label="切换学习等级">
+        <div class="level-switcher"><span>当前等级</span><div id="level-options" class="level-options"></div></div>
+      </nav>
+
+      <section class="level-ladder" aria-labelledby="level-ladder-title">
+        <div class="section-heading level-ladder-heading">
+          <div><p class="section-kicker">YOUR LEARNING PATH</p><h2 id="level-ladder-title">学习等级</h2></div>
+          <p class="section-note">从开口清楚，到表达自然</p>
+        </div>
+        <div class="level-ladder-track" id="level-ladder-track">
+          <button class="level-step level-step-beginner" data-level="beginner" type="button"><span class="level-step-number">01</span><strong>入门</strong><small>先把声音和短句说清楚</small></button>
+          <button class="level-step level-step-intermediate" data-level="intermediate" type="button"><span class="level-step-number">02</span><strong>进阶</strong><small>完成更多日常交流</small></button>
+          <button class="level-step level-step-proficient" data-level="proficient" type="button"><span class="level-step-number">03</span><strong>熟练</strong><small>连续表达自己的想法</small></button>
+          <button class="level-step level-step-advanced" data-level="advanced" type="button"><span class="level-step-number">04</span><strong>精通</strong><small>处理复杂真实话题</small></button>
+          <button class="level-step level-step-natural" data-level="natural" type="button"><span class="level-step-number">05</span><strong>地道表达</strong><small>说出自然的语气和搭配</small></button>
+        </div>
+      </section>
+
+      <section class="level-overview" aria-labelledby="level-overview-title">
+        <div class="level-overview-mark" aria-hidden="true">03</div>
+        <div class="level-overview-content">
+          <p class="section-kicker" id="level-overview-kicker">CURRENT LEVEL</p>
+          <h2 id="level-overview-title">熟练：连续表达自己的想法</h2>
+          <div class="level-overview-copy" id="level-overview-copy"></div>
+          <div class="level-overview-points" id="level-overview-points" aria-label="当前等级学习重点"></div>
+          <div class="level-skill-path" id="level-skill-path" aria-label="当前等级能力路径"></div>
+        </div>
+      </section>
+
+      <section class="scenario-entry-section" aria-labelledby="scenario-entry-title">
+        <div class="section-heading">
+          <div><p class="section-kicker">LEARN BY SCENE</p><h2 id="scenario-entry-title">按场景学习</h2></div>
+          <p class="section-note" id="scenario-entry-note">先选你想解决的真实问题</p>
+        </div>
+        <div class="scenario-entry-list" id="scenario-entry-list"></div>
+      </section>
+
+      <section class="today-card" aria-labelledby="today-title">
+        <div>
+          <p class="section-kicker">TODAY’S PRACTICE</p>
+          <h2 id="today-title">今天，继续练习</h2>
+          <p id="today-description">从美式音标开始，让每一次开口更清楚。</p>
+        </div>
+        <a class="primary-button" id="today-start" href="#phonetics">开始训练 <span aria-hidden="true">→</span></a>
+      </section>
+
+      <section class="progress-strip" aria-label="训练进度">
+        <div><span>总训练进度</span><strong>0%</strong></div>
+        <div class="progress-track"><span></span></div>
+        <p>完成一次练习后，这里会记录你的进度。</p>
+      </section>
+
+      <section class="module-section" aria-labelledby="module-title">
+        <div class="section-heading">
+          <div><p class="section-kicker">TRAINING MODULES</p><h2 id="module-title">选择一个模块</h2></div>
+          <p class="section-note">可以自由选择训练顺序</p>
+        </div>
+        <div class="module-list">
+          <article class="module-card module-phonetics" id="phonetics">
+            <div class="module-top"><span class="module-number">01</span><span class="module-label">FOUNDATION</span></div>
+            <div class="module-icon">音</div>
+            <h3>美式音标</h3>
+            <p>认识常用音标，练习口型、发音和重音。</p>
+            <small class="module-progress" data-module-progress="phonetics">0 / 41 已完成</small>
+            <a class="module-button" data-level-link href="phonetics.html">开始训练 <span>→</span></a>
+          </article>
+          <article class="module-card module-phonics" id="phonics">
+            <div class="module-top"><span class="module-number">02</span><span class="module-label">READ WORDS</span></div>
+            <div class="module-icon">拼</div>
+            <h3>自然拼读</h3>
+            <p>从字母发音开始，练习把声音拼成简单单词。</p>
+            <small class="module-progress" data-module-progress="phonics">0 / 6 已完成</small>
+            <a class="module-button" data-level-link href="phonics.html">开始拼读 <span>→</span></a>
+          </article>
+          <article class="module-card module-vocabulary" id="vocabulary">
+            <div class="module-top"><span class="module-number">03</span><span class="module-label">BUILD WORDS</span></div>
+            <div class="module-icon">词</div>
+            <h3>单词</h3>
+            <p>从听懂到会用，把高频词汇放进真实表达。</p>
+            <small class="module-progress" data-module-progress="vocabulary">0 / 60 已入词库</small>
+            <a class="module-button" data-level-link href="vocabulary.html">开始学词 <span>→</span></a>
+          </article>
+          <article class="module-card module-speaking" id="speaking">
+            <div class="module-top"><span class="module-number">04</span><span class="module-label">SPEAK OUT</span></div>
+            <div class="module-icon">说</div>
+            <h3>口语</h3>
+            <p>从短句到真实场景，练习自然地表达自己。</p>
+            <small class="module-progress" data-module-progress="speaking">0 / 60 已完成</small>
+            <a class="module-button" data-level-link href="speaking.html">开始口语 <span>→</span></a>
+          </article>
+          <article class="module-card module-grammar" id="grammar">
+            <div class="module-top"><span class="module-number">05</span><span class="module-label">EASY GRAMMAR</span></div>
+            <div class="module-icon">语</div>
+            <h3>极简语法</h3>
+            <p>先认识词类，再慢慢看懂句子怎么组成。</p>
+            <a class="module-button" data-level-link href="grammar.html">查看知识卡 <span>→</span></a>
+          </article>
+          <article class="module-card module-random" id="random-sentence">
+            <div class="module-top"><span class="module-number">06</span><span class="module-label">DAILY SPEAKING</span></div>
+            <div class="module-icon">句</div>
+            <h3>随机一句</h3>
+            <p>每天学一句简单、自然的日常口语。</p>
+            <a class="module-button" data-level-link href="random-sentence.html">打开句子 <span>→</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="special-practice-section" aria-labelledby="special-practice-title">
+        <div class="section-heading">
+          <div><p class="section-kicker">SPECIAL PRACTICE</p><h2 id="special-practice-title">专项训练</h2></div>
+          <p class="section-note">不绑定等级，按当前能力自由练习</p>
+        </div>
+        <a class="special-practice-card" href="sentence-building.html">
+          <div class="special-practice-icon">造</div>
+          <div><p class="special-practice-eyebrow">SENTENCE BUILDING · 造句能力</p><h3>造句训练</h3><p>从基础句型开始，把中文想法一步一步组织成英文。进入后可以随时切换入门、进阶、熟练、精通和地道表达。</p><div class="special-practice-meta"><span>结构提示</span><span>提交反馈</span><span>中文释义与朗读</span></div></div>
+          <span class="special-practice-arrow">进入专项训练 →</span>
+        </a>
+      </section>
+
+      <section class="task-center-section" aria-labelledby="task-center-title">
+        <div class="section-heading">
+          <div><p class="section-kicker">TASK CENTER</p><h2 id="task-center-title">任务中心</h2></div>
+          <p class="section-note">把英语放进真实的小任务里</p>
+        </div>
+        <article class="task-center-card">
+          <div class="task-center-icon">读</div>
+          <div class="task-center-copy">
+            <p class="task-eyebrow">REWARD QUEST · 阅读悬赏</p>
+            <h3>阅读悬赏</h3>
+            <p>读一小段真实英语，完成几道简单题，再打开答案和解析。先自己判断，再公布答案。</p>
+            <div class="task-meta"><span>5 个任务</span><span>生活场景短文</span><span>零基础友好</span></div>
+          </div>
+          <a class="task-center-button" href="reading-rewards.html">进入悬赏中心 <span>→</span></a>
+        </article>
+      </section>
+
+      <section class="fun-center-section" aria-labelledby="fun-center-title">
+        <div class="section-heading">
+          <div><p class="section-kicker">FUN CENTER</p><h2 id="fun-center-title">趣玩中心</h2></div>
+          <p class="section-note">把喜欢的游戏，也变成英语素材</p>
+        </div>
+        <article class="fun-center-card">
+          <div class="fun-center-icon">玩</div>
+          <div class="fun-center-copy">
+            <p class="fun-eyebrow">GAME SPEAKING · WARCRAFT III</p>
+            <h3>魔兽争霸口语</h3>
+            <p>用英雄和单位的经典台词练英语。文字内容在线展示，原声由你本地导入并保存在当前浏览器。</p>
+            <div class="fun-meta"><span>圣骑士 MVP</span><span>本地原声</span><span>仅供学习</span></div>
+          </div>
+          <a class="fun-center-button" href="warcraft.html">进入趣玩模块 <span>→</span></a>
+        </article>
+        <article class="fun-center-card fun-center-genshin-card">
+          <div class="fun-center-icon">原</div>
+          <div class="fun-center-copy">
+            <p class="fun-eyebrow">GAME SPEAKING · GENSHIN IMPACT</p>
+            <h3>学英语，我用原神的英文版</h3>
+            <p>把熟悉的角色、任务和剧情，变成更有代入感的英语练习。后续将按角色台词整理中文释义、美式音标、跟读与场景表达。</p>
+            <div class="fun-meta"><span>角色台词</span><span>剧情表达</span><span>正在准备</span></div>
+          </div>
+          <span class="fun-center-button is-disabled" aria-label="原神英文版模块正在准备">即将开始 <span>→</span></span>
+        </article>
+      </section>
+
+      <section class="special-english-section" aria-labelledby="special-english-title">
+        <div class="section-heading">
+          <div><p class="section-kicker">SPECIAL ENGLISH</p><h2 id="special-english-title">专项英语</h2></div>
+          <p class="section-note">把专业概念变成可理解、可朗读的英语</p>
+        </div>
+        <div class="special-english-grid">
+        <article class="special-english-card special-english-card-python">
+          <div class="special-english-icon"><img src="assets/special-computer.svg" alt="" /></div>
+          <div class="special-english-copy">
+            <p class="special-english-eyebrow">COMPUTER SCIENCE · 专业概念库</p>
+            <h3>计算机科学</h3>
+            <p>从 Python 开始，学习代码、数据结构和 AI 相关的专业英语概念。</p>
+            <div class="special-english-meta"><span>Python</span><span>双语定义</span><span>音标朗读</span></div>
+          </div>
+          <a class="special-english-button" href="special-english.html?field=python">进入计算机科学 <span>→</span></a>
+        </article>
+        <article class="special-english-card special-english-card-psychology">
+          <div class="special-english-icon"><img src="assets/special-psychology.svg" alt="" /></div>
+          <div class="special-english-copy">
+            <p class="special-english-eyebrow">PSYCHOLOGY · 专业概念库</p>
+            <h3>心理学</h3>
+            <p>从经典理论开始，学习心理学研究、理论和现实语境中的专业表达。</p>
+            <div class="special-english-meta"><span>核心理论</span><span>分类归属</span><span>音标朗读</span></div>
+          </div>
+          <a class="special-english-button" href="special-english.html?field=psychology">进入心理学 <span>→</span></a>
+        </article>
+        </div>
+      </section>
+
+      <nav class="training-nav" aria-label="训练中心导航">
+        <a class="active" href="training-center.html"><span>⌂</span>训练</a>
+        <a href="#module-title"><span>◌</span>进度</a>
+        <a href="index.html#contact"><span>＋</span>联系我</a>
+      </nav>
+    </main>
+    <script src="site-header.js"></script>
+    <script src="access-gate.js"></script>
+    <script src="training-center.js"></script>
+    <script src="speech.js"></script>
+    <script src="word-lookup.js"></script>
+  </body>
+</html>

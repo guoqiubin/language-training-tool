@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="随机一句简单日常英语口语，支持导出图片分享。" />
+    <title>随机一句｜训练中心</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="random-sentence.css" />
+    <link rel="stylesheet" href="desktop-typography.css" />
+    <link rel="stylesheet" href="word-lookup.css" />
+    <link rel="stylesheet" href="site-header.css" />
+  </head>
+  <body class="random-page" data-access-protected>
+    <main class="random-shell">
+      <header class="random-header">
+        <a class="back-link" href="training-center.html">← 返回训练中心</a>
+        <p class="section-kicker">DAILY SPEAKING</p>
+        <h1>随机一句</h1>
+        <p>每天一句简单口语，今天也开口说一点。</p>
+      </header>
+
+      <section class="sentence-stage" aria-labelledby="sentence-title">
+        <div class="length-picker" role="group" aria-label="句子长度">
+          <span>句子长度</span>
+          <button class="length-option active" data-length="short" type="button">短</button>
+          <button class="length-option" data-length="medium" type="button">中</button>
+          <button class="length-option" data-length="long" type="button">长</button>
+        </div>
+        <div class="sentence-card" id="sentence-card">
+          <img class="card-avatar" src="assets/avatar.jpg" alt="个人头像 logo" />
+          <div class="scene-art" id="scene-art" aria-hidden="true"></div>
+          <div class="sentence-brand"><span class="brand-dot"></span> ENGLISH TRAINING TOOL</div>
+          <p class="sentence-label" id="sentence-label">日常表达 · Everyday</p>
+          <div class="sentence-tags" id="sentence-tags" aria-label="句子标签"></div>
+          <h2 id="sentence-title">Give me a second.</h2>
+          <p class="sentence-meaning" id="sentence-meaning">等我一下。</p>
+          <div class="sentence-divider"></div>
+          <p class="sentence-note" id="sentence-note">需要一点时间时，可以自然地这样说。</p>
+          <div class="card-analysis" id="card-analysis" aria-label="这句话怎么学"></div>
+          <p class="sentence-signature">SPEAK A LITTLE. EVERY DAY.</p>
+        </div>
+        <div class="sentence-actions">
+          <button class="secondary-action" id="new-sentence" type="button">↻ 换一句</button>
+          <button class="primary-action" id="export-image" type="button">↓ 导出图片</button>
+        </div>
+        <p class="export-hint" id="export-hint">导出一张竖版图片，方便分享到社群。</p>
+      </section>
+
+      <section class="sentence-help">
+        <p class="section-kicker">HOW TO USE</p>
+        <div class="help-grid"><div><strong>1</strong><span>先读英文</span></div><div><strong>2</strong><span>理解意思</span></div><div><strong>3</strong><span>导出分享</span></div></div>
+      </section>
+    </main>
+    <script src="site-header.js"></script>
+    <script src="access-gate.js"></script>
+    <script src="random-sentence.js"></script>
+    <script src="speech.js"></script>
+    <script src="word-lookup.js"></script>
+  </body>
+</html>

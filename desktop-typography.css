@@ -1,0 +1,102 @@
+/* Desktop readability layer: mobile typography keeps its existing scale. */
+@media (min-width: 761px) {
+  body { font-size: 16px; }
+
+  /* Shared landing and pricing content */
+  .hero-copy { font-size: 18px; line-height: 1.85; }
+  .hero-meta span, .section-note, .text-link { font-size: 15px; }
+  .pricing-table th { font-size: 13px; }
+  .pricing-table td { font-size: 17px; }
+  .saving-amount { font-size: 18px; }
+  .saving-detail { font-size: 12px; }
+  .notice p { font-size: 14px; }
+  .notice strong { font-size: 15px; }
+  .training-card-copy strong { font-size: 18px; }
+  .training-card-copy small { font-size: 13px; }
+  .included-intro > p:last-child, .included-item p { font-size: 15px; }
+  .included-item h3 { font-size: 18px; }
+  .future-label { font-size: 11px; }
+
+  /* Training center */
+  .training-header > p:last-child { font-size: 17px; }
+  .today-card p:last-child { font-size: 15px; }
+  .progress-strip div:first-child span, .progress-strip p { font-size: 13px; }
+  .module-card p { font-size: 15px; line-height: 1.85; }
+  .module-card .module-progress { font-size: 13px; }
+  .module-button { font-size: 14px; }
+  .training-nav a { font-size: 13px; }
+
+  /* American phonetics */
+  .phonetics-title-row p:last-child, .title-row p:last-child { font-size: 17px; }
+  .speech-toggle { font-size: 13px; }
+  .completion-pill span { font-size: 13px; }
+  .phoneme-group h3 { font-size: 12px; }
+  .phoneme-word { font-size: 12px; }
+  .phoneme-word-ipa, .phoneme-word-meaning { font-size: 11px; }
+  .step-item { font-size: 15px; }
+  .lesson-topline { font-size: 12px; }
+  .sound-name { font-size: 16px; }
+  .sound-name strong { font-size: 20px; }
+  .lesson-content h2 { font-size: 32px; }
+  .lesson-content p { font-size: 16px; line-height: 1.95; }
+  .example-word { font-size: 16px; }
+  .word-text { font-size: 16px; }
+  .word-ipa, .word-meaning { font-size: 12px; }
+  .word-play { font-size: 12px; }
+  .sound-button, .record-button { font-size: 14px; }
+  .mouth-tip span { font-size: 12px; }
+  .mouth-tip strong { font-size: 16px; }
+  .sentence-meaning-inline { font-size: 15px; }
+  .record-status { font-size: 13px; }
+  .choice-button { font-size: 20px; }
+  .secondary-button, .primary-button { font-size: 14px; }
+  .phonetics-footnote { font-size: 13px; }
+
+  /* Natural phonics */
+  .phonics-intro p:last-child { font-size: 15px; }
+  .rule-note { font-size: 12px; }
+  .rule-note strong { font-size: 15px; }
+  .lesson-tile strong { font-size: 16px; }
+  .lesson-tile small { font-size: 12px; }
+  .practice-step { font-size: 15px; }
+  .practice-card h2 { font-size: 32px; }
+  .practice-card p { font-size: 16px; line-height: 1.95; }
+  .rule-display strong { font-size: 22px; }
+  .rule-display p { font-size: 15px; }
+  .word-card-top { font-size: 19px; }
+  .word-card small, .word-card-meaning, .word-parts { font-size: 13px; }
+  .focus-card strong { font-size: 19px; }
+  .sound-button { font-size: 14px; }
+  .blend-word { font-size: 19px; }
+  .mini-play { font-size: 13px; }
+  .finish-tip { font-size: 14px; }
+  .phonics-footnote { font-size: 13px; }
+
+  /* Grammar and random sentence */
+  .grammar-header > p:last-child, .random-header > p:last-child { font-size: 17px; }
+  .grammar-intro strong { font-size: 17px; }
+  .grammar-intro p { font-size: 15px; }
+  .knowledge-en { font-size: 16px; }
+  .knowledge-zh { font-size: 15px; }
+  .knowledge-example span { font-size: 12px; }
+  .knowledge-example strong { font-size: 16px; }
+  .knowledge-tip { font-size: 14px; line-height: 1.9; }
+  .grammar-footer a { font-size: 14px; }
+  .length-picker > span { font-size: 14px; }
+  .length-option { font-size: 14px; }
+  .sentence-label { font-size: 14px; }
+  .sentence-tag { font-size: 12px; }
+  .sentence-meaning { font-size: clamp(22px, 3vw, 31px); }
+  .sentence-note { font-size: 15px; }
+  .card-analysis-heading { font-size: 17px; }
+  .card-analysis .analysis-item h3 { font-size: 12px; }
+  .card-analysis .analysis-item p { font-size: 12px; line-height: 1.85; }
+  .card-analysis .analysis-words strong, .card-analysis .analysis-words em { font-size: 12px; }
+  .secondary-action, .primary-action { font-size: 14px; }
+  .export-hint { font-size: 13px; }
+  .analysis-heading > span { font-size: 14px; }
+  .analysis-item h3 { font-size: 15px; }
+  .analysis-item p { font-size: 14px; }
+  .analysis-words strong, .analysis-words em { font-size: 14px; }
+  .help-grid span { font-size: 14px; }
+}

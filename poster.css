@@ -1,0 +1,16 @@
+.poster-modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 22px; background: rgba(24, 37, 34, .58); backdrop-filter: blur(7px); }
+.poster-dialog { display: grid; width: min(620px, 100%); max-height: min(92vh, 920px); overflow: hidden; padding: 22px; border-radius: 20px; background: #fff; box-shadow: 0 24px 70px rgba(20, 35, 30, .25); }
+.poster-dialog-top { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
+.poster-dialog-top h2 { margin: 3px 0 0; font-size: 24px; }
+.poster-close { width: 36px; height: 36px; border: 0; border-radius: 50%; background: #f1f5f1; color: #55725f; cursor: pointer; font-size: 25px; line-height: 1; }
+.poster-preview { display: block; width: min(100%, 420px); max-height: 62vh; margin: 18px auto; border: 1px solid #e1ebe4; border-radius: 12px; object-fit: contain; box-shadow: 0 12px 26px rgba(55, 83, 66, .1); }
+.poster-dialog-actions { display: flex; justify-content: center; gap: 10px; }
+.poster-dialog-hint { margin: 12px 0 0; color: #91a098; font-size: 11px; text-align: center; }
+.poster-button { margin-right: auto; }
+@media (max-width: 560px) {
+  .poster-modal { padding: 12px; }
+  .poster-dialog { padding: 17px; border-radius: 16px; }
+  .poster-preview { max-height: 60vh; margin: 14px auto; }
+  .poster-dialog-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .poster-dialog-actions button { width: 100%; }
+}

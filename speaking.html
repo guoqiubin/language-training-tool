@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="零基础英语口语训练：从简单短句到真实场景。" />
+    <title>口语训练｜训练中心</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="speaking.css" />
+    <link rel="stylesheet" href="poster.css" />
+    <link rel="stylesheet" href="desktop-typography.css" />
+    <link rel="stylesheet" href="word-lookup.css" />
+    <link rel="stylesheet" href="site-header.css" />
+  </head>
+  <body class="speaking-page" data-access-protected>
+    <main class="speaking-shell">
+      <header class="speaking-header">
+        <a class="back-link" href="training-center.html">← 返回训练中心</a>
+        <div class="speaking-title-row">
+          <div><p class="section-kicker" id="speaking-path-kicker">SPEAK OUT · BEGINNER</p><h1 id="speaking-title">口语训练</h1><p id="speaking-subtitle">先学会一句，再慢慢说成一段。</p></div>
+          <div class="speaking-progress"><strong id="completed-count">0</strong><span>/ <span id="total-count">60</span> 句已完成</span></div>
+        </div>
+      </header>
+
+      <section class="speaking-intro"><div><p class="section-kicker" id="speaking-intro-kicker">BEGINNER PATH</p><h2 id="speaking-intro-title">先听懂，再开口</h2><p id="speaking-intro-copy">每次只练一句。先听、再跟读，最后用自己的声音说出来。</p></div><div class="intro-mark">说</div></section>
+
+      <nav class="speaking-section-nav" aria-label="口语训练章节目录">
+        <p class="section-kicker">LESSON MAP</p>
+        <strong>本页章节</strong>
+        <a class="speaking-section-link active" href="#speaking-theory" data-section-link="speaking-theory"><span>01</span>开口前，先懂这 6 件事</a>
+        <a class="speaking-section-link" href="#speaking-scenes" data-section-link="speaking-scenes"><span>02</span>选择场景</a>
+        <a class="speaking-section-link" href="#speaking-dialogue" data-section-link="speaking-dialogue"><span>03</span>模拟对话</a>
+      </nav>
+
+      <section class="speaking-theory" id="speaking-theory" aria-labelledby="theory-title">
+        <div class="section-heading compact-heading"><div><p class="section-kicker">SPEAKING BASICS</p><h2 id="theory-title">开口前，先懂这 6 件事</h2></div><p class="section-note">先理解方法，再进入场景练习</p></div>
+        <div class="theory-layout">
+          <div class="theory-list" id="theory-list" aria-label="口语基础理论列表"></div>
+          <article class="theory-detail" id="theory-detail" aria-live="polite"></article>
+        </div>
+      </section>
+
+      <section class="speaking-layout" id="speaking-scenes">
+        <aside class="scenario-panel" aria-label="口语场景">
+          <div class="section-heading compact-heading"><div><p class="section-kicker">SPEAKING SCENES</p><h2>选择场景</h2></div></div>
+          <div id="scenario-list" class="scenario-list"></div>
+        </aside>
+        <section class="lesson-panel" aria-live="polite">
+          <div class="lesson-topline"><span id="lesson-label">SCENE 1 · SENTENCE 1</span><span id="lesson-status">进行中</span></div>
+          <div id="lesson-content"></div>
+          <div class="lesson-actions"><button class="secondary-button" id="prev-button" type="button">← 上一句</button><button class="secondary-button poster-button" id="poster-button" type="button">生成海报</button><button class="primary-button" id="next-button" type="button">下一句 →</button></div>
+        </section>
+      </section>
+      <section class="dialogue-panel" id="speaking-dialogue" aria-labelledby="dialogue-title">
+        <div class="section-heading compact-heading">
+          <div><p class="section-kicker">ROLE-PLAY DIALOGUE</p><h2 id="dialogue-title">模拟对话</h2></div>
+          <p class="section-note">围绕当前主题，练习一段真实交流</p>
+        </div>
+        <p class="dialogue-intro" id="dialogue-intro">先看懂对话，再试着接住对方的话。</p>
+        <div class="dialogue-list" id="dialogue-list" aria-live="polite"></div>
+      </section>
+      <p class="speaking-footnote">提示：先听示范，再自己说。录音只保存在当前浏览器，不会上传到服务器。</p>
+    </main>
+    <script src="site-header.js"></script>
+    <script src="access-gate.js"></script>
+    <script src="poster.js"></script>
+    <script src="speech.js"></script>
+    <script src="bank-data.js"></script>
+    <script src="speaking.js"></script>
+    <script src="word-lookup.js"></script>
+  </body>
+</html>

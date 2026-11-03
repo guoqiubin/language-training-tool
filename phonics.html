@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="自然拼读基础训练：从字母声音到简单单词。" />
+    <title>自然拼读｜训练中心</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="phonics.css" />
+    <link rel="stylesheet" href="poster.css" />
+    <link rel="stylesheet" href="desktop-typography.css" />
+    <link rel="stylesheet" href="word-lookup.css" />
+    <link rel="stylesheet" href="site-header.css" />
+  </head>
+  <body class="phonics-page" data-access-protected>
+    <main class="phonics-shell">
+      <header class="phonics-header">
+        <a class="back-link" href="training-center.html">← 返回训练中心</a>
+        <div class="title-row">
+          <div><p class="section-kicker">READ WORDS · BEGINNER</p><h1>自然拼读</h1><p>把字母的声音，慢慢拼成一个单词。</p></div>
+          <div class="header-tools"><button class="speech-toggle enabled" id="slow-toggle" type="button" aria-pressed="true">🐢 慢速朗读：开启</button><div class="completion-pill"><strong id="completed-count">0</strong><span>/ <span id="total-count">6</span> 已完成</span></div></div>
+        </div>
+      </header>
+
+      <section class="phonics-intro"><div><p class="section-kicker">TODAY'S PATH</p><h2>先听声音，再拼起来</h2><p>每次只练一个规则。看到字母时，先想声音，再把声音连起来。</p></div><div class="rule-note">MVP<br /><strong>短元音 + CVC</strong></div></section>
+
+      <section class="lesson-map" aria-labelledby="lesson-map-title">
+        <div class="section-heading compact-heading"><div><p class="section-kicker">PHONICS MAP</p><h2 id="lesson-map-title">选择一个练习</h2></div><p class="section-note">从短元音开始</p></div>
+        <div id="lesson-grid" class="lesson-grid"></div>
+      </section>
+
+      <section class="practice-layout" aria-live="polite">
+        <aside class="practice-path"><p class="section-kicker">YOUR PATH</p><div id="practice-steps"></div></aside>
+        <div class="practice-card"><div class="lesson-topline"><span id="lesson-label">STEP 1 OF 4</span><span>拼读练习</span></div><div id="practice-content"></div><div class="lesson-actions"><button class="secondary-button" id="prev-button" type="button">← 上一步</button><button class="secondary-button poster-button" id="poster-button" type="button">生成海报</button><button class="primary-button" id="next-button" type="button">下一步 →</button></div></div>
+      </section>
+      <p class="phonics-footnote">提示：自然拼读帮助你尝试读出规则单词；遇到例外词时，再用音标确认准确发音。</p>
+    </main>
+    <script src="site-header.js"></script>
+    <script src="access-gate.js"></script>
+    <script src="poster.js"></script>
+    <script src="speech.js"></script>
+    <script src="phonics.js"></script>
+    <script src="word-lookup.js"></script>
+  </body>
+</html>

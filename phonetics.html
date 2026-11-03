@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="美式英语音标训练：听声音、看口型、跟读和练习。" />
+    <title>美式音标｜训练中心</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="phonetics.css" />
+    <link rel="stylesheet" href="poster.css" />
+    <link rel="stylesheet" href="desktop-typography.css" />
+    <link rel="stylesheet" href="word-lookup.css" />
+    <link rel="stylesheet" href="site-header.css" />
+  </head>
+  <body class="phonetics-page" data-access-protected>
+    <main class="phonetics-shell">
+      <header class="phonetics-header">
+        <a class="back-link" href="training-center.html">← 返回训练中心</a>
+        <div class="phonetics-title-row">
+          <div>
+            <p class="section-kicker">AMERICAN ENGLISH ONLY</p>
+            <h1>美式音标</h1>
+            <p>从声音、口型到开口表达，一步一步练习。</p>
+          </div>
+          <div class="header-tools"><button class="speech-toggle" id="slow-speech-toggle" type="button" aria-pressed="true">🐢 慢速朗读：开启</button><div class="completion-pill"><strong id="completed-count">0</strong><span>/ <span id="total-count">41</span> 已完成</span></div></div>
+        </div>
+      </header>
+
+      <section class="phonetics-method" aria-labelledby="method-title">
+        <div class="phonetics-method-heading"><p class="section-kicker">HOW YOU WILL LEARN</p><h2 id="method-title">别只记符号，让耳朵和嘴巴一起记住声音</h2><p>每个音都走一遍“听见 → 看懂 → 做出 → 放进单词 → 放进句子”的路径。完成后，系统会把它安排到后面的复习节点。</p></div>
+        <div class="phonetics-method-steps"><div><strong>01</strong><span>听辨</span><small>先判断声音</small></div><div><strong>02</strong><span>口型</span><small>知道哪里发力</small></div><div><strong>03</strong><span>迁移</span><small>放进真实表达</small></div><div><strong>04</strong><span>复习</span><small>对抗遗忘</small></div></div>
+      </section>
+      <section class="phonetics-review-strip" id="review-strip" aria-live="polite"></section>
+
+      <section class="phoneme-map" aria-labelledby="map-title">
+        <div class="section-heading compact-heading">
+          <div><p class="section-kicker">PHONEME MAP</p><h2 id="map-title">选择一个音</h2></div>
+          <p class="section-note">先从容易听出区别的音开始</p>
+        </div>
+        <div class="phoneme-groups">
+          <div class="phoneme-group"><h3>元音 VOWELS</h3><div class="phoneme-grid" id="vowel-grid"></div></div>
+          <div class="phoneme-group"><h3>辅音 CONSONANTS</h3><div class="phoneme-grid" id="consonant-grid"></div></div>
+        </div>
+      </section>
+
+      <section class="lesson-layout" aria-live="polite">
+        <aside class="lesson-steps" aria-label="训练步骤">
+          <p class="section-kicker">YOUR PATH</p>
+          <div id="step-list"></div>
+        </aside>
+
+        <div class="lesson-card">
+          <div class="lesson-topline"><span id="lesson-step-label">STEP 1 OF 6</span><span id="lesson-type">认识声音</span></div>
+          <div id="lesson-content"></div>
+          <div class="lesson-actions">
+            <button class="secondary-button" id="prev-button" type="button">← 上一步</button>
+            <button class="secondary-button poster-button" id="poster-button" type="button">生成海报</button>
+            <button class="primary-button" id="next-button" type="button">下一步 →</button>
+          </div>
+        </div>
+      </section>
+
+      <p class="phonetics-footnote">提示：示范音使用浏览器的美式英语语音。首次录音时，请允许浏览器使用麦克风。</p>
+    </main>
+    <script src="site-header.js"></script>
+    <script src="access-gate.js"></script>
+    <script src="poster.js"></script>
+    <script src="speech.js"></script>
+    <script src="phonetics.js"></script>
+    <script src="word-lookup.js"></script>
+  </body>
+</html>

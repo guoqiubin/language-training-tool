@@ -1,0 +1,64 @@
+.warcraft-page { min-height: 100vh; color: #e9e3d0; background: #101b29; background-image: radial-gradient(circle at 85% 4%, rgba(213,166,78,.13), transparent 24%), linear-gradient(135deg, #111c2b 0%, #16283a 48%, #0e1723 100%); }
+.warcraft-shell { position: relative; max-width: 1120px; margin: 0 auto; padding: 30px 42px 58px; }
+.warcraft-shell::before { position: fixed; inset: 0; pointer-events: none; content: ""; opacity: .12; background-image: linear-gradient(90deg, transparent 49%, rgba(238,205,132,.25) 50%, transparent 51%), linear-gradient(0deg, transparent 49%, rgba(238,205,132,.2) 50%, transparent 51%); background-size: 78px 78px; mask-image: radial-gradient(circle at center, #000, transparent 78%); }
+.warcraft-header { display: flex; align-items: end; justify-content: space-between; gap: 24px; padding: 10px 0 42px; }
+.warcraft-title-wrap { position: relative; }
+.warcraft-header h1 { margin: 0 0 12px; color: #f1e6c6; font-size: clamp(48px, 8vw, 84px); letter-spacing: -.06em; text-shadow: 0 3px 0 #273d4d; }
+.warcraft-header p:last-child { margin: 0; color: #aab7b3; font-size: 15px; }
+.faction-mark { position: absolute; top: -12px; left: -24px; display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid #d5a64e; border-radius: 50%; color: #e7c875; box-shadow: 0 0 0 5px rgba(213,166,78,.08), 0 0 25px rgba(213,166,78,.2); }
+.warcraft-badge { display: flex; align-items: center; gap: 12px; min-width: 210px; padding: 11px 14px 11px 11px; border: 1px solid #8c6c37; border-radius: 4px; background: linear-gradient(140deg, #202e3c, #132131); color: #d9b86a; box-shadow: inset 0 0 0 1px rgba(255,255,255,.04), 0 10px 30px rgba(0,0,0,.2); }
+.paladin-avatar-frame { position: relative; width: 58px; height: 58px; flex: 0 0 58px; overflow: hidden; border: 2px solid #d5a64e; border-radius: 3px; background: #162536; }
+.paladin-avatar-frame img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; filter: saturate(.9) contrast(1.08); }
+.paladin-avatar-frame .paladin-avatar-fallback { position: absolute; inset: 0; display: none; object-position: center; filter: none; }
+.paladin-avatar-frame.is-fallback #paladin-avatar { display: none; }
+.paladin-avatar-frame.is-fallback .paladin-avatar-fallback { display: block; }
+.warcraft-badge div { display: grid; gap: 5px; }
+.warcraft-badge strong { font-family: "DM Sans", sans-serif; font-size: 17px; letter-spacing: .08em; }
+.warcraft-badge span { font-size: 12px; }
+.warcraft-notice { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 18px; padding: 26px 28px; border: 1px solid #5f7a6d; border-radius: 4px; background: linear-gradient(130deg, rgba(43,77,74,.6), rgba(24,46,55,.74)); box-shadow: inset 0 0 0 1px rgba(221,191,110,.08), 0 14px 35px rgba(0,0,0,.18); }
+.notice-mark { display: grid; width: 52px; height: 52px; place-items: center; border: 1px solid #d5a64e; border-radius: 50%; background: #162531; color: #e9c56f; font-size: 25px; }
+.warcraft-notice h2 { margin: 0 0 7px; color: #f0e6cc; font-size: 25px; }
+.warcraft-notice p:last-child { max-width: 680px; margin: 0; color: #b9c9c1; font-size: 13px; line-height: 1.8; }
+.audio-status { padding: 8px 11px; border: 1px solid #af9060; border-radius: 999px; color: #e6ca87; background: rgba(19,31,42,.9); font-size: 11px; font-weight: 700; white-space: nowrap; }
+.import-panel { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding: 21px 24px; border: 1px solid #7e6a45; border-radius: 4px; background: linear-gradient(110deg, rgba(39,48,54,.96), rgba(25,35,45,.94)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.03); }
+.import-panel > div { min-width: 0; flex: 1; }
+.import-panel h2 { margin: 0 0 7px; color: #f0e6cc; font-size: 23px; }
+.import-panel p:last-child { margin: 0; color: #9eada9; font-size: 12px; line-height: 1.8; }
+.import-panel code { padding: 2px 5px; border-radius: 3px; background: #473c2d; color: #e0b96d; font-family: "DM Sans", sans-serif; font-size: 11px; }
+.import-button, .fallback-button, .clear-audio { padding: 10px 13px; border-radius: 3px; cursor: pointer; font: inherit; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.import-button { border: 1px solid #d5a64e; background: #a87a2e; color: #fff8dd; }
+.import-button span { margin-left: 6px; font-size: 16px; }
+.fallback-button { border: 1px solid #657e87; background: transparent; color: #c1d1ca; }
+.clear-audio { border: 1px solid #6b5c4d; background: transparent; color: #c99f7c; }
+.line-section { margin-top: 42px; padding-top: 34px; border-top: 1px solid var(--line); }
+.line-section .section-heading { margin-bottom: 22px; }
+.line-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+.line-card { display: grid; gap: 10px; padding: 21px; border: 1px solid #3d5862; border-radius: 4px; background: linear-gradient(145deg, #1a2c3b, #152432); box-shadow: inset 0 0 0 1px rgba(235,204,131,.04), 0 12px 26px rgba(0, 0, 0, .16); }
+.line-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.line-category { color: #a4674b; font-family: "DM Sans", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+.line-audio-state { color: #9ba9a1; font-size: 10px; }
+.line-card h3 { margin: 3px 0 0; color: #e6c978; font-family: "DM Sans", sans-serif; font-size: 22px; line-height: 1.25; }
+.line-ipa { margin: 0; color: #c3d3c2; font-family: "DM Sans", sans-serif; font-size: 12px; }
+.line-meaning { margin: 0; color: #d1d6ce; font-size: 14px; line-height: 1.7; }
+.line-note { margin: 0; color: #9aaba5; font-size: 12px; line-height: 1.7; }
+.line-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.line-actions button { padding: 9px 10px; border: 0; border-radius: 8px; cursor: pointer; font: inherit; font-size: 11px; font-weight: 700; }
+.play-original { background: #315b49; color: #e1f0d8; }
+.play-slow { background: #2e485f; color: #cbdced; }
+.attach-one { display: none; }
+.line-card.has-audio { border-color: #d5a64e; box-shadow: inset 0 0 0 1px rgba(213,166,78,.2), 0 12px 26px rgba(0, 0, 0, .16); }
+.warcraft-footnote { margin: 24px 0 0; color: #879992; font-size: 11px; line-height: 1.7; }
+@media (max-width: 760px) {
+  .warcraft-shell { padding: 18px 20px 36px; }
+  .warcraft-header { display: block; padding-bottom: 31px; }
+  .warcraft-header h1 { font-size: clamp(46px, 14vw, 70px); }
+  .warcraft-badge { width: max-content; margin-top: 20px; }
+  .warcraft-notice { grid-template-columns: 46px minmax(0, 1fr); gap: 13px; padding: 20px 17px; }
+  .notice-mark { width: 43px; height: 43px; border-radius: 12px; }
+  .warcraft-notice h2 { font-size: 22px; }
+  .audio-status { grid-column: 1 / -1; justify-self: start; }
+  .import-panel { display: grid; gap: 12px; padding: 20px 17px; }
+  .import-button, .fallback-button, .clear-audio { width: 100%; text-align: center; }
+  .line-section { margin-top: 34px; padding-top: 27px; }
+  .line-grid { grid-template-columns: 1fr; }
+}

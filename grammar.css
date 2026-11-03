@@ -1,0 +1,47 @@
+.grammar-page { min-height: 100vh; background: #f7f8f4; }
+.grammar-shell { max-width: 1000px; margin: 0 auto; padding: 28px 40px 54px; }
+.grammar-header { padding: 10px 0 42px; }
+.grammar-header .back-link { display: inline-block; margin-bottom: 38px; color: #557e62; font-size: 13px; font-weight: 700; text-decoration: none; }
+.grammar-header h1 { max-width: none; margin: 0 0 12px; font-size: clamp(50px, 8vw, 86px); }
+.grammar-header > p:last-child { margin: 0; color: var(--muted); font-size: 15px; }
+.grammar-intro { display: flex; align-items: center; gap: 18px; padding: 22px 26px; border-radius: 16px; background: #f5effb; }
+.grammar-intro-mark { display: grid; width: 48px; height: 48px; flex: 0 0 48px; place-items: center; border-radius: 14px; background: #fff; color: #8a65a5; font-size: 24px; font-weight: 800; }
+.grammar-intro strong { display: block; margin-bottom: 5px; font-size: 15px; }
+.grammar-intro p { margin: 0; color: #786b81; font-size: 13px; line-height: 1.7; }
+.grammar-cards { padding-top: 48px; }
+.knowledge-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.knowledge-card { min-height: 285px; padding: 24px; border: 1px solid transparent; border-radius: 17px; background: #fff; }
+.noun-card { background: #eef8ee; border-color: #d2ead6; }
+.verb-card { background: #fff7df; border-color: #f2e5ba; }
+.adjective-card { background: #edf2fb; border-color: #d8e1f1; }
+.pronoun-card { background: #f5effb; border-color: #e7d9f2; }
+.knowledge-top { display: flex; justify-content: space-between; color: #6e9477; font-family: "DM Sans", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .12em; }
+.verb-card .knowledge-top { color: #a38a46; }
+.adjective-card .knowledge-top { color: #7387a7; }
+.pronoun-card .knowledge-top { color: #8a65a5; }
+.knowledge-card h3 { margin: 36px 0 8px; font-size: 28px; letter-spacing: -.05em; }
+.knowledge-en { margin: 0 0 3px; color: var(--muted); font-family: "DM Sans", sans-serif; font-size: 14px; line-height: 1.6; }
+.knowledge-zh { min-height: 25px; margin: 0 0 16px; color: #65746c; font-size: 13px; line-height: 1.6; }
+.knowledge-example { display: grid; gap: 6px; margin-bottom: 18px; padding: 12px; border-radius: 9px; background: rgba(255,255,255,.7); }
+.knowledge-example span { color: #789084; font-size: 10px; }
+.knowledge-example strong { color: var(--ink); font-family: "DM Sans", sans-serif; font-size: 14px; }
+.knowledge-tip { margin: 0; color: #65746c; font-size: 12px; line-height: 1.8; }
+.grammar-footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 24px; border-top: 1px solid var(--line); }
+.grammar-footer a { color: #557e62; font-size: 12px; font-weight: 700; text-decoration: none; }
+
+@media (max-width: 700px) {
+  .grammar-shell { padding: 18px 20px 34px; }
+  .grammar-header { padding-bottom: 32px; }
+  .grammar-header .back-link { margin-bottom: 30px; }
+  .grammar-header h1 { font-size: clamp(48px, 16vw, 72px); }
+  .grammar-intro { align-items: flex-start; padding: 18px; }
+  .grammar-intro-mark { width: 40px; height: 40px; flex-basis: 40px; border-radius: 11px; font-size: 20px; }
+  .grammar-intro p { font-size: 12px; }
+  .grammar-cards { padding-top: 36px; }
+  .knowledge-grid { grid-template-columns: 1fr; gap: 10px; }
+  .knowledge-card { min-height: 0; padding: 20px; }
+  .knowledge-card h3 { margin-top: 27px; }
+  .knowledge-en { min-height: 0; }
+  .knowledge-zh { min-height: 0; }
+  .grammar-footer { margin-top: 36px; }
+}

@@ -1,0 +1,55 @@
+html.access-checking body > main,
+html.access-checking body > footer {
+  visibility: hidden;
+}
+
+.access-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(247, 248, 244, .88);
+  backdrop-filter: blur(14px);
+}
+
+.site-night .access-gate { background: rgba(15, 28, 42, .88); }
+
+.access-gate[hidden] { display: none; }
+
+.access-gate-card {
+  width: min(100%, 480px);
+  padding: 34px;
+  border: 1px solid #dce6de;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 24px 70px rgba(50, 72, 57, .16);
+}
+
+.site-night .access-gate-card {
+  border-color: rgba(145, 178, 161, .28);
+  background: #172b38;
+  color: #f4ead0;
+}
+
+.access-gate-card h1 { margin: 8px 0 12px; font-size: clamp(30px, 5vw, 46px); letter-spacing: -.06em; }
+.access-gate-card p:not(.access-gate-kicker) { margin: 0; color: #708078; font-size: 15px; line-height: 1.8; }
+.site-night .access-gate-card p:not(.access-gate-kicker) { color: #a7bab4; }
+.access-gate-kicker { margin: 0; color: #568366; font: 700 11px "DM Sans", sans-serif; letter-spacing: .14em; }
+.site-night .access-gate-kicker { color: #e0b34e; }
+.access-gate-form { display: grid; gap: 10px; margin-top: 24px; }
+.access-gate-form label { color: #5d7067; font-size: 13px; font-weight: 700; }
+.site-night .access-gate-form label { color: #c8d3c9; }
+.access-gate-form input { width: 100%; box-sizing: border-box; padding: 14px 15px; border: 1px solid #d7e2d9; border-radius: 11px; background: #fbfdfb; color: #1f2d2b; font: 600 16px "DM Sans", sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+.site-night .access-gate-form input { border-color: #456557; background: #10232e; color: #fff7dc; }
+.access-gate-form input:focus { outline: 3px solid rgba(92, 150, 109, .22); border-color: #79ad87; }
+.access-gate-submit { padding: 14px 17px; border: 0; border-radius: 11px; background: #1f2d2b; color: #fff; cursor: pointer; font: 700 14px inherit; }
+.site-night .access-gate-submit { background: #e0b34e; color: #172b38; }
+.access-gate-submit:disabled { opacity: .65; cursor: wait; }
+.access-gate-status { min-height: 22px; margin: 5px 0 0; color: #b34b37 !important; font-size: 13px !important; line-height: 1.5 !important; }
+.access-gate-note { margin-top: 20px !important; color: #8a9890 !important; font-size: 12px !important; }
+
+@media (max-width: 560px) {
+  .access-gate-card { padding: 26px 22px; border-radius: 20px; }
+}

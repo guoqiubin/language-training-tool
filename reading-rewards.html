@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="阅读悬赏：在真实英语短文中完成阅读任务。" />
+    <title>阅读悬赏｜任务中心</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="desktop-typography.css" />
+    <link rel="stylesheet" href="reading-rewards.css" />
+    <link rel="stylesheet" href="word-lookup.css" />
+    <link rel="stylesheet" href="site-header.css" />
+  </head>
+  <body class="reading-page" data-access-protected>
+    <main class="reading-shell">
+      <a class="back-link" href="training-center.html">← 返回训练中心</a>
+      <header class="reading-header">
+        <div><p class="section-kicker">TASK CENTER · READING QUEST</p><h1>阅读悬赏</h1><p>读一段真实英语，完成一个小任务。</p></div>
+        <div class="reading-count"><strong id="completed-count">0</strong><span>/ 5 已完成</span></div>
+      </header>
+      <section class="reading-intro">
+        <p class="section-kicker">HOW IT WORKS</p>
+        <h2>先读，先判断，最后看答案。</h2>
+        <p>这里没有积分，也没有排名。每个任务都来自一个日常场景，读完短文后完成几道题，再打开解析，看看自己有没有抓住重点。</p>
+      </section>
+      <section class="reading-layout" aria-label="阅读任务列表和当前任务">
+        <aside class="quest-list-panel">
+          <div class="panel-heading"><p class="section-kicker">QUEST BOARD</p><h2>选择一个任务</h2></div>
+          <div id="quest-list" class="quest-list"></div>
+        </aside>
+        <section class="quest-panel" aria-live="polite"><div id="quest-content"></div></section>
+      </section>
+    </main>
+    <script src="site-header.js"></script>
+    <script src="access-gate.js"></script>
+    <script src="speech.js"></script>
+    <script src="reading-rewards.js"></script>
+    <script src="word-lookup.js"></script>
+  </body>
+</html>

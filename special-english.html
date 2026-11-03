@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="专项英语：分别进入计算机科学与心理学，学习专业概念的双语定义、分类与发音。" />
+    <title>专项英语｜英语训练工具</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="desktop-typography.css" />
+    <link rel="stylesheet" href="special-english.css" />
+    <link rel="stylesheet" href="word-lookup.css" />
+    <link rel="stylesheet" href="site-header.css" />
+  </head>
+  <body class="special-english-page" data-access-protected>
+    <main class="special-english-shell">
+      <a class="back-link" href="training-center.html">← 返回训练中心</a>
+      <header class="special-english-header">
+        <div><p class="section-kicker">SPECIAL ENGLISH · CONCEPT LIBRARY</p><h1>专项英语</h1><p>从专业概念开始，学习真正能读懂、听懂、说出的英语。</p></div>
+        <div class="special-english-badge"><strong>02</strong><span>两个专业方向<br />持续扩充中</span></div>
+      </header>
+
+      <section class="special-english-intro">
+        <p class="section-kicker">HOW TO LEARN</p>
+        <h2>先看归属，再理解概念，最后听一遍。</h2>
+        <p>这里暂时不按搜索来组织内容，而是按专业领域建立概念地图。每个概念都会给出中文、英文、分类归属、双语定义和美式发音。</p>
+      </section>
+
+      <section id="special-field-landing" class="special-field-landing" aria-labelledby="special-field-title">
+        <div class="panel-heading"><p class="section-kicker">SUBJECTS</p><h2 id="special-field-title">选择学科</h2></div>
+        <div class="special-field-grid">
+          <a class="special-field-card special-field-card-python" href="special-english.html?field=python"><span class="special-field-avatar"><img src="assets/special-computer.svg" alt="" /></span><span><strong>计算机科学</strong><small>Computer Science</small><em>代码、数据、AI 与技术英语</em></span><b>→</b></a>
+          <a class="special-field-card special-field-card-psychology" href="special-english.html?field=psychology"><span class="special-field-avatar"><img src="assets/special-psychology.svg" alt="" /></span><span><strong>心理学</strong><small>Psychology</small><em>心理理论、研究与专业表达</em></span><b>→</b></a>
+        </div>
+      </section>
+
+      <section id="special-field-detail" class="concept-layout" aria-label="专业方向与概念详情">
+        <aside class="concept-sidebar">
+          <div class="panel-heading"><p class="section-kicker">FIELDS</p><h2>选择方向</h2></div>
+          <div id="field-list" class="field-list"></div>
+        </aside>
+        <section class="concept-content" aria-live="polite">
+          <div class="concept-content-heading"><div><p class="section-kicker" id="field-kicker">COMPUTER SCIENCE · PYTHON</p><h2 id="field-title">计算机科学 · Python</h2></div><span id="concept-count">0 个概念</span></div>
+          <div id="concept-list" class="concept-list"></div>
+          <article id="concept-detail" class="concept-detail"></article>
+          <div class="concept-feedback" aria-label="概念学习反馈">
+            <div class="concept-feedback-nav"><button type="button" data-concept-prev>← 上一个</button><span id="feedback-status">左右滑动或使用按钮切换概念</span><button type="button" data-concept-next>下一个 →</button></div>
+            <div class="concept-feedback-actions"><button class="feedback-button feedback-review" type="button" data-feedback="review">未掌握</button><button class="feedback-button feedback-mastered" type="button" data-feedback="mastered">已掌握 ✓</button></div>
+          </div>
+          <section class="mastered-library" aria-labelledby="mastered-title"><div class="mastered-library-heading"><div><p class="section-kicker">REVIEW LIBRARY</p><h2 id="mastered-title">已掌握的概念</h2></div><span id="mastered-count">0 个</span></div><div id="mastered-list" class="mastered-list"></div></section>
+        </section>
+      </section>
+    </main>
+    <script src="site-header.js"></script>
+    <script src="access-gate.js"></script>
+    <script src="speech.js"></script>
+    <script src="special-english.js"></script>
+    <script src="word-lookup.js"></script>
+  </body>
+</html>

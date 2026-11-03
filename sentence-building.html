@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="英语造句专项训练：从基础结构开始，练习把中文想法组织成英文句子。" />
+    <title>造句训练｜专项训练</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="desktop-typography.css" />
+    <link rel="stylesheet" href="word-lookup.css" />
+    <link rel="stylesheet" href="sentence-building.css" />
+    <link rel="stylesheet" href="site-header.css" />
+  </head>
+  <body class="sentence-building-page" data-access-protected>
+    <main class="sentence-building-shell">
+      <header class="sentence-building-header">
+        <a class="back-link" href="training-center.html">← 返回训练中心</a>
+        <div class="sentence-building-header-row">
+          <div>
+            <p class="section-kicker">SPECIAL PRACTICE · SENTENCE BUILDING</p>
+            <h1>造句训练</h1>
+            <p>先把一个想法说完整，再慢慢说得更自然。</p>
+          </div>
+          <div class="sentence-building-count"><strong id="completed-count">0</strong><span>句已练习</span></div>
+        </div>
+      </header>
+
+      <section class="sentence-building-path" aria-labelledby="path-title">
+        <div>
+          <p class="section-kicker">HOW IT WORKS</p>
+          <h2 id="path-title">先学结构，再自己组织</h2>
+          <p>每道题先给你一个中文意思和句型提示。你先独立造句，再查看参考答案、中文意思、音标和朗读。</p>
+        </div>
+        <div class="sentence-building-flow" aria-label="造句训练流程"><span>看提示</span><b>→</b><span>写英文</span><b>→</b><span>对照反馈</span></div>
+      </section>
+
+      <section class="sentence-building-workspace" aria-labelledby="practice-title">
+        <aside class="sentence-building-levels" aria-label="切换造句难度">
+          <p class="section-kicker">CHOOSE A LEVEL</p>
+          <h2>自由切换难度</h2>
+          <div id="sentence-level-list"></div>
+        </aside>
+
+        <section class="sentence-building-card" aria-live="polite">
+          <div class="sentence-card-topline"><span id="practice-level-label">入门 · 句子 1 / 4</span><span id="practice-status">未提交</span></div>
+          <div class="sentence-prompt">
+            <p class="section-kicker">YOUR PROMPT</p>
+            <h2 id="practice-title">把“我学习英语”翻译成英文。</h2>
+            <p id="practice-context">先使用最基本的主语 + 动词 + 宾语结构。</p>
+            <div class="sentence-hint" id="sentence-hint"></div>
+          </div>
+          <form id="sentence-form" class="sentence-form">
+            <label for="sentence-input">写下你的英文句子</label>
+            <textarea id="sentence-input" rows="2" placeholder="例如：I study English." autocomplete="off" spellcheck="false"></textarea>
+            <div class="sentence-form-actions"><button class="primary-button" type="submit">提交句子 <span>→</span></button><button class="ghost-button" type="button" id="clear-input">清空</button></div>
+          </form>
+          <div class="sentence-feedback" id="sentence-feedback" hidden></div>
+          <section class="reference-answer" id="reference-answer" hidden>
+            <div class="reference-heading"><div><p class="section-kicker">REFERENCE ANSWER · 参考答案</p><h3 id="reference-text">I study English.</h3></div><button class="sound-button" id="reference-speak" type="button">▶ 常速朗读</button></div>
+            <p class="reference-ipa" id="reference-ipa">/aɪ ˈstʌdi ˈɪŋɡlɪʃ/</p>
+            <p class="reference-meaning" id="reference-meaning">我学习英语。</p>
+            <p class="reference-note" id="reference-note">先找到主语 I，再用 study 表达动作，最后补上学习的内容 English。</p>
+            <button class="reference-slow" id="reference-slow" type="button">🐢 慢速跟读句子</button>
+          </section>
+          <button class="answer-toggle" id="answer-toggle" type="button">查看参考答案</button>
+          <div class="sentence-navigation"><button type="button" id="previous-prompt">← 上一道</button><button class="next-prompt" type="button" id="next-prompt">下一道 →</button></div>
+        </section>
+      </section>
+
+      <p class="sentence-building-note">建议课堂流程：先让学员独立造句，不急着公布答案；提交后再一起观察句子结构、词序和表达是否自然。</p>
+    </main>
+    <script src="site-header.js"></script>
+    <script src="access-gate.js"></script>
+    <script src="speech.js"></script>
+    <script src="sentence-building.js"></script>
+    <script src="word-lookup.js"></script>
+  </body>
+</html>

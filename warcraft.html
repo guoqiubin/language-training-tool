@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="魔兽争霸口语：用本地导入的游戏原声练习英语。" />
+    <title>魔兽争霸口语｜趣玩中心</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="desktop-typography.css" />
+    <link rel="stylesheet" href="warcraft.css" />
+    <link rel="stylesheet" href="word-lookup.css" />
+    <link rel="stylesheet" href="site-header.css" />
+  </head>
+  <body class="warcraft-page" data-access-protected>
+    <main class="warcraft-shell">
+      <a class="back-link" href="training-center.html">← 返回训练中心</a>
+      <header class="warcraft-header">
+        <div class="warcraft-title-wrap">
+          <div class="faction-mark" aria-hidden="true"><span>✦</span></div>
+          <p class="section-kicker">FUN CENTER · GAME SPEAKING</p>
+          <h1>魔兽争霸口语</h1>
+          <p>用熟悉的声音，重新认识英语。</p>
+        </div>
+        <div class="warcraft-badge">
+          <div class="paladin-avatar-frame">
+            <img id="paladin-avatar" src="assets/paladin-avatar.png" alt="圣骑士角色头像" />
+            <img class="paladin-avatar-fallback" src="assets/paladin-emblem.svg" alt="圣骑士徽记" />
+          </div>
+          <div><strong>PALADIN</strong><span>圣骑士 · MVP</span></div>
+        </div>
+      </header>
+
+      <section class="warcraft-notice" aria-label="本地原声说明">
+        <div class="notice-mark">✦</div>
+        <div>
+          <p class="section-kicker">LOCAL ARCHIVE · NO UPLOAD</p>
+          <h2>原声只保存在你的浏览器</h2>
+          <p>本模块仅供学习使用，非商业化用途。页面不上传、不托管游戏音频；选择本地文件夹后，网页只在当前浏览器中读取并匹配音频。</p>
+        </div>
+        <div class="audio-status" id="audio-status">尚未导入原声</div>
+      </section>
+
+      <section class="import-panel" aria-labelledby="import-title">
+        <div>
+          <p class="section-kicker">STEP 01 · SCAN LOCAL FOLDER</p>
+          <h2 id="import-title">扫描本地原声文件夹</h2>
+          <p>把音频放进同一个文件夹，按文件名自动匹配：<code>paladin-01</code>、<code>paladin-02</code>、<code>paladin-03</code>……</p>
+        </div>
+        <button class="import-button" id="folder-input-button" type="button">扫描文件夹 <span>⌁</span></button>
+        <button class="fallback-button" id="file-input-button" type="button">选择音频</button>
+        <input id="audio-input" type="file" accept="audio/*" multiple hidden />
+        <button class="clear-audio" id="clear-audio" type="button">清除</button>
+      </section>
+
+      <section class="line-section" aria-labelledby="line-title">
+        <div class="section-heading"><div><p class="section-kicker">STEP 02 · LEARN THE LINE</p><h2 id="line-title">先听声音，再学表达</h2></div><p class="section-note">当前为圣骑士 19 条完整台词</p></div>
+        <div class="line-grid" id="line-grid"></div>
+      </section>
+
+      <p class="warcraft-footnote">免责声明：本页面及本地音频功能仅供英语学习使用，非商业化用途。角色、游戏名称及相关音频权利归其相应权利人所有。本地音频只写入当前浏览器，清除浏览器站点数据后需要重新扫描。</p>
+    </main>
+    <script src="site-header.js"></script>
+    <script src="access-gate.js"></script>
+    <script src="speech.js"></script>
+    <script src="warcraft.js"></script>
+    <script src="word-lookup.js"></script>
+  </body>
+</html>

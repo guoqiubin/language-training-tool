@@ -1,0 +1,41 @@
+.task-center-section { padding-top: 42px; border-top: 1px solid var(--line); }
+.task-center-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 22px; padding: 28px 30px; border: 1px solid #e6d5bd; border-radius: 20px; background: linear-gradient(135deg, #fff3e8, #f9e5d1); }
+.task-center-icon { display: grid; width: 64px; height: 64px; place-items: center; border-radius: 18px; background: #fffaf4; color: #bd704b; font-size: 28px; font-weight: 800; }
+.task-center-copy { min-width: 0; }
+.task-eyebrow { margin: 0 0 7px; color: #a4674b; font-family: "DM Sans", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .12em; }
+.task-center-copy h3 { margin: 0 0 8px; font-size: 28px; letter-spacing: -.04em; }
+.task-center-copy > p:not(.task-eyebrow) { max-width: 640px; margin: 0; color: #725d50; font-size: 13px; line-height: 1.8; }
+.task-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.task-meta span { padding: 6px 10px; border: 1px solid rgba(189,112,75,.22); border-radius: 999px; color: #956248; font-size: 11px; font-weight: 700; }
+.task-center-button { display: inline-flex; align-items: center; gap: 10px; padding: 13px 16px; border-radius: 9px; background: var(--ink); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.task-center-button span { transition: transform .2s ease; }
+.task-center-button:hover span { transform: translateX(4px); }
+.fun-center-section { padding-top: 42px; border-top: 1px solid var(--line); }
+.fun-center-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 22px; padding: 28px 30px; border: 1px solid #d8d9ed; border-radius: 20px; background: linear-gradient(135deg, #f1effb, #e9eefb); }
+.fun-center-genshin-card { margin-top: 14px; border-color: #b9d9d4; background: linear-gradient(135deg, #e9f6f3, #e8eef8); }
+.fun-center-genshin-card .fun-center-icon { color: #4c8a83; }
+.fun-center-genshin-card .fun-eyebrow { color: #4c8a83; }
+.fun-center-genshin-card .fun-meta span { border-color: rgba(76,138,131,.24); color: #4c817b; }
+.fun-center-icon { display: grid; width: 64px; height: 64px; place-items: center; border-radius: 18px; background: #fff; color: #6c6ca5; font-size: 28px; font-weight: 800; }
+.fun-center-copy { min-width: 0; }
+.fun-eyebrow { margin: 0 0 7px; color: #7771a2; font-family: "DM Sans", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .12em; }
+.fun-center-copy h3 { margin: 0 0 8px; font-size: 28px; letter-spacing: -.04em; }
+.fun-center-copy > p:not(.fun-eyebrow) { max-width: 640px; margin: 0; color: #626681; font-size: 13px; line-height: 1.8; }
+.fun-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.fun-meta span { padding: 6px 10px; border: 1px solid rgba(108,108,165,.2); border-radius: 999px; color: #666395; font-size: 11px; font-weight: 700; }
+.fun-center-button { display: inline-flex; align-items: center; gap: 10px; padding: 13px 16px; border-radius: 9px; background: var(--ink); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.fun-center-button span { transition: transform .2s ease; }
+.fun-center-button:hover span { transform: translateX(4px); }
+.fun-center-button.is-disabled { cursor: default; opacity: .58; pointer-events: none; }
+@media (max-width: 700px) {
+  .task-center-section { padding-top: 34px; }
+  .task-center-card { grid-template-columns: 52px minmax(0, 1fr); gap: 15px; padding: 21px 19px; border-radius: 17px; }
+  .task-center-icon { width: 48px; height: 48px; border-radius: 14px; font-size: 22px; }
+  .task-center-copy h3 { font-size: 24px; }
+  .task-center-button { grid-column: 1 / -1; justify-content: center; }
+  .fun-center-section { padding-top: 34px; }
+  .fun-center-card { grid-template-columns: 52px minmax(0, 1fr); gap: 15px; padding: 21px 19px; border-radius: 17px; }
+  .fun-center-icon { width: 48px; height: 48px; border-radius: 14px; font-size: 22px; }
+  .fun-center-copy h3 { font-size: 24px; }
+  .fun-center-button { grid-column: 1 / -1; justify-content: center; }
+}
