@@ -1,0 +1,18 @@
+.vercel
+.env*
+.DS_Store
+work/
+outputs/
+
+# Private / local-only assets
+assets/avatar.jpg
+assets/wechat-*
+assets/paladin-*
+assets/paladin-emblem.svg
+assets/private/
+
+# Original game audio is loaded locally for teaching and is not part of the public repo.
+*.mp3
+*.wav
+*.m4a
+*.ogg
