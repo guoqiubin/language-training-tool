@@ -29,7 +29,8 @@
   };
 
   const $ = (id) => document.getElementById(id);
-  let level = "beginner";
+  const queryLevel = new URLSearchParams(window.location.search).get("level");
+  let level = content[queryLevel] ? queryLevel : "beginner";
   let index = 0;
   let currentAnswerText = "";
   const speak = (text) => {
@@ -56,10 +57,14 @@
     $("translation-answer-list").innerHTML = item.answers.map((answer) => '<div class="answer-item"><span class="answer-label">' + answer[0] + '</span><div><strong>' + answer[1] + '</strong><small>' + answer[2] + '</small></div></div>').join("");
     $("translation-analysis-text").textContent = item.analysis;
     $("translation-vocabulary-list").innerHTML = '<div class="translation-vocabulary-list">' + item.words.map((word) => '<span class="vocab-chip"><b>' + word[0] + '</b><small>' + word[1] + '</small></span>').join("") + "</div>";
+    document.querySelectorAll(".translation-level").forEach((button) => { button.classList.toggle("active", button.dataset.level === level); button.setAttribute("aria-selected", String(button.dataset.level === level)); });
   };
   document.querySelectorAll(".translation-level").forEach((button) => button.addEventListener("click", () => {
     level = button.dataset.level;
     index = 0;
+    const url = new URL(window.location.href);
+    url.searchParams.set("level", level);
+    window.history.replaceState({}, "", url);
     document.querySelectorAll(".translation-level").forEach((item) => {
       item.classList.toggle("active", item === button);
       item.setAttribute("aria-selected", String(item === button));
