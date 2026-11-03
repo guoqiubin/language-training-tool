@@ -108,6 +108,7 @@
 .module-button.is-disabled { color: #9aa7a0; cursor: default; pointer-events: none; }
 .module-card.level-coming { opacity: .72; }
 .special-practice-section { padding: 42px 0; border-top: 1px solid var(--line); }
+.special-practice-grid { display: grid; gap: 14px; }
 .special-practice-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 22px; padding: 27px 29px; border: 1px solid #cad9eb; border-radius: 20px; color: var(--ink); background: linear-gradient(110deg, #edf3fc, #f6f9fd); text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
 .special-practice-card:hover { border-color: #9cbbe0; box-shadow: 0 15px 30px rgba(69, 103, 145, .1); transform: translateY(-3px); }
 .special-practice-icon { display: grid; width: 62px; height: 62px; place-items: center; border-radius: 18px; background: #fff; color: #567aa7; font-size: 28px; font-weight: 800; }
@@ -117,6 +118,11 @@
 .special-practice-meta { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
 .special-practice-meta span { padding: 5px 9px; border-radius: 999px; background: rgba(255,255,255,.7); color: #657f9e; font-size: 10px; }
 .special-practice-arrow { flex: 0 0 auto; padding: 13px 15px; border-radius: 9px; background: var(--ink); color: #fff; font-size: 12px; font-weight: 700; }
+.special-practice-ielts { border-color: #e5cba0; background: linear-gradient(110deg, #fff6e4, #fffaf2); }
+.special-practice-ielts:hover { border-color: #d7ae6d; box-shadow: 0 15px 30px rgba(157, 109, 39, .1); }
+.special-practice-ielts .special-practice-icon { color: #ad7a37; }
+.special-practice-ielts .special-practice-eyebrow { color: #a47a42; }
+.special-practice-ielts .special-practice-meta span { color: #987342; }
 .special-english-section { padding: 42px 0 42px; border-top: 1px solid var(--line); }
 .special-english-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .special-english-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 22px; padding: 26px 28px; border: 1px solid #d1dff0; border-radius: 20px; background: linear-gradient(115deg, #edf3fc, #f5effb); }
