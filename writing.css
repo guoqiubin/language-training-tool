@@ -1,0 +1,70 @@
+.writing-page { background: #faf8fc; color: #202d2b; }
+.writing-shell { max-width: 1180px; margin: 0 auto; padding: 118px 28px 72px; }
+.writing-back { color: #5a8b6b; font-weight: 700; text-decoration: none; }
+.writing-hero { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; padding: 38px 0 30px; }
+.writing-hero h1 { margin: 10px 0 8px; font-size: clamp(48px, 6vw, 82px); line-height: .98; letter-spacing: -.06em; }
+.writing-hero p:not(.eyebrow) { margin: 0; color: #72817e; font-size: 20px; }
+.eyebrow { margin: 0; color: #709783; font-size: 12px; font-weight: 800; letter-spacing: .16em; }
+.writing-count { display: flex; align-items: baseline; gap: 8px; padding: 18px 22px; border: 1px solid #d9e5de; border-radius: 18px; background: #fff; white-space: nowrap; }
+.writing-count strong { color: #5a8b6b; font-size: 38px; }
+.writing-count span { color: #7b8985; }
+.writing-count b { color: #263633; }
+.writing-method { display: flex; justify-content: space-between; gap: 32px; padding: 30px 34px; border: 1px solid #dfd7ea; border-radius: 24px; background: #f1ecfb; }
+.writing-method h2 { margin: 10px 0 8px; font-size: 32px; }
+.writing-method p:not(.eyebrow) { margin: 0; color: #6e737a; font-size: 17px; line-height: 1.8; }
+.writing-steps { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; align-self: center; }
+.writing-steps span { padding: 12px 14px; border-radius: 14px; background: #fff; color: #65577e; font-size: 14px; font-weight: 700; }
+.writing-steps b { margin-right: 6px; color: #9877bd; }
+.writing-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 26px; margin-top: 38px; align-items: start; }
+.writing-levels { position: sticky; top: 88px; }
+.writing-levels h2 { margin: 10px 0 20px; font-size: 36px; letter-spacing: -.04em; }
+.writing-level { width: 100%; margin-bottom: 10px; padding: 16px 18px; border: 1px solid #dce5e0; border-radius: 16px; background: #fff; color: #34413e; text-align: left; cursor: pointer; transition: .2s ease; }
+.writing-level strong { display: block; font-size: 17px; }
+.writing-level small { display: block; margin-top: 5px; color: #85918e; }
+.writing-level:hover, .writing-level.active { border-color: #9b7cc0; background: #f0eafb; box-shadow: 0 8px 22px rgba(110, 83, 145, .1); }
+.writing-local-note, .writing-footer-note { color: #87918e; font-size: 13px; line-height: 1.7; }
+.writing-card { min-width: 0; padding: 30px; border: 1px solid #d9d0e5; border-radius: 26px; background: #fff; box-shadow: 0 16px 40px rgba(66, 45, 89, .07); }
+.writing-card-top { display: flex; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid #e9e5ed; color: #7d6a99; font-size: 13px; font-weight: 800; letter-spacing: .08em; }
+.writing-task { margin-top: 24px; padding: 24px; border-radius: 18px; background: #f5f1fc; }
+.writing-task h2 { margin: 10px 0 12px; font-size: 34px; }
+.writing-prompt { margin: 0; color: #566661; font-size: 18px; line-height: 1.8; }
+.writing-requirements { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.writing-requirements span, .writing-target { display: inline-block; padding: 7px 10px; border-radius: 999px; background: #fff; color: #75628e; font-size: 13px; }
+.writing-target { margin-top: 12px; background: #eadff7; font-weight: 700; }
+.writing-editor-label { display: block; margin: 28px 0 10px; color: #4f625c; font-weight: 800; }
+#writing-editor { display: block; width: 100%; min-height: 220px; box-sizing: border-box; padding: 18px; border: 1px solid #cbdad2; border-radius: 16px; resize: vertical; color: #263633; font: inherit; font-size: 18px; line-height: 1.8; background: #fbfdfb; }
+#writing-editor:focus { outline: 3px solid rgba(151, 119, 189, .2); border-color: #9877bd; }
+.writing-editor-meta { display: flex; justify-content: space-between; margin-top: 8px; color: #87938f; font-size: 13px; }
+.writing-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.button, .mini-speak { border: 0; border-radius: 12px; padding: 13px 17px; font: inherit; font-weight: 800; cursor: pointer; }
+.button-primary { background: #263633; color: #fff; }
+.button-secondary, .mini-speak { background: #efe7f8; color: #715794; }
+.button-quiet { margin-left: auto; background: transparent; color: #5a8b6b; }
+.writing-feedback { min-height: 22px; margin: 14px 0 0; color: #5a8b6b; font-size: 14px; }
+.writing-answer { margin-top: 24px; padding: 24px; border: 1px solid #d8e4dc; border-radius: 18px; background: #f3faf5; }
+.writing-answer-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.writing-answer h3 { margin: 8px 0 0; font-size: 28px; }
+.writing-sample { margin: 20px 0 8px; color: #3e7556; font-size: 20px; line-height: 1.85; white-space: pre-line; }
+.writing-translation { margin: 0; color: #6d7b76; line-height: 1.8; }
+.writing-review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.writing-review-grid > div { padding: 16px; border-radius: 14px; background: #fff; }
+.writing-review-grid h4 { margin: 0 0 8px; color: #557d65; }
+.writing-review-grid p, .writing-review-grid li { color: #65736e; line-height: 1.7; }
+.writing-review-grid ul { margin: 0; padding-left: 20px; }
+.writing-footer-note { margin: 22px 0 0 306px; }
+@media (max-width: 800px) {
+  .writing-shell { padding: 90px 18px 48px; }
+  .writing-hero, .writing-method { display: block; }
+  .writing-count { display: inline-flex; margin-top: 22px; }
+  .writing-steps { margin-top: 20px; }
+  .writing-layout { display: block; }
+  .writing-levels { position: static; margin-bottom: 22px; }
+  .writing-levels h2 { font-size: 30px; }
+  .writing-level { width: calc(50% - 6px); margin-right: 8px; display: inline-block; vertical-align: top; box-sizing: border-box; }
+  .writing-level:nth-of-type(even) { margin-right: 0; }
+  .writing-card { padding: 20px; }
+  .writing-task h2 { font-size: 28px; }
+  .writing-review-grid { grid-template-columns: 1fr; }
+  .button-quiet { margin-left: 0; }
+  .writing-footer-note { margin-left: 0; }
+}

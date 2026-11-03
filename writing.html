@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>写作训练｜语言训练工具</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="desktop-typography.css">
+  <link rel="stylesheet" href="site-header.css">
+  <link rel="stylesheet" href="word-lookup.css">
+  <link rel="stylesheet" href="writing.css">
+</head>
+<body class="writing-page" data-access-protected>
+  <div id="site-header"></div>
+  <main class="writing-shell">
+    <a class="writing-back" href="training-center.html">← 返回训练中心</a>
+    <header class="writing-hero">
+      <div>
+        <p class="eyebrow">WRITING PRACTICE</p>
+        <h1>写作训练</h1>
+        <p>先把意思写出来，再慢慢写得更准确、更自然。</p>
+      </div>
+      <div class="writing-count"><strong id="writing-position">1</strong><span>/ <b id="writing-total">2</b> 个任务</span></div>
+    </header>
+
+    <section class="writing-method">
+      <div>
+        <p class="eyebrow">HOW TO PRACTICE</p>
+        <h2>先写，再对照</h2>
+        <p>每个等级都有自己的写作目标。先独立完成，再查看范文、结构和重点表达。</p>
+      </div>
+      <div class="writing-steps"><span><b>01</b>读懂要求</span><span><b>02</b>完成草稿</span><span><b>03</b>对照复盘</span></div>
+    </section>
+
+    <section class="writing-layout">
+      <aside class="writing-levels" aria-label="写作难度">
+        <p class="eyebrow">CHOOSE A LEVEL</p>
+        <h2>选择难度</h2>
+        <div id="writing-level-list"></div>
+        <p class="writing-local-note">草稿会保存在当前浏览器，刷新后仍可继续。</p>
+      </aside>
+
+      <article class="writing-card">
+        <div class="writing-card-top"><span id="writing-category">自我介绍</span><span id="writing-level-label">入门</span></div>
+        <div class="writing-task">
+          <p class="eyebrow">TODAY'S TASK</p>
+          <h2 id="writing-title">介绍你自己</h2>
+          <p id="writing-prompt"></p>
+          <div class="writing-requirements" id="writing-requirements"></div>
+          <span class="writing-target" id="writing-target"></span>
+        </div>
+
+        <label class="writing-editor-label" for="writing-editor">你的英文草稿</label>
+        <textarea id="writing-editor" rows="9" placeholder="在这里写下你的英文……"></textarea>
+        <div class="writing-editor-meta"><span id="writing-count">0 words</span><span id="writing-save-status">尚未保存</span></div>
+        <div class="writing-actions">
+          <button class="button button-primary" id="complete-writing" type="button">保存并完成</button>
+          <button class="button button-secondary" id="reveal-writing" type="button" aria-expanded="false">查看参考范文</button>
+          <button class="button button-quiet" id="next-writing" type="button">下一个任务 →</button>
+        </div>
+        <p class="writing-feedback" id="writing-feedback" role="status"></p>
+
+        <section class="writing-answer" id="writing-answer" hidden>
+          <div class="writing-answer-heading"><div><p class="eyebrow">REFERENCE ANSWER</p><h3>参考范文</h3></div><button class="mini-speak" id="speak-writing" type="button">▶ 常速朗读</button></div>
+          <p class="writing-sample" id="writing-sample"></p>
+          <p class="writing-translation" id="writing-translation"></p>
+          <div class="writing-review-grid"><div><h4>结构解析</h4><p id="writing-analysis"></p></div><div><h4>重点表达</h4><ul id="writing-expressions"></ul></div></div>
+        </section>
+      </article>
+    </section>
+    <p class="writing-footer-note">写作训练当前以自我复盘为主，不进行自动评分。你可以把草稿交给老师继续修改。</p>
+  </main>
+  <script src="site-header.js"></script>
+  <script src="access-entry.js"></script>
+  <script src="speech.js"></script>
+  <script src="word-lookup.js"></script>
+  <script src="writing.js"></script>
+</body>
+</html>

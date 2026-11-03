@@ -43,8 +43,8 @@ const levelOverviews = {
     today: "从语气和搭配开始，让表达更自然。"
   }
 };
-const moduleTotals = { phonetics: 41, phonics: 6, vocabulary: 60, speaking: 60, translation: 3 };
-const levelModuleTotals = { beginner: moduleTotals, intermediate: { translation: 3 }, proficient: { speaking: 40, translation: 3 }, advanced: { translation: 3 }, natural: { translation: 3 } };
+const moduleTotals = { phonetics: 41, phonics: 6, vocabulary: 60, speaking: 60, translation: 3, writing: 2 };
+const levelModuleTotals = { beginner: moduleTotals, intermediate: { translation: 3, writing: 2 }, proficient: { speaking: 40, translation: 3, writing: 2 }, advanced: { translation: 3, writing: 2 }, natural: { translation: 3, writing: 2 } };
 const bankSceneEntry = ["bank", "银行场景", "从办理业务到解决问题", "真实办事"];
 const sceneCatalog = {
   beginner: [
@@ -92,7 +92,8 @@ function renderTrainingProgress() {
     phonics: readCompletedCount(`phonics-progress-${currentLevel}`, "completed", currentLevel === "beginner" ? "phonics-progress" : null),
     vocabulary: readCompletedCount(`vocabulary-progress-${currentLevel}`, "library", currentLevel === "beginner" ? "vocabulary-library-beginner" : null),
     speaking: readCompletedCount(`speaking-progress-${currentLevel}`, "completed", currentLevel === "beginner" ? "speaking-progress" : null),
-    translation: readCompletedCount(`translation-progress-${currentLevel}`, "completed")
+    translation: readCompletedCount(`translation-progress-${currentLevel}`, "completed"),
+    writing: readCompletedCount(`writing-progress-${currentLevel}`, "completed")
   };
   const currentTotals = levelModuleTotals[currentLevel] || {};
   const trackedUnits = Object.values(currentTotals).reduce((sum, total) => sum + total, 0);
@@ -165,7 +166,7 @@ function changeLevel(nextLevel) {
 }
 
 function renderModuleAvailability() {
-  const availableModules = currentLevel === "beginner" ? ["phonetics", "phonics", "vocabulary", "speaking", "grammar", "random-sentence", "translation"] : currentLevel === "proficient" ? ["speaking", "translation"] : ["translation"];
+  const availableModules = currentLevel === "beginner" ? ["phonetics", "phonics", "vocabulary", "speaking", "grammar", "random-sentence", "translation", "writing"] : currentLevel === "proficient" ? ["speaking", "translation", "writing"] : ["translation", "writing"];
   document.body.dataset.level = currentLevel;
   const todayStart = document.querySelector("#today-start");
   if (todayStart) {
@@ -179,12 +180,12 @@ function renderModuleAvailability() {
   if (phonicsCard) phonicsCard.hidden = currentLevel !== "beginner";
   document.querySelectorAll("[data-level-link]").forEach((link) => {
     const baseHref = link.getAttribute("href").split("?")[0];
-    const moduleId = baseHref === "phonetics.html" ? "phonetics" : baseHref === "phonics.html" ? "phonics" : baseHref === "vocabulary.html" ? "vocabulary" : baseHref === "speaking.html" ? "speaking" : baseHref === "grammar.html" ? "grammar" : baseHref === "random-sentence.html" ? "random-sentence" : "translation";
+    const moduleId = baseHref === "phonetics.html" ? "phonetics" : baseHref === "phonics.html" ? "phonics" : baseHref === "vocabulary.html" ? "vocabulary" : baseHref === "speaking.html" ? "speaking" : baseHref === "grammar.html" ? "grammar" : baseHref === "random-sentence.html" ? "random-sentence" : baseHref === "translation.html" ? "translation" : "writing";
     const available = availableModules.includes(moduleId);
     link.setAttribute("href", available ? `${baseHref}${currentLevel === "beginner" ? "" : `?level=${currentLevel}`}` : `${baseHref}?level=${currentLevel}`);
     link.classList.toggle("is-disabled", !available);
     link.setAttribute("aria-disabled", String(!available));
-    link.textContent = available ? (baseHref === "phonetics.html" ? "开始训练 →" : baseHref === "phonics.html" ? "开始拼读 →" : baseHref === "vocabulary.html" ? "开始学词 →" : baseHref === "speaking.html" && currentLevel === "proficient" ? "开始熟练口语 →" : baseHref === "translation.html" ? "开始翻译 →" : baseHref === "grammar.html" ? "查看知识卡 →" : "打开句子 →") : "该等级即将开始";
+    link.textContent = available ? (baseHref === "phonetics.html" ? "开始训练 →" : baseHref === "phonics.html" ? "开始拼读 →" : baseHref === "vocabulary.html" ? "开始学词 →" : baseHref === "speaking.html" && currentLevel === "proficient" ? "开始熟练口语 →" : baseHref === "translation.html" ? "开始翻译 →" : baseHref === "writing.html" ? "开始写作 →" : baseHref === "grammar.html" ? "查看知识卡 →" : "打开句子 →") : "该等级即将开始";
   });
   document.querySelectorAll(".module-card").forEach((card) => card.classList.toggle("level-coming", !availableModules.includes(card.id)));
 }

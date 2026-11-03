@@ -11,6 +11,7 @@
     ["专项英语", "Python 与心理学专业概念", "special-english.html"],
     ["造句训练", "独立专项训练，随时切换难度", "sentence-building.html"],
     ["翻译", "中译英训练与自然表达选择", "translation.html"],
+    ["写作", "按等级练习英文写作", "writing.html"],
     ["美式音标", "发音与音标训练", "phonetics.html"],
     ["自然拼读", "从字母声音拼起单词", "phonics.html"],
     ["入门单词", "主题词包、中文释义与例句", "vocabulary.html"],
