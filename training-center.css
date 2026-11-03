@@ -1,11 +1,11 @@
-.training-page { min-height: 100vh; background: var(--level-page-bg, #f7f8f4); transition: background-color .25s ease; }
+.training-page { min-height: 100vh; background: var(--level-page-bg, #f7f8f4); transition: background-color .25s ease; scroll-padding-top: 96px; }
 .training-shell { max-width: 940px; margin: 0 auto; padding: 32px 32px 54px; }
 .training-header { position: relative; padding: 28px 0 54px; }
 .training-title-row { display: flex; align-items: end; justify-content: space-between; gap: 28px; }
 .back-link { display: inline-block; margin-bottom: 48px; color: #557e62; font-size: 13px; font-weight: 700; text-decoration: none; }
 .training-header h1 { max-width: none; margin: 0 0 12px; font-size: clamp(54px, 9vw, 92px); }
 .training-header > p:last-child { margin: 0; color: var(--muted); font-size: 15px; }
-.level-nav { position: sticky; top: 0; z-index: 20; display: flex; justify-content: flex-end; margin: -22px 0 28px; padding: 8px 0; background: color-mix(in srgb, var(--level-page-bg, #f7f8f4) 90%, transparent); backdrop-filter: blur(12px); }
+.level-nav { position: sticky; top: 70px; z-index: 20; display: flex; justify-content: flex-end; margin: -22px 0 28px; padding: 8px 0; background: color-mix(in srgb, var(--level-page-bg, #f7f8f4) 90%, transparent); backdrop-filter: blur(12px); }
 .level-switcher { min-width: 310px; padding: 12px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.8); }
 .level-switcher > span { display: block; margin: 0 0 8px 4px; color: var(--muted); font-size: 11px; }
 .level-options { display: flex; flex-wrap: wrap; gap: 5px; }
@@ -147,7 +147,7 @@
   .training-shell { padding: 18px 20px 30px; }
   .training-header { padding: 20px 0 36px; }
   .training-title-row { display: block; }
-  .level-nav { justify-content: stretch; margin: -14px 0 24px; padding: 8px 0; }
+  .level-nav { top: 64px; justify-content: stretch; margin: -14px 0 24px; padding: 8px 0; }
   .level-switcher { min-width: 0; width: 100%; }
   .back-link { margin-bottom: 38px; }
   .training-header h1 { font-size: clamp(50px, 17vw, 74px); }
