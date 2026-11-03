@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="中译英专项训练：先独立思考，再学习自然英文表达。" />
+    <title>翻译训练｜语言训练工具</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="desktop-typography.css" />
+    <link rel="stylesheet" href="site-header.css" />
+    <link rel="stylesheet" href="word-lookup.css" />
+    <link rel="stylesheet" href="translation.css" />
+  </head>
+  <body class="translation-page" data-access-protected>
+    <main class="translation-shell">
+      <a class="back-link" href="index.html">← 返回首页</a>
+      <header class="translation-header">
+        <div><p class="section-kicker">TRANSLATION PRACTICE</p><h1>翻译训练</h1><p>先把意思说出来，再选择更自然的英文。</p></div>
+        <div class="translation-count"><strong id="translation-position">1</strong><span>/ <b id="translation-total">3</b> 题</span></div>
+      </header>
+      <section class="translation-method" aria-label="训练方法">
+        <div><p class="section-kicker">HOW IT WORKS</p><h2>先翻译，再看答案</h2><p>先独立组织英文；公布答案后，对比语气、结构和使用场景。</p></div>
+        <div class="translation-steps"><span><b>01</b>读懂中文</span><span><b>02</b>尝试表达</span><span><b>03</b>对比学习</span></div>
+      </section>
+      <section class="translation-workspace">
+        <aside class="translation-sidebar" aria-label="翻译难度">
+          <p class="section-kicker">CHOOSE A LEVEL</p><h2>选择难度</h2>
+          <div class="translation-levels" role="tablist" aria-label="翻译难度">
+            <button class="translation-level active" data-level="beginner" role="tab" aria-selected="true"><strong>入门</strong><small>短句直译</small></button>
+            <button class="translation-level" data-level="intermediate" role="tab" aria-selected="false"><strong>进阶</strong><small>补充信息</small></button>
+            <button class="translation-level" data-level="proficient" role="tab" aria-selected="false"><strong>熟练</strong><small>自然表达</small></button>
+          </div>
+        </aside>
+        <section class="translation-card" aria-live="polite">
+          <div class="translation-card-topline"><span id="translation-category">日常表达</span><span id="translation-level-label">入门 · 题目 1 / 3</span></div>
+          <div class="translation-prompt"><p class="section-kicker">TRANSLATE INTO ENGLISH</p><h2 id="translation-prompt-text"></h2><p id="translation-hint"></p></div>
+          <div class="translation-actions"><button class="primary-button" id="reveal-answer" type="button">公布参考答案 →</button><button class="secondary-button" id="next-question" type="button" hidden>下一题 →</button></div>
+          <article class="translation-answer" id="translation-answer" hidden>
+            <div class="answer-heading"><div><p class="section-kicker">REFERENCE ANSWERS · 参考表达</p><h3>同一个意思，可以有不同说法</h3></div><button class="audio-button" data-speak-answer type="button">▶ 常速朗读</button></div>
+            <div class="answer-list" id="translation-answer-list"></div>
+            <div class="translation-analysis"><p class="section-kicker">WHY IT WORKS · 表达解析</p><p id="translation-analysis-text"></p></div>
+            <div class="translation-vocabulary"><p class="section-kicker">KEY WORDS · 重点词汇</p><div id="translation-vocabulary-list"></div></div>
+          </article>
+        </section>
+      </section>
+      <p class="translation-note">建议流程：先遮住答案完成翻译，再朗读参考表达，最后尝试用自己的方式复述。</p>
+    </main>
+    <script src="site-header.js"></script>
+    <script src="access-entry.js"></script>
+    <script src="speech.js"></script>
+    <script src="word-lookup.js"></script>
+    <script src="translation.js"></script>
+  </body>
+</html>
