@@ -14,6 +14,23 @@
 .phonetics-method-steps span { color: #355841; font-size: 13px; font-weight: 700; }
 .phonetics-method-steps small { color: #819488; font-size: 10px; }
 .phonetics-review-strip { min-height: 0; margin: 0 0 26px; }
+.phonetics-theory { padding: 34px 0 38px; border-top: 1px solid var(--line); }
+.theory-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.theory-card { display: grid; grid-template-columns: 84px 1fr; gap: 18px; min-height: 210px; padding: 18px; border: 1px solid #d9e4dc; border-radius: 16px; background: #fff; }
+.theory-card h3 { margin: 0 0 9px; font-size: 18px; }
+.theory-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
+.theory-visual { position: relative; display: grid; width: 84px; height: 84px; place-items: center; overflow: hidden; border-radius: 14px; background: #eef7ef; color: #548464; }
+.theory-card-mouth .theory-visual { background: #fff4e8; color: #b47835; }
+.theory-card-stress .theory-visual { background: #f1edfa; color: #8063a7; }
+.theory-wave { font: 800 45px/1 "DM Sans", sans-serif; transform: rotate(-8deg); }
+.theory-dot { position: absolute; right: 15px; bottom: 15px; width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
+.theory-label { position: absolute; right: 8px; bottom: 7px; font: 700 7px/1 "DM Sans", sans-serif; letter-spacing: .12em; opacity: .7; }
+.mouth-shape { width: 48px; height: 27px; border: 3px solid currentColor; border-top: 0; border-radius: 0 0 50% 50%; transform: translateY(-5px); }
+.mouth-line { position: absolute; top: 41px; width: 40px; height: 3px; background: currentColor; }
+.stress-bar { align-self: end; width: 9px; height: 31px; margin: 0 2px 18px; background: currentColor; }
+.stress-bar.tall { height: 53px; }.stress-bar.short { height: 20px; }
+.theory-example { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-top: 14px; color: #789084; font-size: 10px; }
+.theory-example strong { color: var(--ink); font-family: "DM Sans", sans-serif; font-size: 14px; }.theory-example b { color: #548464; font-family: "DM Sans", sans-serif; }
 .phonetics-review-card { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 15px 19px; border: 1px solid #e8dcb9; border-radius: 14px; background: #fff8e5; color: #7d6938; }
 .phonetics-review-card p { margin: 0; font-size: 12px; line-height: 1.7; }
 .phonetics-review-card strong { color: #a27b2b; }
@@ -88,6 +105,12 @@
 .choice-button.wrong { border-color: #d39586; background: #fff0ed; color: #a65d50; }
 .choice-feedback { min-height: 24px; margin: 12px 0 0; color: #5f7768; font-size: 12px; line-height: 1.6; }
 .lesson-actions { display: flex; justify-content: space-between; gap: 12px; padding-top: 18px; border-top: 1px solid #edf0ec; }
+.phonetics-quiz { margin-top: 44px; padding: 34px 0 38px; border-top: 1px solid var(--line); }
+.quiz-headline { display: flex; align-items: baseline; gap: 12px; margin: -8px 0 18px; color: var(--muted); font-size: 12px; }.quiz-headline strong { color: #548464; font: 700 24px "DM Sans", sans-serif; }
+.quiz-list { display: grid; gap: 12px; }.quiz-card { padding: 19px 20px; border: 1px solid #dfe8e1; border-radius: 14px; background: #fff; }.quiz-card.answered { border-color: #bfd8c4; }
+.quiz-question { display: flex; align-items: flex-start; gap: 12px; }.quiz-question > span { color: #7a9b84; font: 700 11px "DM Sans", sans-serif; letter-spacing: .08em; }.quiz-question h3 { margin: 0; font-size: 16px; line-height: 1.6; }
+.quiz-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin: 15px 0 0 26px; }.quiz-option { min-height: 44px; padding: 9px 11px; border: 1px solid #dce7de; border-radius: 9px; background: #f7faf7; color: var(--ink); cursor: pointer; font: inherit; font-size: 12px; text-align: left; }.quiz-option:hover { border-color: #75b684; background: #eef7ef; }.quiz-option.correct, .quiz-option.answer-key { border-color: #69a977; background: #ddf2df; color: #3f7a4d; }.quiz-option.wrong { border-color: #d39586; background: #fff0ed; color: #a65d50; }
+.quiz-feedback { margin: 13px 0 0 26px; color: #5f7768; font-size: 12px; line-height: 1.7; }.quiz-feedback.is-wrong { color: #a65d50; }.quiz-reset { margin-top: 18px; padding: 10px 14px; border: 1px solid #c9d8cc; border-radius: 8px; background: #fff; color: #548464; cursor: pointer; font: inherit; font-size: 12px; font-weight: 700; }
 .secondary-button { padding: 12px 0; border: 0; background: transparent; color: var(--muted); cursor: pointer; font: inherit; font-size: 12px; }
 .secondary-button:disabled { opacity: .4; cursor: not-allowed; }
 .primary-button { display: inline-flex; align-items: center; gap: 10px; padding: 13px 18px; border: 0; border-radius: 9px; background: var(--ink); color: #fff; cursor: pointer; font: inherit; font-size: 12px; font-weight: 700; text-decoration: none; }
@@ -98,6 +121,8 @@
   .phonetics-shell { padding: 18px 20px 34px; }
   .phonetics-header { padding-bottom: 34px; }
   .phonetics-method { grid-template-columns: 1fr; padding: 22px; }
+  .theory-grid { grid-template-columns: 1fr; }
+  .theory-card { min-height: 0; }
   .phonetics-method-steps { grid-template-columns: repeat(2, 1fr); }
   .phonetics-review-card { align-items: flex-start; flex-direction: column; }
   .back-link { margin-bottom: 30px; }
@@ -124,5 +149,7 @@
   .word-practice { min-width: 82px; }
   .mouth-grid { grid-template-columns: 1fr; }
   .choice-grid { grid-template-columns: repeat(3, 1fr); }
+  .quiz-options { grid-template-columns: 1fr; margin-left: 0; }
+  .quiz-feedback { margin-left: 0; }
   .lesson-actions { position: sticky; bottom: 0; margin: 0 -20px -20px; padding: 14px 20px 18px; background: rgba(255,255,255,.94); }
 }

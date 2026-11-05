@@ -72,6 +72,30 @@
   .finish-tip { font-size: 14px; }
   .phonics-footnote { font-size: 13px; }
 
+  /* Global Chinese meaning readability: enlarge and use true black on desktop.
+     Dark poster-style cards keep their own contrast-specific treatment. */
+  .word-card-meaning,
+  .word-meaning,
+  .phoneme-word-meaning,
+  .vocabulary-meaning,
+  .vocabulary-example-zh,
+  .dialogue-meaning,
+  .sentence-meaning-inline,
+  .reading-text .translation,
+  .question-meaning,
+  .reference-meaning,
+  .writing-translation,
+  .french-lesson .meaning,
+  .thai-lesson .meaning,
+  .knowledge-zh {
+    color: #000 !important;
+    font-size: 16px !important;
+    line-height: 1.7;
+  }
+
+  .phoneme-word-meaning { font-size: 14px !important; }
+  .vocabulary-meaning { font-size: clamp(24px, 3vw, 32px) !important; }
+
   /* Grammar and random sentence */
   .grammar-header > p:last-child, .random-header > p:last-child { font-size: 17px; }
   .grammar-intro strong { font-size: 17px; }

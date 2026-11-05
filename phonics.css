@@ -16,6 +16,23 @@
 .phonics-intro p:last-child { margin: 0; color: #8c6c5b; font-size: 13px; }
 .rule-note { padding: 13px 16px; border-radius: 12px; background: rgba(255,255,255,.72); color: #bd704b; font-size: 10px; line-height: 1.6; text-align: center; }
 .rule-note strong { font-size: 13px; }
+.phonics-theory { padding: 38px 0 10px; }
+.theory-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.theory-card { min-height: 190px; padding: 17px; border: 1px solid #dce8df; border-radius: 15px; background: #fff; }
+.theory-card:nth-child(2) { border-color: #eadfc7; background: #fffaf1; }
+.theory-card:nth-child(3) { border-color: #d7e1ef; background: #f6f9fd; }
+.theory-card:nth-child(4) { border-color: #eadbea; background: #fcf8fd; }
+.theory-visual { display: flex; align-items: center; gap: 7px; min-height: 48px; margin-bottom: 17px; color: #548464; font-family: "DM Sans", "Noto Sans SC", sans-serif; font-size: 17px; font-weight: 700; }
+.theory-visual span { display: inline-flex; align-items: center; justify-content: center; min-width: 37px; min-height: 34px; padding: 3px 7px; border-radius: 8px; background: #eef8ef; }
+.theory-visual b { color: #9bad9f; font-size: 14px; }
+.blend-flow { color: #bd704b; font-size: 12px; }
+.blend-flow span { min-width: 39px; background: #fff0e6; }
+.pattern-flow { color: #587ba9; }
+.pattern-flow span { background: #edf3fc; }
+.reminder-flow { color: #896aa0; font-size: 12px; }
+.reminder-flow span { background: #f6effa; }
+.theory-card h3 { margin: 0 0 8px; font-size: 16px; }
+.theory-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
 .lesson-map { padding: 38px 0 42px; border-bottom: 1px solid var(--line); }
 .compact-heading { margin-bottom: 18px; }
 .lesson-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
@@ -77,6 +94,8 @@
   .header-tools { align-items: center; flex-wrap: wrap; margin-top: 22px; }
   .phonics-intro { display: block; padding: 22px; }
   .rule-note { display: inline-block; margin-top: 16px; }
+  .phonics-theory { padding-top: 30px; }
+  .theory-grid { grid-template-columns: repeat(2, 1fr); }
   .lesson-grid { grid-template-columns: repeat(2, 1fr); }
   .practice-layout { display: block; padding-top: 32px; }
   .practice-path { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 18px; }
@@ -89,4 +108,8 @@
   .focus-card strong { margin-right: 0; }
   .blend-row { flex-wrap: wrap; }
   .blend-parts { margin-right: 0; }
+}
+@media (max-width: 480px) {
+  .theory-grid { grid-template-columns: 1fr; }
+  .theory-card { min-height: 0; }
 }

@@ -104,6 +104,14 @@ const sentenceMeanings = {
   "I like singing.": "我喜欢唱歌。", "Choose a chair.": "选一把椅子。", "I like my job.": "我喜欢我的工作。",
   "We can wait.": "我们可以等。", "Yes, you can.": "是的，你可以。"
 };
+const phoneticsQuiz = [
+  { question: "哪一组更能帮助你区分 /i/ 和 /ɪ/？", options: ["sheep / ship", "cat / cut", "think / this"], answer: 0, explanation: "sheep /ʃiːp/ 和 ship /ʃɪp/ 只差元音长度与口型，是经典对比。" },
+  { question: "发 /θ/ 时，最重要的动作是什么？", options: ["双唇完全闭合", "舌尖轻放在上下齿之间", "舌后部顶住软腭"], answer: 1, explanation: "/θ/ 是清辅音，舌尖轻触齿间并送出气流，声带不震动。" },
+  { question: "schwa /ə/ 通常有什么特点？", options: ["只出现在重读音节", "嘴巴放松、声音短而轻", "一定要把嘴唇收得很圆"], answer: 1, explanation: "/ə/ 常出现在非重读音节，口腔放松，学习弱读时非常重要。" },
+  { question: "在句子 I NEED coffee. 中，通常哪个词承载主要信息？", options: ["I", "NEED", "coffee"], answer: 1, explanation: "这里 NEED 是核心动作，重读时会更响、更长、更清楚。" },
+  { question: "/θ/ 和 /ð/ 最主要的区别是什么？", options: ["/ð/ 需要声带震动", "/θ/ 需要声带震动", "两者口型完全不同"], answer: 0, explanation: "两者口型接近，/θ/ 不震动，/ð/ 震动；可以把手放在喉咙上感受区别。" }
+];
+let quizAnswers = Array(phoneticsQuiz.length).fill(null);
 let selectedIndex = 0;
 let stepIndex = 0;
 let recorder;
@@ -258,6 +266,19 @@ async function toggleRecording() {
 
 function renderAll() { renderMap(); renderSteps(); renderLesson(); renderReviewStrip(); }
 
+function renderQuiz() {
+  const list = document.querySelector("#phonetics-quiz-list");
+  const score = document.querySelector("#quiz-score");
+  if (!list || !score) return;
+  const correctCount = quizAnswers.reduce((total, answer, index) => total + (answer === phoneticsQuiz[index].answer ? 1 : 0), 0);
+  score.textContent = `${correctCount} / ${phoneticsQuiz.length}`;
+  list.innerHTML = phoneticsQuiz.map((item, index) => {
+    const chosen = quizAnswers[index];
+    return `<article class="quiz-card ${chosen !== null ? "answered" : ""}"><div class="quiz-question"><span>${String(index + 1).padStart(2, "0")}</span><h3>${item.question}</h3></div><div class="quiz-options">${item.options.map((option, optionIndex) => `<button type="button" class="quiz-option ${chosen === optionIndex ? (optionIndex === item.answer ? "correct" : "wrong") : ""} ${chosen !== null && optionIndex === item.answer ? "answer-key" : ""}" data-quiz-index="${index}" data-option-index="${optionIndex}">${option}</button>`).join("")}</div>${chosen !== null ? `<p class="quiz-feedback ${chosen === item.answer ? "is-correct" : "is-wrong"}">${chosen === item.answer ? "答对了。" : "再想一想。"} ${item.explanation}</p>` : ""}</article>`;
+  }).join("");
+  list.querySelectorAll("[data-quiz-index]").forEach((button) => button.addEventListener("click", () => { const questionIndex = Number(button.dataset.quizIndex); if (quizAnswers[questionIndex] === null) { quizAnswers[questionIndex] = Number(button.dataset.optionIndex); renderQuiz(); } }));
+}
+
 function renderSpeechToggle() {
   const toggle = $("#slow-speech-toggle");
   if (!toggle) return;
@@ -287,3 +308,5 @@ $("#next-button").addEventListener("click", () => { if (stepIndex < steps.length
 $("#slow-speech-toggle").addEventListener("click", () => { slowSpeechEnabled = !slowSpeechEnabled; window.speechSynthesis?.cancel(); document.querySelectorAll("[data-speak].speaking").forEach((item) => updateSpeakingButton(item, false)); renderSpeechToggle(); });
 renderAll();
 renderSpeechToggle();
+renderQuiz();
+$("#quiz-reset")?.addEventListener("click", () => { quizAnswers = Array(phoneticsQuiz.length).fill(null); renderQuiz(); });

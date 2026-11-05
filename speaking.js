@@ -129,6 +129,18 @@ const proficientScenes = [
     ["Would you be open to starting with a smaller version?", "你愿意先从一个小一点的版本开始吗？", "Would you be open to... 是礼貌地提出替代方案，不会直接否定对方。", "Would you be open to / starting with / a smaller version?", [{ w: "be open to", ipa: "/bi oʊpən tu/", m: "愿意考虑" }, { w: "smaller version", ipa: "/ˈsmɔːlər ˈvɝːʒən/", m: "较小版本" }, { w: "start with", ipa: "/stɑːrt wɪð/", m: "从……开始" }], ["Would you be open to starting with a shorter meeting?", "Would you be open to starting with a limited trial?"]],
     ["That seems like a reasonable compromise.", "这看起来是一个合理的折中方案。", "用 reasonable compromise 表示双方都做了一点调整后的结果。", "That seems like / a reasonable compromise.", [{ w: "reasonable", ipa: "/ˈriːzənəbəl/", m: "合理的" }, { w: "compromise", ipa: "/ˈkɑːmprəmaɪz/", m: "折中；妥协" }, { w: "seem like", ipa: "/siːm laɪk/", m: "看起来像" }], ["That seems like a reasonable compromise for both sides.", "That seems like a reasonable compromise given the time limit."]],
     ["As long as we document the decision, I am comfortable moving forward.", "只要我们把决定记录下来，我就可以放心继续推进。", "As long as 表示接受方案的条件，moving forward 表示继续推进。", "As long as we document the decision / I am comfortable / moving forward.", [{ w: "as long as", ipa: "/æz lɔːŋ æz/", m: "只要" }, { w: "document", ipa: "/ˈdɑːkjument/", m: "记录；文档化" }, { w: "move forward", ipa: "/muːv ˈfɔːrwərd/", m: "向前推进" }], ["As long as we document the decision, I am comfortable moving forward with the plan.", "As long as we document the decision, I am comfortable moving forward today."]]
+  ]},
+  { id: "work-report", title: "职场汇报", description: "在会议中清楚汇报进展", goal: "先交代背景，再说明进展、风险和行动", skills: ["汇报进展", "解释风险", "确认下一步"], pathStep: "09", sentences: [
+    ["Let me start with a quick overview of where we are today.", "我先快速概括一下我们目前的进展。", "用 Let me start with 开场，再用 overview 搭出汇报结构，适合正式会议。", "Let me start / with a quick overview / of where we are today.", [{ w: "start with", ipa: "/stɑːrt wɪð/", m: "从……开始" }, { w: "overview", ipa: "/ˈoʊvərvjuː/", m: "概述；概览" }, { w: "progress", ipa: "/ˈprɑːɡres/", m: "进展" }], ["Let me start with a quick overview of the project.", "Let me start with a quick overview of the current situation."]],
+    ["We have completed the first two phases and are now testing the final workflow.", "我们已经完成了前两个阶段，目前正在测试最终流程。", "用现在完成时汇报已完成工作，再用 are now testing 交代当前动作。", "We have completed / the first two phases / and are now testing / the final workflow.", [{ w: "complete", ipa: "/kəmˈpliːt/", m: "完成" }, { w: "phase", ipa: "/feɪz/", m: "阶段" }, { w: "workflow", ipa: "/ˈwɝːkfloʊ/", m: "工作流程" }], ["We have completed the first phase and are now testing the new process.", "We have completed the main tasks and are now testing the final version."]],
+    ["So far, the results are encouraging, but we still need more data from new users.", "到目前为止，结果令人鼓舞，但我们仍然需要更多新用户数据。", "So far 汇总阶段性结果，but 后面补充限制，让汇报既有结论也有边界。", "So far / the results are encouraging / but we still need / more data from new users.", [{ w: "so far", ipa: "/soʊ fɑːr/", m: "到目前为止" }, { w: "encouraging", ipa: "/ɪnˈkɝːɪdʒɪŋ/", m: "令人鼓舞的" }, { w: "data", ipa: "/ˈdeɪtə/", m: "数据" }], ["So far, the results are encouraging, but we still need more feedback.", "So far, the results are encouraging, but we still need more time."]],
+    ["The main risk is that the integration may take longer than expected.", "主要风险是集成可能比预期花费更长时间。", "The main risk is that 直接标记风险，may take longer than expected 是职场中很常用的谨慎表达。", "The main risk / is that the integration / may take longer / than expected.", [{ w: "risk", ipa: "/rɪsk/", m: "风险" }, { w: "integration", ipa: "/ˌɪntəˈɡreɪʃən/", m: "集成" }, { w: "expected", ipa: "/ɪkˈspektɪd/", m: "预期的" }], ["The main risk is that testing may take longer than expected.", "The main risk is that the approval may take longer than expected."]],
+    ["If that happens, it could affect the launch date.", "如果发生这种情况，可能会影响发布日期。", "用 If that happens 承接风险，再用 could affect 表达可能后果，不把风险说得过满。", "If that happens / it could affect / the launch date.", [{ w: "happen", ipa: "/ˈhæpən/", m: "发生" }, { w: "affect", ipa: "/əˈfekt/", m: "影响" }, { w: "launch date", ipa: "/lɔːntʃ deɪt/", m: "发布日期" }], ["If that happens, it could affect the final schedule.", "If that happens, it could affect our next milestone."]],
+    ["My recommendation is to release a smaller version first and collect feedback.", "我的建议是先发布一个较小的版本，再收集反馈。", "My recommendation is to 明确提出建议，first...and... 把行动顺序说清楚。", "My recommendation / is to release / a smaller version first / and collect feedback.", [{ w: "recommendation", ipa: "/ˌrekəmenˈdeɪʃən/", m: "建议" }, { w: "release", ipa: "/rɪˈliːs/", m: "发布" }, { w: "feedback", ipa: "/ˈfiːdbæk/", m: "反馈" }], ["My recommendation is to release a smaller version first and review the results.", "My recommendation is to test the core feature first and collect feedback."]],
+    ["This would allow us to test the core experience without delaying the entire project.", "这样可以让我们测试核心体验，而不会让整个项目延期。", "This would allow us to 解释方案带来的好处，without delaying 补充控制风险的方式。", "This would allow us / to test the core experience / without delaying / the entire project.", [{ w: "allow", ipa: "/əˈlaʊ/", m: "允许；使能够" }, { w: "core experience", ipa: "/kɔːr ɪkˈspɪriəns/", m: "核心体验" }, { w: "delay", ipa: "/dɪˈleɪ/", m: "推迟" }], ["This would allow us to test the core experience without delaying the launch.", "This would allow us to test the main idea without delaying the full rollout."]],
+    ["Could you clarify whether the deadline is fixed or flexible?", "你可以说明一下截止时间是固定的还是有弹性的吗？", "用 Could you clarify 礼貌追问关键信息，whether...or... 提供两个明确选项。", "Could you clarify / whether the deadline is fixed / or flexible?", [{ w: "clarify", ipa: "/ˈklærəfaɪ/", m: "澄清；说明" }, { w: "deadline", ipa: "/ˈdedlaɪn/", m: "截止时间" }, { w: "flexible", ipa: "/ˈfleksəbəl/", m: "灵活的" }], ["Could you clarify whether the scope is fixed or flexible?", "Could you clarify whether the schedule is fixed or flexible?"]],
+    ["To keep us aligned, I suggest we agree on the owner and next checkpoint today.", "为了保持一致，我建议我们今天确定负责人和下一个检查节点。", "To keep us aligned 说明目的，I suggest 后面直接接行动，适合把讨论落到执行。", "To keep us aligned / I suggest we agree on / the owner and next checkpoint / today.", [{ w: "aligned", ipa: "/əˈlaɪnd/", m: "保持一致的" }, { w: "owner", ipa: "/ˈoʊnər/", m: "负责人" }, { w: "checkpoint", ipa: "/ˈtʃekpɔɪnt/", m: "检查节点" }], ["To keep us aligned, I suggest we agree on the timeline today.", "To keep us aligned, I suggest we agree on the next action today."]],
+    ["I’ll send a short summary after the meeting, including the decisions and open questions.", "会后我会发一份简短总结，包括已经做出的决定和未解决的问题。", "including 用来补充总结内容，open questions 指还需要继续确认的问题。", "I’ll send a short summary / after the meeting / including the decisions / and open questions.", [{ w: "summary", ipa: "/ˈsʌməri/", m: "总结" }, { w: "decision", ipa: "/dɪˈsɪʒən/", m: "决定" }, { w: "open question", ipa: "/ˈoʊpən ˈkwestʃən/", m: "未解决的问题" }], ["I’ll send a short summary after the meeting, including the action items.", "I’ll send a short summary after the meeting, including the decisions and next steps."]]
   ]}
 ];
 
@@ -226,6 +238,20 @@ const replyProfiles = {
     ask: [
       reply("How about you?", "你呢？", "/haʊ əˈbaʊt ju/", "反问对方"),
       reply("What have you been up to lately?", "你最近都在忙些什么？", "/wʌt hæv ju bɪn ʌp tə ˈleɪtli/", "反问对方")
+    ]
+  },
+  "work-report": {
+    acknowledge: [
+      reply("Thanks for the overview. That gives us a clear picture.", "谢谢你的概述，这让我们清楚了解了目前的情况。", "/θæŋks fər ði ˈoʊvərvjuː ðæt ɡɪvz ʌs ə klɪr ˈpɪktʃər/", "确认理解"),
+      reply("That sounds like solid progress so far.", "到目前为止，这听起来是很扎实的进展。", "/ðæt saʊndz laɪk ˈsɑlɪd ˈprɑɡres soʊ fɑr/", "确认理解")
+    ],
+    clarify: [
+      reply("Which part of the workflow is still being tested?", "流程中的哪一部分还在测试？", "/wɪtʃ pɑrt əv ðə ˈwɝːkfloʊ ɪz stɪl ˈbiːɪŋ ˈtestɪd/", "追问细节"),
+      reply("What is the biggest risk to the launch date?", "对发布日期来说，最大的风险是什么？", "/wʌt ɪz ðə ˈbɪɡəst rɪsk tə ðə lɔːntʃ deɪt/", "追问风险")
+    ],
+    action: [
+      reply("Let’s assign an owner before we move on.", "我们继续之前，先确定负责人吧。", "/lets əˈsaɪn ən ˈoʊnər bɪˈfɔːr wi muːv ɑːn/", "确认行动"),
+      reply("Please send the summary after the meeting so we can follow up.", "请在会后发送总结，这样我们可以继续跟进。", "/pliːz send ðə ˈsʌməri ˈæftər ðə ˈmiːtɪŋ soʊ wi kən ˈfɑːloʊ ʌp/", "确认行动")
     ]
   },
   opinions: {
@@ -359,6 +385,17 @@ function renderDialogue() {
   const scene = currentScene();
   const [english, meaning] = currentItem();
   const dialogueTemplates = {
+    "work-report": [
+      ["汇报人", "Let me start with a quick overview of where we are today.", "我先快速概括一下我们目前的进展。"],
+      ["会议负责人", "Great. What has been completed so far?", "很好。目前已经完成了哪些工作？"],
+      ["汇报人", "We have completed the first two phases and are now testing the final workflow.", "我们已经完成了前两个阶段，目前正在测试最终流程。"],
+      ["会议负责人", "What is the main risk at this point?", "目前最大的风险是什么？"],
+      ["汇报人", "The main risk is that the integration may take longer than expected.", "主要风险是集成可能比预期花费更长时间。"],
+      ["会议负责人", "What do you recommend we do next?", "你建议我们下一步怎么做？"],
+      ["汇报人", "My recommendation is to release a smaller version first and collect feedback.", "我的建议是先发布一个较小的版本，再收集反馈。"],
+      ["会议负责人", "Who will own the next checkpoint?", "下一次检查节点由谁负责？"],
+      ["汇报人", "I’ll send a short summary after the meeting, including the decisions and open questions.", "会后我会发一份简短总结，包括已经做出的决定和未解决的问题。"]
+    ],
     "bank-account": [
       ["客户", english, meaning],
       ["银行工作人员", "Certainly. What kind of account are you looking for?", "当然可以。你想办理哪种账户？"],

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="泰语入门音标训练：辅音、元音、声调、中文讲解与跟读。" />
+    <title>泰语音标｜语言训练工具</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="desktop-typography.css" />
+    <link rel="stylesheet" href="word-lookup.css" />
+    <link rel="stylesheet" href="site-header.css" />
+    <link rel="stylesheet" href="thai.css" />
+  </head>
+  <body class="thai-page" data-access-protected>
+    <main class="thai-shell">
+      <header class="thai-header">
+        <a class="back-link" href="index.html">← 返回首页</a>
+        <div class="thai-title-row">
+          <div><p class="section-kicker">THAI · BEGINNER</p><h1>泰语音标</h1><p>先听见声音，再慢慢读出泰语。</p></div>
+          <div class="thai-badge"><strong>TH</strong><span>基础音标模块</span></div>
+        </div>
+      </header>
+
+      <section class="thai-path" aria-labelledby="thai-path-title">
+        <div><p class="section-kicker">TODAY'S PATH</p><h2 id="thai-path-title">听见声调，再拼读</h2><p>泰语的声音训练从三组基础开始：先认识辅音和元音，再把声调放进真实音节里。每张卡片只练一个重点。</p></div>
+        <span class="thai-path-mark">MVP<br />辅音 + 元音 + 声调</span>
+      </section>
+
+      <section class="thai-workspace" aria-labelledby="thai-module-title">
+        <aside class="thai-topic-list">
+          <p class="section-kicker">THAI PHONETICS</p>
+          <h2 id="thai-module-title">选择一个练习</h2>
+          <div id="thai-unit-list"></div>
+          <div class="thai-coming-list" aria-label="其他泰语模块">
+            <p class="section-kicker">MORE MODULES</p>
+            <button type="button" data-coming="泰语单词">单词 <span>开发中</span></button>
+            <button type="button" data-coming="泰语口语">口语 <span>开发中</span></button>
+            <button type="button" data-coming="泰语写作">写作 <span>开发中</span></button>
+          </div>
+        </aside>
+
+        <section class="thai-study-card" aria-live="polite">
+          <div class="thai-topline"><span id="thai-unit-label">辅音</span><span id="thai-position">1 / 6</span></div>
+          <article id="thai-card"></article>
+          <div class="thai-navigation"><button type="button" id="thai-prev">← 上一个</button><button type="button" id="thai-next">下一个 →</button></div>
+        </section>
+      </section>
+
+      <p class="thai-note">提示：泰语朗读使用浏览器的泰语语音（th-TH）。首次播放时，请允许浏览器加载语音列表。当前仅开放音标训练，其他模块会在后续版本加入。</p>
+    </main>
+    <script src="site-header.js"></script>
+    <script src="access-gate.js"></script>
+    <script src="thai.js"></script>
+    <script src="word-lookup.js"></script>
+  </body>
+</html>

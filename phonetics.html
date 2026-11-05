@@ -33,6 +33,26 @@
         <div class="phonetics-method-heading"><p class="section-kicker">HOW YOU WILL LEARN</p><h2 id="method-title">别只记符号，让耳朵和嘴巴一起记住声音</h2><p>每个音都走一遍“听见 → 看懂 → 做出 → 放进单词 → 放进句子”的路径。完成后，系统会把它安排到后面的复习节点。</p></div>
         <div class="phonetics-method-steps"><div><strong>01</strong><span>听辨</span><small>先判断声音</small></div><div><strong>02</strong><span>口型</span><small>知道哪里发力</small></div><div><strong>03</strong><span>迁移</span><small>放进真实表达</small></div><div><strong>04</strong><span>复习</span><small>对抗遗忘</small></div></div>
       </section>
+      <section class="phonetics-theory" aria-labelledby="theory-title">
+        <div class="section-heading compact-heading">
+          <div><p class="section-kicker">PHONETICS BASICS</p><h2 id="theory-title">先理解声音，再记住符号</h2></div>
+          <p class="section-note">把看不见的发音动作变成可以观察的步骤</p>
+        </div>
+        <div class="theory-grid">
+          <article class="theory-card theory-card-sound">
+            <div class="theory-visual" aria-hidden="true"><span class="theory-wave">≈</span><span class="theory-dot"></span><span class="theory-label">SOUND</span></div>
+            <div><h3>音标记录的是声音</h3><p>字母是拼写，音标是发音提示。同一个字母可能对应不同声音，所以先听清，再看符号。</p><div class="theory-example"><strong>cat</strong><span>→</span><b>/kæt/</b></div></div>
+          </article>
+          <article class="theory-card theory-card-mouth">
+            <div class="theory-visual" aria-hidden="true"><span class="mouth-shape"></span><span class="mouth-line"></span><span class="theory-label">MOUTH</span></div>
+            <div><h3>口型决定声音的方向</h3><p>观察嘴巴开合、舌头位置和声带是否震动。每次只练一个动作，肌肉更容易记住。</p><div class="theory-example"><strong> /θ/ </strong><span>舌尖轻触齿间</span></div></div>
+          </article>
+          <article class="theory-card theory-card-stress">
+            <div class="theory-visual" aria-hidden="true"><span class="stress-bar tall"></span><span class="stress-bar"></span><span class="stress-bar short"></span><span class="theory-label">STRESS</span></div>
+            <div><h3>重音让句子更自然</h3><p>句子里最重要的词通常更响、更长、更清楚；小词可以轻读，英语才有节奏。</p><div class="theory-example"><strong>I NEED coffee.</strong><span>重点先落在 NEED</span></div></div>
+          </article>
+        </div>
+      </section>
       <section class="phonetics-review-strip" id="review-strip" aria-live="polite"></section>
 
       <section class="phoneme-map" aria-labelledby="map-title">
@@ -61,6 +81,16 @@
             <button class="primary-button" id="next-button" type="button">下一步 →</button>
           </div>
         </div>
+      </section>
+
+      <section class="phonetics-quiz" aria-labelledby="quiz-title">
+        <div class="section-heading compact-heading">
+          <div><p class="section-kicker">QUICK CHECK</p><h2 id="quiz-title">听懂了吗？做 5 道小测试</h2></div>
+          <p class="section-note">先自己判断，再查看即时反馈</p>
+        </div>
+        <div class="quiz-headline"><strong id="quiz-score">0 / 5</strong><span>答对后会保留在本次练习中</span></div>
+        <div class="quiz-list" id="phonetics-quiz-list"></div>
+        <button class="quiz-reset" id="quiz-reset" type="button">重新测试</button>
       </section>
 
       <p class="phonetics-footnote">提示：示范音使用浏览器的美式英语语音。首次录音时，请允许浏览器使用麦克风。</p>

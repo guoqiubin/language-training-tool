@@ -66,6 +66,25 @@ h2 { margin-bottom: 0; font-size: clamp(28px, 4vw, 46px); line-height: 1.18; let
 .notice strong { color: #5b4c21; font-size: 13px; }
 
 .training-section { padding: 42px 0 76px; border-top: 1px solid var(--line); }
+.language-section { padding: 42px 0 76px; border-top: 1px solid var(--line); }
+.language-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.language-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 20px; min-height: 172px; padding: 25px 28px; border: 1px solid #d5e3d8; border-radius: 20px; color: var(--ink); text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.language-card:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(69, 103, 80, .1); }
+.language-card-english { background: #edf8ef; border-color: #bfdcc6; }
+.language-card-french { background: #f8f0fb; border-color: #e1d4eb; }
+.language-card-thai { background: #fff6e8; border-color: #ead8b7; }
+.language-card-icon { display: grid; width: 62px; height: 62px; place-items: center; border-radius: 18px; background: #fff; color: #548765; font-size: 38px; line-height: 1; }
+.language-card-french .language-card-icon { color: #8d69a2; }
+.language-card-thai .language-card-icon, .language-card-thai b { color: #b47835; }
+.language-card strong, .language-card small, .language-card em { display: block; }
+.language-card strong { font-size: 25px; letter-spacing: -.04em; }
+.language-card small { margin-top: 3px; color: #81908b; font: 600 12px "DM Sans", sans-serif; letter-spacing: .06em; }
+.language-card em { margin-top: 12px; color: #6a7973; font-size: 13px; font-style: normal; line-height: 1.6; }
+.language-card b { color: #548765; font-size: 12px; white-space: nowrap; }
+.language-card-french b { color: #8d69a2; }
+.home-float-nav { position: fixed; z-index: 20; top: 50%; left: 18px; display: grid; gap: 2px; transform: translateY(-50%); padding: 8px; border: 1px solid rgba(130, 145, 138, .3); border-radius: 16px; background: rgba(244, 247, 244, .72); box-shadow: 0 12px 30px rgba(70, 82, 75, .08); backdrop-filter: blur(12px); }
+.home-float-nav a { min-width: 42px; padding: 10px 8px; border-radius: 9px; color: #70827a; font-size: 12px; text-align: center; text-decoration: none; transition: .2s ease; }
+.home-float-nav a:hover, .home-float-nav a:focus-visible { background: rgba(255, 255, 255, .9); color: #4e8460; }
 .text-link { align-self: end; margin-bottom: 5px; color: #557e62; font-size: 13px; font-weight: 700; text-decoration: none; }
 .text-link span { display: inline-block; margin-left: 5px; transition: transform .2s ease; }
 .text-link:hover span { transform: translate(3px, -3px); }
@@ -121,7 +140,14 @@ h2 { margin-bottom: 0; font-size: clamp(28px, 4vw, 46px); line-height: 1.18; let
   .hero-copy { max-width: 255px; font-size: 14px; line-height: 1.8; }
   .section-heading { display: block; }
   .section-note { margin-top: 12px; }
-  .pricing-section, .training-section, .included-section { padding: 34px 0 54px; }
+  .pricing-section, .training-section, .language-section { padding: 34px 0 54px; }
+  .language-grid { grid-template-columns: 1fr; gap: 10px; }
+  .language-card { grid-template-columns: 48px minmax(0, 1fr); min-height: 132px; gap: 14px; padding: 19px; }
+  .language-card-icon { width: 48px; height: 48px; border-radius: 14px; font-size: 29px; }
+  .language-card strong { font-size: 20px; }
+  .language-card em { margin-top: 8px; font-size: 12px; }
+  .language-card b { grid-column: 1 / -1; }
+  .home-float-nav { display: none; }
   .pricing-table th, .pricing-table td { padding: 16px 14px; }
   .pricing-table th:nth-child(2), .pricing-table td:nth-child(2) { width: 24%; }
   .pricing-table th:nth-child(3), .pricing-table td:nth-child(3) { width: 34%; }
