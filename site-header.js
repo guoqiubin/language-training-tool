@@ -32,8 +32,8 @@
   document.body.classList.add("has-site-header");
   document.body.prepend(header);
 
-  // 重点单词卡片：只为有明确视觉联想的词条补充轻量图示。
-  // 图示内置在页面中，不依赖外部图片服务；抽象词或未匹配词条保持原布局。
+  // 重点单词卡片：全局补充视觉记忆区。
+  // 具象词使用语义图示；抽象词使用概念化图示，统一内置在页面中，不依赖外部图片服务。
   const wordVisualCatalog = {
     station: ["🚉", "车站"], taxi: ["🚕", "出租车"], hotel: ["🏨", "酒店"], coffee: ["☕", "咖啡"],
     water: ["💧", "水"], menu: ["📋", "菜单"], bill: ["🧾", "账单"], card: ["💳", "卡片"],
@@ -42,7 +42,13 @@
     fish: ["🐟", "鱼"], dog: ["🐕", "狗"], cat: ["🐈", "猫"], food: ["🍽️", "食物"],
     tea: ["🍵", "茶"], ice: ["🧊", "冰"], meeting: ["👥", "会议"], office: ["🏢", "办公室"],
     work: ["💼", "工作"], team: ["👥", "团队"], problem: ["🧩", "问题"], plan: ["🗺️", "计划"],
-    option: ["🔀", "选项"], idea: ["💡", "想法"], time: ["⏱️", "时间"], morning: ["🌤️", "早上"]
+    option: ["🔀", "选项"], idea: ["💡", "想法"], time: ["⏱️", "时间"], morning: ["🌤️", "早上"],
+    begin: ["▶", "开始"], start: ["▶", "开始"], finish: ["✓", "完成"], end: ["■", "结束"],
+    briefly: ["≋", "简要"], clearly: ["✦", "清楚"], slowly: ["◷", "慢速"], quickly: ["➜", "快速"],
+    agenda: ["☷", "议程"], goal: ["◎", "目标"], issue: ["!", "议题"], reason: ["∵", "原因"],
+    result: ["↗", "结果"], step: ["1·2·3", "步骤"], change: ["↻", "变化"], choice: ["◇", "选择"],
+    answer: ["✓", "答案"], question: ["?", "问题"], truth: ["◇", "事实"], point: ["•", "观点"],
+    name: ["ID", "名字"], hi: ["Hi", "问候"], hello: ["Hi", "问候"]
   };
   const makeWordVisual = (word, visual) => {
     const media = document.createElement("span");
@@ -51,18 +57,26 @@
     const image = document.createElement("img");
     image.alt = word + " 图示";
     image.src = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
-      '<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><rect width="96" height="96" rx="18" fill="#ffffff"/><circle cx="48" cy="42" r="27" fill="#edf7ee"/><text x="48" y="51" text-anchor="middle" font-size="30">' + visual[0] + '</text><text x="48" y="82" text-anchor="middle" fill="#548464" font-family="Arial, sans-serif" font-size="10" font-weight="700">' + visual[1] + "</text></svg>"
+      '<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><rect width="96" height="96" rx="18" fill="#ffffff"/><circle cx="48" cy="40" r="29" fill="#edf7ee"/><text x="48" y="49" text-anchor="middle" fill="#548464" font-family="Arial, sans-serif" font-size="' + (visual[0].length > 2 ? "15" : "28") + '" font-weight="700">' + visual[0] + '</text><text x="48" y="82" text-anchor="middle" fill="#548464" font-family="Arial, sans-serif" font-size="10" font-weight="700">' + visual[1] + "</text></svg>"
     );
     media.append(image);
     return media;
   };
+  const inferWordVisual = (key) => {
+    if (wordVisualCatalog[key]) return wordVisualCatalog[key];
+    if (/^(a|an|the|i|you|he|she|it|we|they|my|your|our|their)$/.test(key)) return ["Aa", "词语"];
+    if (/(ing|ed|ize|ise|ate|ify)$/.test(key)) return ["↗", "动作"];
+    if (/(ly)$/.test(key)) return ["≋", "方式"];
+    if (/(tion|ment|ness|ity|ance|ence)$/.test(key)) return ["◎", "概念"];
+    return [key.slice(0, 2).toUpperCase() || "Aa", "词语"];
+  };
   const enhanceWordCards = (root = document) => {
     root.querySelectorAll?.(".word-card").forEach((card) => {
       if (card.querySelector(".word-card-media")) return;
-      const source = card.dataset.word || card.querySelector("[data-word]")?.dataset.word || card.querySelector("strong")?.textContent || "";
+      const source = card.dataset.word || card.dataset.speak || card.querySelector("[data-word]")?.dataset.word || card.querySelector("strong")?.textContent || "";
       const key = source.toLowerCase().replace(/[’']/g, "").trim();
-      const visual = wordVisualCatalog[key];
-      if (!visual) return;
+      if (!key) return;
+      const visual = inferWordVisual(key);
       card.classList.add("has-word-visual");
       card.append(makeWordVisual(source, visual));
     });
