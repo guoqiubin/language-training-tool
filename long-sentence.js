@@ -24,7 +24,7 @@
     { pattern: /\b(?:so that|in order that)\b/i, label: "目的状语从句", meaning: "为了达到某个目的" },
     { pattern: /\b(?:more|less)[\s\S]*?\bthan\b/i, label: "比较结构", meaning: "比较两种表现或程度" }
   ];
-  const verbHints = new Set("am is are was were be been have has had do does did will would can could should may might must started start become became want wants practice use uses make makes find finds found give gives gave take takes took explain explains show shows showed learn learns read reads write writes build builds understand understands improve improves work works help helps need needs provide provides create creates design designs represent represents represented benefit benefits benefited expect expects expected reflect reflects reflected shift shifts shifted move moves moved change changes changed feed feeds fed avoid avoids avoided remain remains remained appear appears appeared increase increases increased decrease decreases decreased observe observes observed".split(" "));
+  const verbHints = new Set("am is are was were be been have has had do does did will would can could should may might must started start become became want wants practice use uses make makes find finds found give gives gave take takes took explain explains show shows showed learn learns read reads write writes build builds understand understands improve improves work works help helps need needs provide provides create creates design designs represent represents represented benefit benefits benefited expect expects expected reflect reflects reflected shift shifts shifted move moves moved change changes changed feed feeds fed avoid avoids avoided remain remains remained appear appears appeared increase increases increased decrease decreases decreased observe observes observed occur occurs occurred process processes processed belong belongs belonged produce produces produced".split(" "));
   const knownTranslations = new Map([
     ["Although the project started as a small experiment, it has gradually become a useful tool for learners who want to practice English every day.", "虽然这个项目最初只是一个小实验，但它逐渐变成了一个对希望每天练习英语的学习者很有用的工具。"],
     ["This represents a practical evolutionary solution: an animal feeding in unpredictable conditions may benefit more from reasonable performance across several functions than from outstanding performance in only one.", "这代表了一种实用的进化解决方案：在不可预测的环境中进食的动物，相比只在某一项功能上表现出色，更可能从多项功能都保持合理表现中获益。"]
@@ -85,10 +85,19 @@
     return [node("主语", subjectModifier[1], "先确认这一层是谁或什么在执行动作。", [node("介词短语", subjectModifier[2], "of 短语补充说明这个名词的范围或所属关系。", [], "modifier")], "main")];
   };
   const detailClause = (clause, label = "从句", note = "继续向下读取这一层的主语、谓语和补充成分。") => {
-    const parsed = splitSimpleClause(clause);
+    const leadingModifier = clause.match(/^((?:under|in|on|during|after|before|with|without)\s+[^,]+),\s*(.+)$/i);
+    const parsed = splitSimpleClause(leadingModifier ? leadingModifier[2] : clause);
     if (!parsed) return node(label, clause, "继续寻找这一层的主语和谓语。", [], "clause");
-    const children = [...subjectNodes(parsed.subject), node("谓语", parsed.verb, "这是这一层的核心动作或状态。", [], "main")];
+    const children = [];
+    if (leadingModifier) children.push(node("前置状语", leadingModifier[1], "先标记动作发生的条件、地点或范围。", [], "modifier"));
+    children.push(...subjectNodes(parsed.subject), node("谓语", parsed.verb, "这是这一层的核心动作或状态。", [], "main"));
     let rest = parsed.rest.replace(/[.!?]$/, "").trim();
+    const commaClause = rest.match(/^(.+?),\s+([A-Za-z][\s\S]+)$/);
+    if (commaClause && splitSimpleClause(commaClause[2])) {
+      children.push(node("核心宾语 / 补语", commaClause[1].trim(), "先确认这一层谓语作用到的对象或结果。", [], "complement"));
+      children.push(detailClause(commaClause[2].trim(), "并列分句", "逗号后又出现了新的主语和谓语，继续向下拆分。"));
+      return node(label, clause, note, children, "clause");
+    }
     const relative = rest.match(/^(.*?)(\s+(?:in which|on which|at which|which|that|who|whom|whose|where|when)\b\s+)(.+)$/i);
     if (relative) {
       if (relative[1].trim()) children.push(node("核心宾语 / 补语", relative[1].trim(), "先确认谓语作用到的对象或结果。", [], "complement"));
@@ -137,8 +146,19 @@
     const clauseMatch = sentence.match(/\b(although|because|since|if|unless|when|while)\b/i);
     if (clauseMatch && clauseMatch.index > 0) {
       const main = sentence.slice(0, clauseMatch.index).trim();
-      const clause = sentence.slice(clauseMatch.index).trim();
-      return node("主句", main, "主句先说清楚谁做什么。", [node("从句 · " + clauseMatch[1], clause, "连接词标记了这一层原因、条件或时间逻辑。", [], "clause")] , "main");
+      const trailing = sentence.slice(clauseMatch.index).trim();
+      const clauseParts = trailing.split(/(?<=[.!?])\s+/).map((part) => part.trim()).filter(Boolean);
+      const clauseNodes = clauseParts.map((part) => {
+        const marker = part.match(/^(although|even though|though|because|since|if|unless|when|while)\s+(.+)$/i);
+        const clauseLabel = marker ? "从句 · " + marker[1] : "补充分句";
+        const clauseBody = marker ? marker[2] : part;
+        const parsed = detailClause(clauseBody.replace(/[.!?]$/, "").trim(), clauseLabel, "连接词标记了这一层原因、条件或时间逻辑。");
+        parsed.text = part;
+        return parsed;
+      });
+      const mainParts = splitSimpleClause(main.replace(/[.!?]$/, "").trim());
+      const mainChildren = mainParts ? [...subjectNodes(mainParts.subject), node("谓语", mainParts.verb, "这是主句的核心动作。", [], "main")] : [];
+      return node("主句", main, "主句先说清楚谁做什么，再沿着分支读取后面的分句。", [...mainChildren, ...clauseNodes], "main");
     }
     const subjectVerb = sentence.match(/^(.+?)\s+\b(am|is|are|was|were|has|have|had|do|does|did|can|could|will|would|should|may|might|must|[a-z]+(?:ed|ing))\b\s+(.+)$/i);
     if (subjectVerb) {
