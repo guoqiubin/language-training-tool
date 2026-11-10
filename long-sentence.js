@@ -24,7 +24,7 @@
     { pattern: /\b(?:so that|in order that)\b/i, label: "目的状语从句", meaning: "为了达到某个目的" },
     { pattern: /\b(?:more|less)[\s\S]*?\bthan\b/i, label: "比较结构", meaning: "比较两种表现或程度" }
   ];
-  const verbHints = new Set("am is are was were be been have has had do does did will would can could should may might must started become want practice use make find give take explain show learn read write build understand improve work help need provide create design represents benefit".split(" "));
+  const verbHints = new Set("am is are was were be been have has had do does did will would can could should may might must started start become became want wants practice use uses make makes find finds found give gives gave take takes took explain explains show shows showed learn learns read reads write writes build builds understand understands improve improves work works help helps need needs provide provides create creates design designs represent represents represented benefit benefits benefited expect expects expected reflect reflects reflected shift shifts shifted move moves moved change changes changed feed feeds fed avoid avoids avoided remain remains remained appear appears appeared increase increases increased decrease decreases decreased observe observes observed".split(" "));
   const knownTranslations = new Map([
     ["Although the project started as a small experiment, it has gradually become a useful tool for learners who want to practice English every day.", "虽然这个项目最初只是一个小实验，但它逐渐变成了一个对希望每天练习英语的学习者很有用的工具。"],
     ["This represents a practical evolutionary solution: an animal feeding in unpredictable conditions may benefit more from reasonable performance across several functions than from outstanding performance in only one.", "这代表了一种实用的进化解决方案：在不可预测的环境中进食的动物，相比只在某一项功能上表现出色，更可能从多项功能都保持合理表现中获益。"]
@@ -61,6 +61,53 @@
     return [...new Map(types.map((item) => [item[0], item])).values()];
   };
   const node = (label, text, note, children = [], kind = "complement") => ({ label, text, note, children, kind });
+  const splitSimpleClause = (clause) => {
+    const words = clause.trim().split(/\s+/);
+    const adverbs = new Set(["normally", "usually", "often", "sometimes", "always", "never", "also", "still", "already"]);
+    const auxiliaries = new Set(["am", "is", "are", "was", "were", "be", "been", "has", "have", "had", "do", "does", "did", "can", "could", "will", "would", "should", "may", "might", "must"]);
+    const verbIndex = words.findIndex((word, index) => index > 0 && verbHints.has(word.toLowerCase().replace(/[^a-z'-]/g, "")));
+    if (verbIndex < 1) return null;
+    let verbStart = verbIndex;
+    if (adverbs.has((words[verbIndex - 1] || "").toLowerCase().replace(/[^a-z'-]/g, ""))) verbStart = verbIndex - 1;
+    let verbEnd = verbIndex;
+    const firstVerb = words[verbIndex].toLowerCase().replace(/[^a-z'-]/g, "");
+    if (auxiliaries.has(firstVerb)) {
+      const next = (words[verbIndex + 1] || "").toLowerCase().replace(/[^a-z'-]/g, "");
+      const afterNext = (words[verbIndex + 2] || "").toLowerCase().replace(/[^a-z'-]/g, "");
+      if (adverbs.has(next) && afterNext) verbEnd += 2;
+      else if (next) verbEnd += 1;
+    }
+    return { subject: words.slice(0, verbStart).join(" "), verb: words.slice(verbStart, verbEnd + 1).join(" "), rest: words.slice(verbEnd + 1).join(" ") };
+  };
+  const subjectNodes = (subject) => {
+    const subjectModifier = subject.match(/^(.+?)\s+(of\s+.+)$/i);
+    if (!subjectModifier) return [node("主语", subject, "先确认这一层是谁或什么在执行动作。", [], "main")];
+    return [node("主语", subjectModifier[1], "先确认这一层是谁或什么在执行动作。", [node("介词短语", subjectModifier[2], "of 短语补充说明这个名词的范围或所属关系。", [], "modifier")], "main")];
+  };
+  const detailClause = (clause, label = "从句", note = "继续向下读取这一层的主语、谓语和补充成分。") => {
+    const parsed = splitSimpleClause(clause);
+    if (!parsed) return node(label, clause, "继续寻找这一层的主语和谓语。", [], "clause");
+    const children = [...subjectNodes(parsed.subject), node("谓语", parsed.verb, "这是这一层的核心动作或状态。", [], "main")];
+    let rest = parsed.rest.replace(/[.!?]$/, "").trim();
+    const relative = rest.match(/^(.*?)(\s+(?:in which|on which|at which|which|that|who|whom|whose|where|when)\b\s+)(.+)$/i);
+    if (relative) {
+      if (relative[1].trim()) children.push(node("核心宾语 / 补语", relative[1].trim(), "先确认谓语作用到的对象或结果。", [], "complement"));
+      children.push(detailClause(relative[3].trim(), "定语从句 · " + relative[2].trim(), "关系词引出对前面名词的进一步说明。"));
+      return node(label, clause, "这一层还有一个嵌套的关系从句。", children, "clause");
+    }
+    const finalTime = rest.match(/\b(?:at|in|on|during|by|after|before)\s+[^,]+$/i);
+    if (finalTime) {
+      rest = rest.slice(0, rest.length - finalTime[0].length).trim();
+      children.push(node("时间 / 地点状语", finalTime[0].trim(), "补充动作发生的时间、地点或范围。", [], "modifier"));
+    }
+    const compound = rest.split(/\s+and\s+/i).map((item) => item.trim()).filter(Boolean);
+    if (compound.length > 1) {
+      compound.forEach((item, index) => children.push(node("并列补充 " + (index + 1), item, "and 连接两个并列的信息。", [], "complement")));
+    } else if (rest) {
+      children.push(node("核心宾语 / 补语", rest, "补充说明谓语的对象、方向、方式或结果。", [], "complement"));
+    }
+    return node(label, clause, note, children, "clause");
+  };
   const buildStructure = (sentence) => {
     const colonIndex = sentence.indexOf(":");
     if (colonIndex > 0) {
@@ -80,36 +127,12 @@
       const main = objectClause[1].trim();
       const marker = objectClause[2];
       const clause = objectClause[3].trim();
-      const clauseNode = node("宾语从句 · " + marker, marker + " " + clause, "整体作主句谓语的宾语，回答“观察到/认为了什么”。", [], "clause");
-      const clauseParts = clause.match(/^(.+?)\s+\b(shifted|moved|changed|was|were|is|are|has|have|had|may|can|will|could|would|should|became|remained|appeared|seemed|increased|decreased|benefit|benefits)\b\s+(.+)$/i);
-      if (clauseParts) {
-        const subject = clauseParts[1].trim();
-        const verb = clauseParts[2];
-        let predicate = clauseParts[3].trim();
-        const subjectModifier = subject.match(/^(.+?)\s+(of\s+.+)$/i);
-        if (subjectModifier) {
-          clauseNode.children.push(node("从句主语", subjectModifier[1], "先确认这一层是谁或什么在执行动作。", [node("介词短语", subjectModifier[2], "of 短语补充说明这个名词的范围或所属关系。", [], "modifier")], "main"));
-        } else {
-          clauseNode.children.push(node("从句主语", subject, "先确认这一层是谁或什么在执行动作。", [], "main"));
-        }
-        clauseNode.children.push(node("从句谓语", verb, "这是从句内部的核心动作或状态。", [], "main"));
-        const complementParts = [];
-        const direction = predicate.match(/^(.*?\b(?:towards|to|into|from)\b\s+.+?)(?=\s+\bat\b|\s+\bin\b|$)/i);
-        if (direction) {
-          complementParts.push(node("方向 / 结果补语", direction[1].trim(), "说明动作朝向哪里或产生什么变化。", [], "complement"));
-          predicate = predicate.slice(direction[1].length).trim();
-        }
-        const time = predicate.match(/\b(?:at|in|on|during)\s+[^,]+$/i);
-        if (time) {
-          complementParts.push(node("时间 / 地点状语", time[0].trim(), "补充动作发生的时间或地点。", [], "modifier"));
-          predicate = predicate.slice(0, predicate.length - time[0].length).trim();
-        }
-        if (predicate) complementParts.unshift(node("核心补充信息", predicate, "补充说明动作的对象、程度或结果。", [], "complement"));
-        clauseNode.children.push(...complementParts);
-      } else {
-        clauseNode.children.push(node("从句内容", clause, "继续寻找这一层的主语和谓语。", [], "complement"));
-      }
-      return node("主句", main, "先找出主句的主语和谓语，再向下进入宾语从句。", [clauseNode], "main");
+      const clauseNode = detailClause(clause, "宾语从句 · " + marker);
+      clauseNode.text = marker + " " + clause;
+      clauseNode.note = "整体作主句谓语的宾语，回答“观察到 / 认为了什么”。";
+      const mainParts = splitSimpleClause(main);
+      const mainChildren = mainParts ? [...subjectNodes(mainParts.subject), node("谓语", mainParts.verb, "这是主句的核心动作。", [], "main"), clauseNode] : [clauseNode];
+      return node("主句", main, "先找出主句的主语和谓语，再向下进入宾语从句。", mainChildren, "main");
     }
     const clauseMatch = sentence.match(/\b(although|because|since|if|unless|when|while)\b/i);
     if (clauseMatch && clauseMatch.index > 0) {
