@@ -123,6 +123,11 @@
 .special-practice-ielts .special-practice-icon { color: #ad7a37; }
 .special-practice-ielts .special-practice-eyebrow { color: #a47a42; }
 .special-practice-ielts .special-practice-meta span { color: #987342; }
+.special-practice-long-sentence { border-color: #c9d9d3; background: linear-gradient(110deg, #edf8f4, #f5faf7); }
+.special-practice-long-sentence:hover { border-color: #91b9a4; box-shadow: 0 15px 30px rgba(70, 128, 99, .1); }
+.special-practice-long-sentence .special-practice-icon { color: #4e8a68; }
+.special-practice-long-sentence .special-practice-eyebrow { color: #4e8a68; }
+.special-practice-long-sentence .special-practice-meta span { color: #4e8063; }
 .special-english-section { padding: 42px 0 42px; border-top: 1px solid var(--line); }
 .special-english-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .special-english-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 22px; padding: 26px 28px; border: 1px solid #d1dff0; border-radius: 20px; background: linear-gradient(115deg, #edf3fc, #f5effb); }

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="长难句解析专项训练：输入英文句子，拆解意群、主干和从句。">
+  <title>长难句解析｜专项训练</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="desktop-typography.css">
+  <link rel="stylesheet" href="word-lookup.css">
+  <link rel="stylesheet" href="site-header.css">
+  <link rel="stylesheet" href="long-sentence.css">
+</head>
+<body class="long-sentence-page" data-access-protected>
+  <main class="long-sentence-shell">
+    <a class="back-link" href="training-center.html">← 返回训练中心</a>
+    <header class="long-sentence-header">
+      <div>
+        <p class="section-kicker">SPECIAL PRACTICE · SENTENCE LAB</p>
+        <h1>长难句解析</h1>
+        <p>先找主干，再拆从句；把一整句话还原成可以理解的几块信息。</p>
+      </div>
+      <div class="long-sentence-badge"><strong>01</strong><span>输入一句<br>开始拆解</span></div>
+    </header>
+    <section class="long-sentence-method" aria-labelledby="method-title">
+      <p class="section-kicker">HOW TO READ</p>
+      <h2 id="method-title">不要一上来逐词翻译。</h2>
+      <p>先找句子的核心动作，再观察 although、because、which、that 等连接信号，最后把修饰信息放回原位。</p>
+      <div class="long-sentence-steps"><span><b>01</b>找主干</span><span><b>02</b>拆意群</span><span><b>03</b>看逻辑</span></div>
+    </section>
+    <section class="long-sentence-input-card" aria-labelledby="input-title">
+      <div class="section-heading"><div><p class="section-kicker">YOUR SENTENCE</p><h2 id="input-title">输入一个英文长句</h2></div><span class="long-sentence-hint">建议 12 个单词以上</span></div>
+      <form data-sentence-form>
+        <textarea data-sentence-input rows="5" spellcheck="false" placeholder="例如：Although the project started as a small experiment, it has gradually become a useful tool for learners who want to practice English every day.">Although the project started as a small experiment, it has gradually become a useful tool for learners who want to practice English every day.</textarea>
+        <div class="long-sentence-form-footer"><p>输入后会在本地即时生成结构提示，不会上传你的句子。</p><button class="primary-button" type="submit">开始拆解 <span>→</span></button></div>
+      </form>
+    </section>
+    <section class="long-sentence-result" data-sentence-result aria-live="polite" hidden>
+      <div class="section-heading"><div><p class="section-kicker">BREAKDOWN RESULT</p><h2>这句话怎么读</h2></div><button class="long-sentence-play" data-sentence-play type="button">▶ 常速朗读</button></div>
+      <div class="sentence-original" data-sentence-original></div>
+      <div class="sentence-summary-grid">
+        <article class="sentence-summary-card sentence-summary-main"><span>句子主干</span><strong data-sentence-core>—</strong><p data-sentence-core-note>先抓住谁做了什么。</p></article>
+        <article class="sentence-summary-card"><span>逻辑关系</span><strong data-sentence-logic>—</strong><p data-sentence-logic-note>观察连接词，判断信息之间的关系。</p></article>
+      </div>
+      <div class="sentence-breakdown-block"><div class="breakdown-title"><div><span class="section-kicker">CHUNK BY CHUNK</span><h3>意群拆解</h3></div><p>每一块先读懂，再合起来。</p></div><div class="sentence-chunks" data-sentence-chunks></div></div>
+      <div class="sentence-analysis-grid">
+        <article><span>中文理解路径</span><p data-sentence-meaning>—</p></article>
+        <article><span>阅读建议</span><p data-sentence-advice>—</p></article>
+      </div>
+      <div class="sentence-word-note"><strong>遇到生词怎么办？</strong><span>网页端双击句子中的单词，可以打开全局查词卡片。</span></div>
+    </section>
+  </main>
+  <script src="site-header.js"></script>
+  <script src="access-gate.js"></script>
+  <script src="speech.js"></script>
+  <script src="long-sentence.js"></script>
+</body>
+</html>

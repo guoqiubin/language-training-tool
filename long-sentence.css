@@ -1,0 +1,66 @@
+.long-sentence-page { background: #fafbf7; color: #24302e; }
+.long-sentence-shell { max-width: 1180px; margin: 0 auto; padding: 118px 28px 86px; }
+.long-sentence-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; padding: 40px 0 34px; }
+.long-sentence-header h1 { margin: 10px 0 12px; font-size: clamp(52px, 7vw, 88px); line-height: .98; letter-spacing: -.08em; }
+.long-sentence-header p:not(.section-kicker) { max-width: 650px; margin: 0; color: #73817d; font-size: 19px; line-height: 1.75; }
+.long-sentence-badge { min-width: 145px; padding: 22px; border: 1px solid #b9d8c4; border-radius: 18px; background: #edf8ef; color: #578167; }
+.long-sentence-badge strong { display: block; font: 700 31px "DM Sans", sans-serif; letter-spacing: .08em; }
+.long-sentence-badge span { display: block; margin-top: 8px; line-height: 1.6; }
+.long-sentence-method { padding: 28px 34px; border: 1px solid #d8e3df; border-radius: 22px; background: #edf7f1; }
+.long-sentence-method h2 { margin: 10px 0 8px; font-size: 32px; }
+.long-sentence-method > p:not(.section-kicker) { margin: 0; color: #687973; font-size: 17px; line-height: 1.8; }
+.long-sentence-steps { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 19px; }
+.long-sentence-steps span { padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,.74); color: #4f7960; font-size: 13px; font-weight: 700; }
+.long-sentence-steps b { margin-right: 6px; color: #91ad9b; font: 700 11px "DM Sans", sans-serif; }
+.long-sentence-input-card, .long-sentence-result { margin-top: 42px; padding: 30px 34px; border: 1px solid #d9e2de; border-radius: 22px; background: #fff; box-shadow: 0 13px 35px rgba(54, 75, 67, .05); }
+.long-sentence-input-card .section-heading, .long-sentence-result .section-heading { align-items: end; }
+.long-sentence-input-card h2, .long-sentence-result h2 { margin: 9px 0 0; font-size: 38px; letter-spacing: -.06em; }
+.long-sentence-hint { color: #8a9892; font-size: 13px; }
+.long-sentence-input-card textarea { display: block; width: 100%; min-height: 150px; margin-top: 25px; padding: 19px 20px; border: 1px solid #cfdbd5; border-radius: 14px; outline: none; resize: vertical; color: #263633; background: #fbfdfb; font: 500 18px/1.8 "DM Sans", "Noto Sans SC", sans-serif; }
+.long-sentence-input-card textarea:focus { border-color: #73a785; box-shadow: 0 0 0 4px rgba(115,167,133,.12); }
+.long-sentence-form-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 16px; }
+.long-sentence-form-footer p { margin: 0; color: #8b9893; font-size: 13px; }
+.long-sentence-form-footer .primary-button { border: 0; cursor: pointer; }
+.long-sentence-result { background: #f3faf5; }
+.long-sentence-play { border: 0; border-radius: 9px; padding: 13px 16px; background: #243633; color: #fff; font-weight: 700; cursor: pointer; }
+.sentence-original { margin-top: 24px; padding: 22px 24px; border-left: 4px solid #79a987; border-radius: 0 14px 14px 0; background: #fff; color: #263633; font-size: 24px; font-weight: 700; line-height: 1.65; }
+.sentence-summary-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 14px; margin-top: 15px; }
+.sentence-summary-card, .sentence-analysis-grid article { padding: 20px; border: 1px solid #d9e8dd; border-radius: 15px; background: #fff; }
+.sentence-summary-card span, .sentence-analysis-grid span, .sentence-word-note strong { color: #5c8b6b; font-size: 13px; font-weight: 800; }
+.sentence-summary-card strong { display: block; margin-top: 9px; color: #263633; font-size: 23px; line-height: 1.45; }
+.sentence-summary-card p, .sentence-analysis-grid p { margin: 8px 0 0; color: #6f7e77; font-size: 14px; line-height: 1.75; }
+.sentence-breakdown-block { margin-top: 18px; padding: 24px; border: 1px solid #d9e8dd; border-radius: 17px; background: rgba(255,255,255,.7); }
+.breakdown-title { display: flex; align-items: end; justify-content: space-between; gap: 15px; }
+.breakdown-title h3 { margin: 6px 0 0; font-size: 26px; }
+.breakdown-title p { margin: 0; color: #84928c; font-size: 13px; }
+.sentence-chunks { display: grid; gap: 10px; margin-top: 18px; }
+.sentence-chunk { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 16px; padding: 17px 18px; border-radius: 12px; background: #fff; }
+.sentence-chunk-label { color: #71917b; font-size: 12px; font-weight: 800; }
+.sentence-chunk-text { color: #263633; font-size: 18px; font-weight: 700; line-height: 1.55; }
+.sentence-chunk-note { grid-column: 2; color: #708079; font-size: 13px; line-height: 1.6; }
+.sentence-analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+.sentence-word-note { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 18px; padding-top: 17px; border-top: 1px solid #d9e8dd; color: #778780; font-size: 13px; }
+@media (max-width: 700px) {
+  .long-sentence-shell { padding: 90px 20px 48px; }
+  .long-sentence-header { display: block; }
+  .long-sentence-header h1 { font-size: 58px; }
+  .long-sentence-header p:not(.section-kicker) { font-size: 16px; }
+  .long-sentence-badge { display: inline-block; margin-top: 24px; }
+  .long-sentence-method, .long-sentence-input-card, .long-sentence-result { padding: 22px; border-radius: 17px; }
+  .long-sentence-method h2 { font-size: 26px; line-height: 1.4; }
+  .long-sentence-method > p:not(.section-kicker) { font-size: 14px; }
+  .long-sentence-input-card .section-heading, .long-sentence-result .section-heading { display: block; }
+  .long-sentence-input-card h2, .long-sentence-result h2 { font-size: 31px; }
+  .long-sentence-hint { display: block; margin-top: 10px; }
+  .long-sentence-form-footer { display: block; }
+  .long-sentence-form-footer .primary-button { display: flex; justify-content: center; margin-top: 15px; }
+  .sentence-original { font-size: 19px; }
+  .sentence-summary-grid, .sentence-analysis-grid { grid-template-columns: 1fr; }
+  .sentence-breakdown-block { padding: 18px; }
+  .breakdown-title { display: block; }
+  .breakdown-title p { margin-top: 8px; }
+  .sentence-chunk { grid-template-columns: 1fr; gap: 7px; }
+  .sentence-chunk-note { grid-column: auto; }
+  .sentence-chunk-text { font-size: 16px; }
+  .long-sentence-play { margin-top: 15px; }
+}
