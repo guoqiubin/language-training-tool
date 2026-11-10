@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="雅思听力句子级训练：先听、填写答案，再核对答案与解析。">
+  <title>雅思听力｜句子训练</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="desktop-typography.css">
+  <link rel="stylesheet" href="word-lookup.css">
+  <link rel="stylesheet" href="site-header.css">
+  <link rel="stylesheet" href="ielts.css">
+  <link rel="stylesheet" href="ielts-listening.css">
+</head>
+<body class="ielts-page ielts-listening-page" data-access-protected>
+  <main class="ielts-shell ielts-listening-shell">
+    <a class="back-link" href="ielts.html">← 返回雅思专区</a>
+    <header class="ielts-header ielts-listening-header">
+      <div>
+        <p class="section-kicker">IELTS LISTENING · MICRO PRACTICE</p>
+        <h1>雅思听力</h1>
+        <p>先从一句话开始，训练听清信息、写对答案，并遵守雅思答案规范。</p>
+      </div>
+      <div class="ielts-badge"><strong>句子训练</strong><span>最多两个单词<br>或数字</span></div>
+    </header>
+
+    <section class="ielts-intro listening-method" aria-labelledby="listening-method-title">
+      <p class="section-kicker">HOW IT WORKS</p>
+      <h2 id="listening-method-title">先听，先写，最后看答案。</h2>
+      <p>每道题只练一个关键信息。可以重复播放，但建议先独立完成，再打开答案和解析。</p>
+      <div class="listening-rules"><span>NO MORE THAN TWO WORDS</span><span>拼写要准确</span><span>先判断再核对</span></div>
+    </section>
+
+    <section class="listening-layout" aria-label="雅思听力句子训练">
+      <aside class="listening-progress">
+        <p class="section-kicker">PRACTICE SET</p>
+        <h2>基础信息定位</h2>
+        <p>从姓名、地点、时间和价格开始，建立听力反应。</p>
+        <div class="listening-progress-count"><strong data-listening-count>0</strong><span>/ 8 题已完成</span></div>
+        <div class="listening-progress-track"><span data-listening-progress></span></div>
+      </aside>
+
+      <section class="listening-card" aria-labelledby="listening-question-title">
+        <div class="listening-card-top"><span data-listening-index>QUESTION 01 / 08</span><span>进行中</span></div>
+        <p class="listening-context" data-listening-context>场景：课程报名</p>
+        <h2 id="listening-question-title" data-listening-question>Listen and complete the answer.</h2>
+        <p class="listening-prompt" data-listening-prompt>What is the student's first name?</p>
+        <div class="listening-audio-box">
+          <div><span class="listening-audio-label">LISTENING SENTENCE</span><strong data-listening-placeholder>点击播放，听清关键信息</strong></div>
+          <div class="listening-audio-actions"><button class="listening-play" data-listening-play type="button">▶ 播放</button><button class="listening-slow" data-listening-slow type="button">🐢 慢速复听</button></div>
+        </div>
+        <form class="listening-answer-form" data-listening-form>
+          <label for="listening-answer">你的答案</label>
+          <div class="listening-answer-row"><input id="listening-answer" data-listening-input autocomplete="off" placeholder="输入答案" /><button type="submit">提交答案</button></div>
+          <p class="listening-requirement" data-listening-requirement>NO MORE THAN TWO WORDS</p>
+          <p class="listening-feedback" data-listening-feedback role="status" aria-live="polite"></p>
+        </form>
+        <button class="listening-reveal" data-listening-reveal type="button" aria-expanded="false">查看答案与解析 <span>＋</span></button>
+        <div class="listening-reveal-panel" data-listening-panel hidden>
+          <div class="listening-answer-box"><span>正确答案</span><strong data-listening-answer>—</strong></div>
+          <div class="listening-transcript"><span>完整句子</span><p data-listening-transcript>—</p><p class="listening-meaning" data-listening-meaning>—</p></div>
+          <div class="listening-explanation"><span>听力解析</span><p data-listening-explanation>—</p></div>
+        </div>
+        <div class="listening-navigation"><button data-listening-prev type="button">← 上一题</button><button class="primary-button" data-listening-next type="button">下一题 →</button></div>
+      </section>
+    </section>
+  </main>
+  <script src="site-header.js"></script>
+  <script src="access-gate.js"></script>
+  <script src="speech.js"></script>
+  <script src="ielts-listening.js"></script>
+</body>
+</html>

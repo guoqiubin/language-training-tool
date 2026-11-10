@@ -12,6 +12,7 @@
     ["阅读悬赏", "任务中心 · 英语阅读", "reading-rewards.html"],
     ["专项英语", "Python 与心理学专业概念", "special-english.html"],
     ["雅思专区", "雅思听力、写作、阅读与口语", "ielts.html"],
+    ["雅思听力", "句子级听力、答案规范与解析", "ielts-listening.html"],
     ["造句训练", "独立专项训练，随时切换难度", "sentence-building.html"],
     ["翻译", "中译英训练与自然表达选择", "translation.html"],
     ["写作", "按等级练习英文写作", "writing.html"],
