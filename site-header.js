@@ -32,6 +32,45 @@
   document.body.classList.add("has-site-header");
   document.body.prepend(header);
 
+  // 重点单词卡片：只为有明确视觉联想的词条补充轻量图示。
+  // 图示内置在页面中，不依赖外部图片服务；抽象词或未匹配词条保持原布局。
+  const wordVisualCatalog = {
+    station: ["🚉", "车站"], taxi: ["🚕", "出租车"], hotel: ["🏨", "酒店"], coffee: ["☕", "咖啡"],
+    water: ["💧", "水"], menu: ["📋", "菜单"], bill: ["🧾", "账单"], card: ["💳", "卡片"],
+    door: ["🚪", "门口"], book: ["📘", "书"], bag: ["👜", "包"], phone: ["📱", "电话"],
+    car: ["🚗", "汽车"], home: ["🏠", "家"], house: ["🏠", "房子"], sun: ["☀️", "太阳"],
+    fish: ["🐟", "鱼"], dog: ["🐕", "狗"], cat: ["🐈", "猫"], food: ["🍽️", "食物"],
+    tea: ["🍵", "茶"], ice: ["🧊", "冰"], meeting: ["👥", "会议"], office: ["🏢", "办公室"],
+    work: ["💼", "工作"], team: ["👥", "团队"], problem: ["🧩", "问题"], plan: ["🗺️", "计划"],
+    option: ["🔀", "选项"], idea: ["💡", "想法"], time: ["⏱️", "时间"], morning: ["🌤️", "早上"]
+  };
+  const makeWordVisual = (word, visual) => {
+    const media = document.createElement("span");
+    media.className = "word-card-media";
+    media.setAttribute("aria-hidden", "true");
+    const image = document.createElement("img");
+    image.alt = word + " 图示";
+    image.src = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><rect width="96" height="96" rx="18" fill="#ffffff"/><circle cx="48" cy="42" r="27" fill="#edf7ee"/><text x="48" y="51" text-anchor="middle" font-size="30">' + visual[0] + '</text><text x="48" y="82" text-anchor="middle" fill="#548464" font-family="Arial, sans-serif" font-size="10" font-weight="700">' + visual[1] + "</text></svg>"
+    );
+    media.append(image);
+    return media;
+  };
+  const enhanceWordCards = (root = document) => {
+    root.querySelectorAll?.(".word-card").forEach((card) => {
+      if (card.querySelector(".word-card-media")) return;
+      const source = card.dataset.word || card.querySelector("[data-word]")?.dataset.word || card.querySelector("strong")?.textContent || "";
+      const key = source.toLowerCase().replace(/[’']/g, "").trim();
+      const visual = wordVisualCatalog[key];
+      if (!visual) return;
+      card.classList.add("has-word-visual");
+      card.append(makeWordVisual(source, visual));
+    });
+  };
+  window.enhanceWordCards = enhanceWordCards;
+  enhanceWordCards();
+  new MutationObserver(() => window.requestAnimationFrame(() => enhanceWordCards())).observe(document.body, { childList: true, subtree: true });
+
   const timer = document.createElement("aside");
   timer.className = "focus-timer";
   timer.innerHTML = `<button class="focus-timer-toggle" type="button" aria-expanded="false" aria-controls="focus-timer-panel" title="打开倒计时"><span class="focus-timer-toggle-icon" aria-hidden="true">◷</span><span class="focus-timer-toggle-time" data-timer-mini>40:00</span></button><section class="focus-timer-panel" id="focus-timer-panel" hidden><div class="focus-timer-heading"><div><p class="focus-timer-kicker">FOCUS TIMER</p><h2>专注倒计时</h2></div><button class="focus-timer-close" type="button" aria-label="关闭倒计时面板">×</button></div><div class="focus-timer-display" data-timer-display>40:00</div><p class="focus-timer-status" data-timer-status>设置时间，开始专注或课堂倒计时。</p><form class="focus-timer-form"><label for="focus-timer-minutes">分钟</label><div class="focus-timer-input-row"><input id="focus-timer-minutes" type="number" min="1" max="9999" step="1" value="40" inputmode="numeric" /><button type="submit">设置</button></div></form><div class="focus-timer-actions"><button type="button" data-timer-start>开始</button><button type="button" data-timer-pause>暂停</button><button type="button" data-timer-reset>重置</button></div><p class="focus-timer-hint">最后 5 分钟会变为警示色。</p></section>`;
@@ -117,6 +156,18 @@
   accountDialog.hidden = true;
   accountDialog.innerHTML = `<section class="site-account-card" role="dialog" aria-modal="true" aria-labelledby="site-account-title"><button class="site-guide-close" type="button" aria-label="关闭我的">×</button><p class="section-kicker">MY LEARNING SPACE</p><h2 id="site-account-title">我的</h2><p class="site-account-summary" data-account-summary>正在读取学习权限…</p><div class="site-account-details" data-account-details></div><div class="site-skin-center"><div class="site-skin-heading"><span>外观</span><strong data-skin-current>默认</strong></div><div class="site-skin-options" role="group" aria-label="选择外观"><button class="site-skin-option" type="button" data-skin="default"><span class="site-skin-preview site-skin-preview-default" aria-hidden="true"></span><strong>默认</strong><small>当前清爽学习界面</small></button><button class="site-skin-option" type="button" data-skin="bauhaus"><span class="site-skin-preview site-skin-preview-bauhaus" aria-hidden="true"><i></i><b></b></span><strong>复古</strong><small>包豪斯几何风格</small></button><button class="site-skin-option" type="button" data-skin="industrial"><span class="site-skin-preview site-skin-preview-industrial" aria-hidden="true"><i></i><b></b></span><strong>鎏金</strong><small>工业工具风格</small></button></div></div><p class="site-account-note">学习权限和兑换记录保存在当前浏览器中；如更换设备，请联系老师。</p></section>`;
   document.body.append(accountDialog);
+
+  const releaseUpdate = document.createElement("div");
+  releaseUpdate.className = "release-update-dialog";
+  releaseUpdate.hidden = true;
+  releaseUpdate.innerHTML = `<section class="release-update-card" role="dialog" aria-modal="true" aria-labelledby="release-update-title"><div class="release-update-visual" aria-hidden="true"><span class="release-update-orbit release-update-orbit-one"></span><span class="release-update-orbit release-update-orbit-two"></span><span class="release-update-spark release-update-spark-one">＋</span><span class="release-update-spark release-update-spark-two">✦</span><div class="release-update-mini-card"><span>NEW RELEASE</span><strong>学习空间</strong><small>内容持续更新中</small></div></div><div class="release-update-copy"><p class="section-kicker">PRODUCT UPDATE · 2026.11</p><h2 id="release-update-title">新的学习内容，已经上线</h2><p class="release-update-lead">这次更新，我们把新的学习入口和产品变化整理成一张卡片，之后每次更新都能更清楚地告诉你发生了什么。</p><ul><li>新增「英语思维」阅读模块</li><li>更新提示支持网页端与移动端</li><li>点击后直达本次更新内容</li></ul><button class="release-update-action" type="button">立即体验 <span aria-hidden="true">→</span></button></div></section>`;
+  document.body.append(releaseUpdate);
+  const releaseUpdateKey = "language-training-release-2026-11-10";
+  const releaseUpdateAction = releaseUpdate.querySelector(".release-update-action");
+  const showReleaseUpdate = () => { releaseUpdate.hidden = false; document.body.classList.add("release-update-open"); };
+  const dismissReleaseUpdate = () => { localStorage.setItem(releaseUpdateKey, "seen"); releaseUpdate.hidden = true; document.body.classList.remove("release-update-open"); window.location.href = "english-thinking.html"; };
+  releaseUpdateAction.addEventListener("click", dismissReleaseUpdate);
+  if (localStorage.getItem(releaseUpdateKey) !== "seen") window.setTimeout(showReleaseUpdate, 260);
 
   const input = header.querySelector("#site-search-input");
   const results = header.querySelector("#site-search-results");
