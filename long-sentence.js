@@ -14,15 +14,15 @@
   const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   }[character]));
-  const clean = (value) => value.trim().replace(/s+/g, " ");
+  const clean = (value) => String(value).trim().replace(/\s+/g, " ");
   const connectorRules = [
-    { pattern: /although|even though|though/i, label: "让步状语从句", meaning: "虽然……但是……" },
-    { pattern: /because|since|as/i, label: "原因状语从句", meaning: "因为……所以……" },
-    { pattern: /if|unless/i, label: "条件状语从句", meaning: "如果……就……" },
-    { pattern: /when|while|after|before/i, label: "时间状语从句", meaning: "当……时 / 在……之后" },
-    { pattern: /which|who|whom|whose/i, label: "定语从句", meaning: "补充说明前面的名词" },
-    { pattern: /so that|in order that/i, label: "目的状语从句", meaning: "为了达到某个目的" },
-    { pattern: /more[sS]*than|less[sS]*than/i, label: "比较结构", meaning: "比较两种表现或程度" }
+    { pattern: /\b(?:although|even though|though)\b/i, label: "让步状语从句", meaning: "虽然……但是……" },
+    { pattern: /\b(?:because|since|as)\b/i, label: "原因状语从句", meaning: "因为……所以……" },
+    { pattern: /\b(?:if|unless)\b/i, label: "条件状语从句", meaning: "如果……就……" },
+    { pattern: /\b(?:when|while|after|before)\b/i, label: "时间状语从句", meaning: "当……时 / 在……之后" },
+    { pattern: /\b(?:which|who|whom|whose)\b/i, label: "定语从句", meaning: "补充说明前面的名词" },
+    { pattern: /\b(?:so that|in order that)\b/i, label: "目的状语从句", meaning: "为了达到某个目的" },
+    { pattern: /\b(?:more|less)[\s\S]*?\bthan\b/i, label: "比较结构", meaning: "比较两种表现或程度" }
   ];
   const verbHints = new Set("am is are was were be been have has had do does did will would can could should may might must started become want practice use make find give take explain show learn read write build understand improve work help need provide create design represents benefit".split(" "));
   const knownTranslations = new Map([
@@ -30,8 +30,11 @@
     ["This represents a practical evolutionary solution: an animal feeding in unpredictable conditions may benefit more from reasonable performance across several functions than from outstanding performance in only one.", "这代表了一种实用的进化解决方案：在不可预测的环境中进食的动物，相比只在某一项功能上表现出色，更可能从多项功能都保持合理表现中获益。"]
   ]);
 
-  const words = (sentence) => sentence.toLowerCase().replace(/[^a-z's-]/g, " ").split(/s+/).filter(Boolean);
-  const splitChunks = (sentence) => sentence.split(/(?<=[,;:])s+|s+(?=(?:although|because|since|if|unless|when|while|which|who|whom|whose|but|however|therefore|so that))/gi).map((item) => item.trim()).filter(Boolean);
+  const words = (sentence) => sentence.toLowerCase().replace(/[^a-z's-]/g, " ").split(/\s+/).filter(Boolean);
+  const splitChunks = (sentence) => sentence
+    .split(/(?<=[,;:])\s+|\s+(?=(?:although|because|since|if|unless|when|while|which|who|whom|whose|but|however|therefore|so that)\b)/gi)
+    .map((item) => item.trim())
+    .filter(Boolean);
   const getLogic = (sentence) => {
     const labels = connectorRules.filter((rule) => rule.pattern.test(sentence)).map((rule) => rule.label);
     return labels.length ? [...new Set(labels)].join(" · ") : "并列或递进关系";
@@ -41,19 +44,19 @@
     return rule ? "先识别“" + rule.meaning + "”的逻辑，再把主句和从句分别理解。" : "先理解句子的核心动作，再把前后修饰信息一层层放回去。";
   };
   const getCore = (sentence) => {
-    const main = splitChunks(sentence).find((chunk) => !/^(although|because|since|if|unless|when|while|which|who|whom|whose|but|however|therefore|so that)/i.test(chunk)) || sentence;
+    const main = splitChunks(sentence).find((chunk) => !/^(although|because|since|if|unless|when|while|which|who|whom|whose|but|however|therefore|so that)\b/i.test(chunk)) || sentence;
     const sentenceWords = words(main);
     const verbIndex = sentenceWords.findIndex((word) => verbHints.has(word) || /(?:ed|ing|s)$/.test(word));
-    if (verbIndex > 0) return (sentenceWords.slice(0, verbIndex).join(" ") + " + " + sentenceWords[verbIndex] + " + " + sentenceWords.slice(verbIndex + 1).join(" ")).replace(/ + $/, "");
+    if (verbIndex > 0) return (sentenceWords.slice(0, verbIndex).join(" ") + " + " + sentenceWords[verbIndex] + " + " + sentenceWords.slice(verbIndex + 1).join(" ")).trim();
     return sentenceWords.slice(0, Math.min(5, sentenceWords.length)).join(" ") + " …";
   };
   const getTypes = (sentence) => {
     const types = [];
-    if (/more[sS]*than|less[sS]*than/i.test(sentence)) types.push(["比较结构", true]);
-    if (/(although|even though|though|because|since|if|unless|when|while|after|before)/i.test(sentence)) types.push(["状语从句", false]);
-    if (/(which|who|whom|whose)/i.test(sentence)) types.push(["定语从句", false]);
-    if (/(think|believe|know|say|show|find|hope|expect)[^,.!?]*that/i.test(sentence)) types.push(["宾语从句", false]);
-    if (/w+ing/.test(sentence)) types.push(["分词短语", true]);
+    if (/(?:more|less)[\s\S]*?\bthan\b/i.test(sentence)) types.push(["比较结构", true]);
+    if (/\b(?:although|even though|though|because|since|if|unless|when|while|after|before)\b/i.test(sentence)) types.push(["状语从句", false]);
+    if (/\b(?:which|who|whom|whose)\b/i.test(sentence)) types.push(["定语从句", false]);
+    if (/\b(?:think|believe|know|say|show|find|hope|expect)\b[^,.!?]*\bthat\b/i.test(sentence)) types.push(["宾语从句", false]);
+    if (/\b\w+ing\b/.test(sentence)) types.push(["分词短语", true]);
     if (!types.length) types.push(["主谓结构", false]);
     return [...new Map(types.map((item) => [item[0], item])).values()];
   };
@@ -64,16 +67,19 @@
       const main = sentence.slice(0, colonIndex).trim();
       const explanation = sentence.slice(colonIndex + 1).trim();
       const children = [node("解释 / 同位信息", explanation, "冒号后进一步说明前面的结论。")];
-      const ing = explanation.match(/[a-z][a-z-]*ing[^,]*(?=s+(?:may|can|will|has|is|are|was|were))/i);
+      const ing = explanation.match(/\b[a-z][a-z-]*ing\b[^,]*(?=\s+(?:may|can|will|has|is|are|was|were)\b)/i);
       if (ing) children[0].children.push(node("分词短语", ing[0], "feeding... 修饰前面的 animal，说明它正在进行的动作。"));
-      if (/more[sS]*than/i.test(explanation)) children[0].children.push(node("比较结构", explanation.match(/more[sS]*$/i)[0], "more...than... 比较多项功能表现和单项突出表现。"));
+      if (/\b(?:more|less)[\s\S]*?\bthan\b/i.test(explanation)) {
+        const comparison = explanation.match(/\b(?:more|less)[\s\S]*?\bthan\b[\s\S]*$/i);
+        if (comparison) children[0].children.push(node("比较结构", comparison[0], "more...than... 比较多项功能表现和单项突出表现。"));
+      }
       return node("主句", main, "先抓住主语和核心谓语。", children);
     }
-    const clauseMatch = sentence.match(/(although|because|since|if|unless|when|while)/i);
+    const clauseMatch = sentence.match(/\b(although|because|since|if|unless|when|while)\b/i);
     if (clauseMatch && clauseMatch.index > 0) {
       const main = sentence.slice(0, clauseMatch.index).trim();
       const clause = sentence.slice(clauseMatch.index).trim();
-      return node("主句", main, "主句先说清楚谁做什么。", [node("从句 · " + clauseMatch[1], clause, "连接词标记了这层补充逻辑。")]);
+      return node("主句", main, "主句先说清楚谁做什么。", [node("从句 · " + clauseMatch[1], clause, "连接词标记了这层补充逻辑。")] );
     }
     return node("句子主干", sentence, "先找主语、谓语，再处理修饰成分。");
   };
@@ -81,7 +87,7 @@
   const chunkNote = (chunk, index, sentence) => {
     const match = connectorRules.find((rule) => rule.pattern.test(chunk));
     if (match) return match.label + "：" + match.meaning + "。";
-    if (/w+ing/.test(chunk)) return "分词或动作修饰：先确认它修饰哪个名词。";
+    if (/\b\w+ing\b/.test(chunk)) return "分词或动作修饰：先确认它修饰哪个名词。";
     if (index === 0 && splitChunks(sentence).length > 1) return "主句候选：先找出谁在做什么。";
     return "补充信息：先确认它修饰的是哪一部分。";
   };
@@ -97,7 +103,9 @@
   };
   const render = (sentence) => {
     const chunks = splitChunks(sentence);
-    $("[data-sentence-original]").textContent = sentence;
+    const original = $("[data-sentence-original]");
+    original.textContent = sentence;
+    original.dataset.sourceSentence = sentence;
     $("[data-sentence-core]").textContent = getCore(sentence);
     $("[data-sentence-logic]").textContent = getLogic(sentence);
     $("[data-sentence-meaning]").textContent = getMeaning(sentence);
@@ -118,11 +126,21 @@
     translationToggle.dataset.sentence = sentence;
     result.hidden = false;
     result.scrollIntoView({ behavior: "smooth", block: "start" });
+    requestAnimationFrame(() => {
+      if (original.textContent !== sentence) original.textContent = sentence;
+    });
   };
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const sentence = clean(input.value);
-    if (sentence.length < 8) { input.focus(); input.setCustomValidity("请先输入一个完整的英文句子。"); input.reportValidity(); input.setCustomValidity(""); return; }
+    if (sentence.length < 8) {
+      input.focus();
+      input.setCustomValidity("请先输入一个完整的英文句子。");
+      input.reportValidity();
+      input.setCustomValidity("");
+      return;
+    }
     render(sentence);
   });
   translationToggle.addEventListener("click", async () => {
