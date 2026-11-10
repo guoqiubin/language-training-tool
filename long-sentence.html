@@ -32,7 +32,7 @@
       <div class="section-heading"><div><p class="section-kicker">YOUR SENTENCE</p><h2 id="input-title">输入一个英文长句</h2></div><span class="long-sentence-hint">建议 12 个单词以上</span></div>
       <form data-sentence-form>
         <textarea data-sentence-input rows="5" spellcheck="false" placeholder="例如：Although the project started as a small experiment, it has gradually become a useful tool for learners who want to practice English every day.">Although the project started as a small experiment, it has gradually become a useful tool for learners who want to practice English every day.</textarea>
-        <div class="long-sentence-form-footer"><p>输入后会在本地即时生成结构提示，不会上传你的句子。</p><button class="primary-button" type="submit">开始拆解 <span>→</span></button></div>
+        <div class="long-sentence-form-footer"><p>输入后会在本地即时生成结构提示；翻译仅在你点击显示时请求。</p><button class="primary-button" type="submit">开始拆解 <span>→</span></button></div>
       </form>
     </section>
     <section class="long-sentence-result" data-sentence-result aria-live="polite" hidden>
@@ -41,6 +41,19 @@
       <div class="sentence-summary-grid">
         <article class="sentence-summary-card sentence-summary-main"><span>句子主干</span><strong data-sentence-core>—</strong><p data-sentence-core-note>先抓住谁做了什么。</p></article>
         <article class="sentence-summary-card"><span>逻辑关系</span><strong data-sentence-logic>—</strong><p data-sentence-logic-note>观察连接词，判断信息之间的关系。</p></article>
+      </div>
+      <div class="sentence-types-block">
+        <div><span class="section-kicker">SENTENCE PATTERNS</span><h3>句型识别</h3></div>
+        <div class="sentence-type-tags" data-sentence-types></div>
+      </div>
+      <div class="sentence-translation-block">
+        <div class="breakdown-title"><div><span class="section-kicker">CHINESE TRANSLATION</span><h3>全文翻译</h3></div><button class="secondary-button" data-sentence-translation-toggle type="button">显示翻译</button></div>
+        <div class="sentence-translation-content" data-sentence-translation hidden></div>
+        <p class="sentence-translation-note" data-sentence-translation-note>先自己判断，再点击显示完整翻译。</p>
+      </div>
+      <div class="sentence-structure-block">
+        <div class="breakdown-title"><div><span class="section-kicker">SENTENCE MAP</span><h3>结构图</h3></div><p>从主句向下阅读每一层信息。</p></div>
+        <div class="sentence-structure-tree" data-sentence-structure></div>
       </div>
       <div class="sentence-breakdown-block"><div class="breakdown-title"><div><span class="section-kicker">CHUNK BY CHUNK</span><h3>意群拆解</h3></div><p>每一块先读懂，再合起来。</p></div><div class="sentence-chunks" data-sentence-chunks></div></div>
       <div class="sentence-analysis-grid">
