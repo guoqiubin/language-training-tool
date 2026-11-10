@@ -60,30 +60,70 @@
     if (!types.length) types.push(["主谓结构", false]);
     return [...new Map(types.map((item) => [item[0], item])).values()];
   };
-  const node = (label, text, note, children = []) => ({ label, text, note, children });
+  const node = (label, text, note, children = [], kind = "complement") => ({ label, text, note, children, kind });
   const buildStructure = (sentence) => {
     const colonIndex = sentence.indexOf(":");
     if (colonIndex > 0) {
       const main = sentence.slice(0, colonIndex).trim();
       const explanation = sentence.slice(colonIndex + 1).trim();
-      const children = [node("解释 / 同位信息", explanation, "冒号后进一步说明前面的结论。")];
+      const children = [node("解释 / 同位信息", explanation, "冒号后进一步说明前面的结论。", [], "clause")];
       const ing = explanation.match(/\b[a-z][a-z-]*ing\b[^,]*(?=\s+(?:may|can|will|has|is|are|was|were)\b)/i);
-      if (ing) children[0].children.push(node("分词短语", ing[0], "feeding... 修饰前面的 animal，说明它正在进行的动作。"));
+      if (ing) children[0].children.push(node("分词短语", ing[0], "分词短语修饰前面的名词，说明它正在进行的动作。", [], "modifier"));
       if (/\b(?:more|less)[\s\S]*?\bthan\b/i.test(explanation)) {
         const comparison = explanation.match(/\b(?:more|less)[\s\S]*?\bthan\b[\s\S]*$/i);
-        if (comparison) children[0].children.push(node("比较结构", comparison[0], "more...than... 比较多项功能表现和单项突出表现。"));
+        if (comparison) children[0].children.push(node("比较结构", comparison[0], "more...than... 比较两种表现或程度。", [], "complement"));
       }
-      return node("主句", main, "先抓住主语和核心谓语。", children);
+      return node("主句", main, "先抓住主语和核心谓语。", children, "main");
+    }
+    const objectClause = sentence.match(/^(.*?\b(?:observed|found|showed|said|think|believe|know|hope|expect)\b)\s+(that|whether|if)\s+(.+)$/i);
+    if (objectClause) {
+      const main = objectClause[1].trim();
+      const marker = objectClause[2];
+      const clause = objectClause[3].trim();
+      const clauseNode = node("宾语从句 · " + marker, marker + " " + clause, "整体作主句谓语的宾语，回答“观察到/认为了什么”。", [], "clause");
+      const clauseParts = clause.match(/^(.+?)\s+\b(shifted|moved|changed|was|were|is|are|has|have|had|may|can|will|could|would|should|became|remained|appeared|seemed|increased|decreased|benefit|benefits)\b\s+(.+)$/i);
+      if (clauseParts) {
+        const subject = clauseParts[1].trim();
+        const verb = clauseParts[2];
+        let predicate = clauseParts[3].trim();
+        const subjectModifier = subject.match(/^(.+?)\s+(of\s+.+)$/i);
+        if (subjectModifier) {
+          clauseNode.children.push(node("从句主语", subjectModifier[1], "先确认这一层是谁或什么在执行动作。", [node("介词短语", subjectModifier[2], "of 短语补充说明这个名词的范围或所属关系。", [], "modifier")], "main"));
+        } else {
+          clauseNode.children.push(node("从句主语", subject, "先确认这一层是谁或什么在执行动作。", [], "main"));
+        }
+        clauseNode.children.push(node("从句谓语", verb, "这是从句内部的核心动作或状态。", [], "main"));
+        const complementParts = [];
+        const direction = predicate.match(/^(.*?\b(?:towards|to|into|from)\b\s+.+?)(?=\s+\bat\b|\s+\bin\b|$)/i);
+        if (direction) {
+          complementParts.push(node("方向 / 结果补语", direction[1].trim(), "说明动作朝向哪里或产生什么变化。", [], "complement"));
+          predicate = predicate.slice(direction[1].length).trim();
+        }
+        const time = predicate.match(/\b(?:at|in|on|during)\s+[^,]+$/i);
+        if (time) {
+          complementParts.push(node("时间 / 地点状语", time[0].trim(), "补充动作发生的时间或地点。", [], "modifier"));
+          predicate = predicate.slice(0, predicate.length - time[0].length).trim();
+        }
+        if (predicate) complementParts.unshift(node("核心补充信息", predicate, "补充说明动作的对象、程度或结果。", [], "complement"));
+        clauseNode.children.push(...complementParts);
+      } else {
+        clauseNode.children.push(node("从句内容", clause, "继续寻找这一层的主语和谓语。", [], "complement"));
+      }
+      return node("主句", main, "先找出主句的主语和谓语，再向下进入宾语从句。", [clauseNode], "main");
     }
     const clauseMatch = sentence.match(/\b(although|because|since|if|unless|when|while)\b/i);
     if (clauseMatch && clauseMatch.index > 0) {
       const main = sentence.slice(0, clauseMatch.index).trim();
       const clause = sentence.slice(clauseMatch.index).trim();
-      return node("主句", main, "主句先说清楚谁做什么。", [node("从句 · " + clauseMatch[1], clause, "连接词标记了这层补充逻辑。")] );
+      return node("主句", main, "主句先说清楚谁做什么。", [node("从句 · " + clauseMatch[1], clause, "连接词标记了这一层原因、条件或时间逻辑。", [], "clause")] , "main");
     }
-    return node("句子主干", sentence, "先找主语、谓语，再处理修饰成分。");
+    const subjectVerb = sentence.match(/^(.+?)\s+\b(am|is|are|was|were|has|have|had|do|does|did|can|could|will|would|should|may|might|must|[a-z]+(?:ed|ing))\b\s+(.+)$/i);
+    if (subjectVerb) {
+      return node("句子主干", subjectVerb[1] + " + " + subjectVerb[2], "先找主语和谓语，再把后面的信息作为分支读回去。", [node("补充成分", subjectVerb[3], "说明动作的对象、方式、方向或时间。", [], "complement")], "main");
+    }
+    return node("句子主干", sentence, "先找主语、谓语，再处理修饰成分。", [], "main");
   };
-  const renderStructure = (item) => "<div class=\"structure-node\"><span class=\"structure-node-label\">" + escapeHtml(item.label) + "</span><strong class=\"structure-node-text\">" + escapeHtml(item.text) + "</strong><span class=\"structure-node-note\">" + escapeHtml(item.note) + "</span>" + (item.children.length ? "<div class=\"structure-node-children\">" + item.children.map(renderStructure).join("") + "</div>" : "") + "</div>";
+  const renderStructure = (item, depth = 0) => "<div class=\"structure-node is-" + escapeHtml(item.kind) + (depth === 0 ? " is-root" : "") + "\"><div class=\"structure-node-card\"><span class=\"structure-node-label\">" + escapeHtml(item.label) + "</span><strong class=\"structure-node-text\">" + escapeHtml(item.text) + "</strong><span class=\"structure-node-note\">" + escapeHtml(item.note) + "</span></div>" + (item.children.length ? "<div class=\"structure-node-children\">" + item.children.map((child) => renderStructure(child, depth + 1)).join("") + "</div>" : "") + "</div>";
   const chunkNote = (chunk, index, sentence) => {
     const match = connectorRules.find((rule) => rule.pattern.test(chunk));
     if (match) return match.label + "：" + match.meaning + "。";
