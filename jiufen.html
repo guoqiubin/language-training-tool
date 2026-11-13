@@ -33,7 +33,7 @@
         <div class="jiufen-method-steps" aria-label="使用流程">
           <span><b>01</b>打开当前真题</span><span><b>02</b>读取材料与题目</span><span><b>03</b>保存到本地复习库</span>
         </div>
-        <button class="jiufen-primary" type="button" data-jiufen-capture>解析当前真题 <span aria-hidden="true">→</span></button>
+        <button class="jiufen-primary" type="button" data-jiufen-capture>一键解析当前真题 <span aria-hidden="true">→</span></button>
       </section>
 
       <section class="jiufen-library" aria-labelledby="jiufen-library-title">
@@ -50,12 +50,12 @@
         <button class="jiufen-dialog-close" value="cancel" aria-label="关闭">×</button>
         <p class="section-kicker">LOCAL CAPTURE</p>
         <h2>解析当前真题</h2>
-        <p class="jiufen-dialog-lead">网页会优先尝试连接本地解析桥接；如果当前环境没有桥接，可将九分学长中的材料与题目粘贴到下方，仍然可以保存复习。</p>
+        <p class="jiufen-dialog-lead">点击后会读取当前已打开的九分学长页面，自动提取阅读标题、正文和题目。首次使用需要先启动本机桥接。</p>
         <div class="jiufen-bridge-status" data-jiufen-status role="status" aria-live="polite">等待本地解析</div>
         <label>文章标题<input name="title" placeholder="例如：The history of urban transport" required /></label>
         <label>阅读材料<textarea name="passage" rows="6" placeholder="粘贴当前阅读文章内容" required></textarea></label>
         <label>题目与选项<textarea name="questions" rows="6" placeholder="粘贴题目、选项或题号内容" required></textarea></label>
-        <div class="jiufen-dialog-actions"><button type="button" class="jiufen-secondary" data-jiufen-bridge>尝试连接本地解析</button><button class="jiufen-primary" value="default">保存到复习库</button></div>
+        <div class="jiufen-dialog-actions"><button type="button" class="jiufen-secondary" data-jiufen-bridge>重新读取当前页面</button><button class="jiufen-primary" value="default">保存到复习库</button></div>
       </form>
     </dialog>
 

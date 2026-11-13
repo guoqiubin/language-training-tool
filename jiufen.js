@@ -9,6 +9,7 @@
   const count = document.querySelector("[data-jiufen-count]");
   const status = document.querySelector("[data-jiufen-status]");
   const bridgeButton = document.querySelector("[data-jiufen-bridge]");
+  const BRIDGE_URL = "http://127.0.0.1:47821/capture";
 
   const readRecords = () => {
     try {
@@ -30,21 +31,26 @@
     recordsRoot.innerHTML = records.map((record) => `<article class="jiufen-record"><div class="jiufen-record-head"><h3>${escapeHtml(record.title)}</h3><time>${escapeHtml(formatDate(record.createdAt))}</time></div><div class="jiufen-record-meta"><span>阅读材料</span><span>题目已保存</span><span>${escapeHtml(record.source || "本地导入")}</span></div><details><summary>展开查看内容</summary><div class="jiufen-record-content"><section><h4>READING PASSAGE</h4><p>${escapeHtml(record.passage)}</p></section><section><h4>QUESTIONS</h4><p>${escapeHtml(record.questions)}</p></section></div></details><button class="jiufen-delete" type="button" data-delete-record="${escapeHtml(record.id)}">删除这条记录</button></article>`).join("");
   };
 
-  captureButton.addEventListener("click", () => { status.textContent = "等待本地解析；如果没有桥接，可直接粘贴内容保存。"; form.reset(); dialog.showModal(); });
-  bridgeButton.addEventListener("click", async () => {
-    status.textContent = "正在检查本地解析桥接…";
-    const bridge = window.__JIUFEN_LOCAL_BRIDGE__;
-    if (!bridge || typeof bridge.capture !== "function") {
-      status.textContent = "当前网页未发现本地桥接。请将九分学长中的材料与题目粘贴到下方，网页会在本地保存。";
-      return;
-    }
+  const captureFromLocalBridge = async () => {
+    status.textContent = "正在读取当前九分学长页面…";
+    bridgeButton.disabled = true;
     try {
-      const result = await bridge.capture({ type: "ielts-reading" });
-      if (result?.title) form.elements.title.value = result.title;
-      if (result?.passage) form.elements.passage.value = result.passage;
-      if (result?.questions) form.elements.questions.value = result.questions;
-      status.textContent = "已读取本地解析结果，请确认后保存。";
-    } catch (error) { status.textContent = `本地解析暂时未完成：${error.message || "请改用粘贴方式"}`; }
+      const response = await fetch(BRIDGE_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type: "ielts-reading" }) });
+      const result = await response.json();
+      if (!response.ok || !result.ok) throw new Error(result.error || "本地桥接读取失败");
+      const data = result.data || {};
+      if (data.title) form.elements.title.value = data.title;
+      if (data.passage) form.elements.passage.value = data.passage;
+      if (data.questions) form.elements.questions.value = data.questions;
+      status.textContent = "已自动读取当前真题，请确认内容后保存。";
+    } catch (error) {
+      status.textContent = `自动读取失败：${error.message || "请确认本地桥接已启动"}。也可以手动粘贴内容。`;
+    } finally { bridgeButton.disabled = false; }
+  };
+
+  captureButton.addEventListener("click", () => { form.reset(); dialog.showModal(); captureFromLocalBridge(); });
+  bridgeButton.addEventListener("click", async () => {
+    captureFromLocalBridge();
   });
 
   form.addEventListener("submit", (event) => {
