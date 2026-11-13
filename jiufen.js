@@ -9,7 +9,9 @@
   const count = document.querySelector("[data-jiufen-count]");
   const status = document.querySelector("[data-jiufen-status]");
   const bridgeButton = document.querySelector("[data-jiufen-bridge]");
+  const viewButtons = [...document.querySelectorAll("[data-jiufen-view]")];
   const BRIDGE_URL = "http://127.0.0.1:47821/capture";
+  const VIEW_KEY = "jiufen-reading-view-v1";
 
   const readRecords = () => {
     try {
@@ -20,6 +22,28 @@
   const writeRecords = (records) => localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
   const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[char]));
   const formatDate = (value) => new Intl.DateTimeFormat("zh-CN", { dateStyle: "medium", timeStyle: "short" }).format(new Date(value));
+  const renderText = (value) => String(value || "")
+    .replace(/\s+([A-F])\s+(?=[A-Z][a-z])/g, "\n\n$1 ")
+    .split(/\n\s*\n|\n(?=[A-F]\s)/)
+    .map((block) => block.trim())
+    .filter(Boolean)
+    .map((block) => `<p>${escapeHtml(block).replace(/\n/g, "<br />")}</p>`)
+    .join("");
+  const renderQuestionCards = (value) => {
+    const parts = String(value || "").split(/(?=\n?\d{1,2}\s)/g).map((part) => part.trim()).filter(Boolean);
+    if (parts.length < 2) return `<p>${escapeHtml(value || "").replace(/\n/g, "<br />")}</p>`;
+    return parts.map((part, index) => `<article class="jiufen-question-card"><span class="jiufen-question-index">${String(index + 1).padStart(2, "0")}</span><p>${escapeHtml(part).replace(/\n/g, "<br />")}</p></article>`).join("");
+  };
+  const setView = (view) => {
+    const next = ["split", "focus", "cards"].includes(view) ? view : "split";
+    document.body.dataset.readingView = next;
+    localStorage.setItem(VIEW_KEY, next);
+    viewButtons.forEach((button) => {
+      const active = button.dataset.jiufenView === next;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  };
 
   const render = () => {
     const records = readRecords();
@@ -28,7 +52,7 @@
       recordsRoot.innerHTML = `<div class="jiufen-empty">还没有保存的真题。点击上方按钮，开始建立你的雅思阅读复习库。</div>`;
       return;
     }
-    recordsRoot.innerHTML = records.map((record) => `<article class="jiufen-record"><div class="jiufen-record-head"><h3>${escapeHtml(record.title)}</h3><time>${escapeHtml(formatDate(record.createdAt))}</time></div><div class="jiufen-record-meta"><span>阅读材料</span><span>题目已保存</span><span>${escapeHtml(record.source || "本地导入")}</span></div><details><summary>展开查看内容</summary><div class="jiufen-record-content"><section><h4>READING PASSAGE</h4><p>${escapeHtml(record.passage)}</p></section><section><h4>QUESTIONS</h4><p>${escapeHtml(record.questions)}</p></section></div></details><button class="jiufen-delete" type="button" data-delete-record="${escapeHtml(record.id)}">删除这条记录</button></article>`).join("");
+    recordsRoot.innerHTML = records.map((record) => `<article class="jiufen-record"><div class="jiufen-record-head"><div><p class="jiufen-record-label">IELTS READING · LOCAL REVIEW</p><h3>${escapeHtml(record.title)}</h3></div><time>${escapeHtml(formatDate(record.createdAt))}</time></div><div class="jiufen-record-meta"><span>阅读材料</span><span>题目已保存</span><span>${escapeHtml(record.source || "本地导入")}</span></div><details><summary>展开查看内容</summary><div class="jiufen-record-content"><section class="jiufen-passage-panel"><div class="jiufen-content-heading"><h4>READING PASSAGE</h4><span>文章原文</span></div><div class="jiufen-text-content">${renderText(record.passage)}</div></section><section class="jiufen-questions-panel"><div class="jiufen-content-heading"><h4>QUESTIONS</h4><span>题目与选项</span></div><div class="jiufen-question-content">${renderQuestionCards(record.questions)}</div></section></div></details><button class="jiufen-delete" type="button" data-delete-record="${escapeHtml(record.id)}">删除这条记录</button></article>`).join("");
   };
 
   const captureFromLocalBridge = async () => {
@@ -71,5 +95,7 @@
     render();
   });
 
+  viewButtons.forEach((button) => button.addEventListener("click", () => setView(button.dataset.jiufenView)));
+  setView(localStorage.getItem(VIEW_KEY) || "split");
   render();
 })();

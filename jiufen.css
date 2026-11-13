@@ -15,21 +15,51 @@
 .jiufen-primary { background: #243330; color: #fff; }
 .jiufen-primary:hover { background: #3b5149; }
 .jiufen-library { margin-top: 44px; padding-top: 34px; border-top: 1px solid #dfe7e0; }
+.jiufen-library-tools { display: grid; justify-items: end; gap: 10px; }
+.jiufen-view-switch { display: flex; gap: 4px; padding: 4px; border: 1px solid #d8e4db; border-radius: 12px; background: #f4f8f4; }
+.jiufen-view-switch button { border: 0; border-radius: 8px; padding: 8px 11px; background: transparent; color: #71817a; cursor: pointer; font: 600 12px "Noto Sans SC", sans-serif; }
+.jiufen-view-switch button:hover, .jiufen-view-switch button.is-active { background: #fff; color: #3f7654; box-shadow: 0 2px 8px rgba(53,82,63,.08); }
 .jiufen-records { display: grid; gap: 16px; margin-top: 22px; }
 .jiufen-empty { padding: 42px 30px; border: 1px dashed #cbd9cf; border-radius: 20px; color: #819089; text-align: center; background: #fff; }
-.jiufen-record { padding: 26px 28px; border: 1px solid #d8e4db; border-radius: 20px; background: #fff; box-shadow: 0 12px 30px rgba(54,84,65,.06); }
+.jiufen-record { padding: 28px; border: 1px solid #d8e4db; border-radius: 20px; background: #fff; box-shadow: 0 12px 30px rgba(54,84,65,.06); }
 .jiufen-record-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.jiufen-record-label { margin: 0 0 9px; color: #7b9885; font: 700 11px "DM Sans", sans-serif; letter-spacing: .14em; }
 .jiufen-record h3 { margin: 0; font-size: 24px; }
 .jiufen-record time { color: #91a097; font-size: 13px; }
 .jiufen-record-meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 13px 0 17px; color: #5e8269; font-size: 13px; }
 .jiufen-record-meta span { padding: 5px 9px; border-radius: 999px; background: #eef7f0; }
 .jiufen-record details { border-top: 1px solid #e6eee8; padding-top: 14px; }
 .jiufen-record summary { cursor: pointer; color: #4d795e; font-weight: 700; }
-.jiufen-record-content { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 14px; }
-.jiufen-record-content section { padding: 16px; border-radius: 14px; background: #f6faf6; }
-.jiufen-record-content h4 { margin: 0 0 8px; color: #63806e; font-size: 13px; letter-spacing: .08em; }
-.jiufen-record-content p { margin: 0; white-space: pre-wrap; color: #35433e; font-size: 15px; line-height: 1.8; }
+.jiufen-record-content { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr); gap: 18px; margin-top: 16px; align-items: start; }
+.jiufen-record-content section { min-width: 0; padding: 20px; border: 1px solid #e1ebe3; border-radius: 16px; background: #f7fbf7; }
+.jiufen-content-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid #dce9df; }
+.jiufen-content-heading h4 { margin: 0; color: #527963; font-size: 13px; letter-spacing: .1em; }
+.jiufen-content-heading span { color: #92a39a; font-size: 12px; }
+.jiufen-text-content p, .jiufen-question-content p { margin: 0 0 16px; color: #35433e; font-size: 16px; line-height: 1.95; }
+.jiufen-text-content p:last-child, .jiufen-question-content p:last-child { margin-bottom: 0; }
+.jiufen-question-card { position: relative; margin-bottom: 12px; padding: 14px 14px 14px 44px; border: 1px solid #e2ebe4; border-radius: 12px; background: #fff; }
+.jiufen-question-card:last-child { margin-bottom: 0; }
+.jiufen-question-card p { margin: 0; font-size: 15px; line-height: 1.75; }
+.jiufen-question-index { position: absolute; top: 15px; left: 14px; color: #5f8f6c; font: 700 12px "DM Sans", sans-serif; letter-spacing: .05em; }
+.jiufen-passage-panel { max-height: 640px; overflow: auto; }
+.jiufen-questions-panel { max-height: 640px; overflow: auto; }
 .jiufen-delete { margin-top: 17px; border: 0; background: none; color: #b56350; cursor: pointer; font: inherit; }
+
+/* 专注阅读：适合长时间精读 */
+body[data-reading-view="focus"] .jiufen-record-content { grid-template-columns: minmax(0, 860px); justify-content: center; }
+body[data-reading-view="focus"] .jiufen-record-content section { max-height: none; }
+body[data-reading-view="focus"] .jiufen-passage-panel { background: #fffdf9; }
+body[data-reading-view="focus"] .jiufen-passage-panel .jiufen-text-content { max-width: 760px; margin: 0 auto; }
+body[data-reading-view="focus"] .jiufen-text-content p { font-size: 18px; line-height: 2.1; }
+body[data-reading-view="focus"] .jiufen-questions-panel { background: #f4f8ff; }
+
+/* 复习卡片：适合按题目逐块回看 */
+body[data-reading-view="cards"] .jiufen-record-content { grid-template-columns: 1fr; }
+body[data-reading-view="cards"] .jiufen-passage-panel { background: #f4f8ff; }
+body[data-reading-view="cards"] .jiufen-questions-panel { background: #fff8ec; }
+body[data-reading-view="cards"] .jiufen-question-card { background: #fffdf8; border-color: #f0dfbf; }
+body[data-reading-view="cards"] .jiufen-text-content { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+body[data-reading-view="cards"] .jiufen-text-content p { margin: 0; padding: 15px; border: 1px solid #d7e3f2; border-radius: 12px; background: #fff; }
 .jiufen-dialog { width: min(720px, calc(100% - 32px)); padding: 0; border: 0; border-radius: 22px; background: transparent; }
 .jiufen-dialog::backdrop { background: rgba(33,45,42,.38); backdrop-filter: blur(3px); }
 .jiufen-dialog-card { position: relative; padding: 30px; border: 1px solid #d5e3d8; border-radius: 22px; background: #fff; box-shadow: 0 24px 70px rgba(29,48,39,.2); }
@@ -42,4 +72,4 @@
 .jiufen-dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
 .jiufen-secondary { border: 1px solid #c7ddd0; background: #f2f8f3; color: #4e765e; }
 .jiufen-secondary:disabled { cursor: wait; opacity: .55; }
-@media (max-width: 700px) { .jiufen-shell { padding: 90px 20px 52px; } .jiufen-hero { display: block; } .jiufen-hero h1 { font-size: 64px; } .jiufen-hero p:not(.section-kicker) { font-size: 17px; } .jiufen-mark { margin-top: 22px; } .jiufen-method { padding: 24px 20px; } .jiufen-method h2, .jiufen-library h2 { font-size: 28px; line-height: 1.35; } .jiufen-method > p:not(.section-kicker) { font-size: 14px; } .jiufen-record { padding: 20px; } .jiufen-record-head { display: block; } .jiufen-record time { display: block; margin-top: 8px; } .jiufen-record-content { grid-template-columns: 1fr; } .jiufen-dialog-actions { flex-direction: column-reverse; } .jiufen-dialog-actions button { width: 100%; } }
+@media (max-width: 700px) { .jiufen-shell { padding: 90px 20px 52px; } .jiufen-hero { display: block; } .jiufen-hero h1 { font-size: 64px; } .jiufen-hero p:not(.section-kicker) { font-size: 17px; } .jiufen-mark { margin-top: 22px; } .jiufen-method { padding: 24px 20px; } .jiufen-method h2, .jiufen-library h2 { font-size: 28px; line-height: 1.35; } .jiufen-method > p:not(.section-kicker) { font-size: 14px; } .jiufen-library-tools { justify-items: start; } .jiufen-view-switch { flex-wrap: wrap; } .jiufen-record { padding: 20px; } .jiufen-record-head { display: block; } .jiufen-record time { display: block; margin-top: 8px; } .jiufen-record-content { grid-template-columns: 1fr; } body[data-reading-view="cards"] .jiufen-text-content { grid-template-columns: 1fr; } .jiufen-dialog-actions { flex-direction: column-reverse; } .jiufen-dialog-actions button { width: 100%; } }
