@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="九分学长：保存和复习雅思阅读真题材料与题目。" />
+    <title>九分学长｜雅思真题复习</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="desktop-typography.css" />
+    <link rel="stylesheet" href="word-lookup.css" />
+    <link rel="stylesheet" href="site-header.css" />
+    <link rel="stylesheet" href="jiufen.css" />
+  </head>
+  <body class="jiufen-page" data-access-protected>
+    <main class="jiufen-shell">
+      <a class="back-link" href="english.html">← 返回英语空间</a>
+      <header class="jiufen-hero">
+        <div>
+          <p class="section-kicker">IELTS READING REVIEW</p>
+          <h1>九分学长</h1>
+          <p>把做过的雅思阅读真题，整理成可以反复复习的学习资料。</p>
+        </div>
+        <div class="jiufen-mark" aria-hidden="true">9<span>分</span></div>
+      </header>
+
+      <section class="jiufen-method" aria-labelledby="jiufen-method-title">
+        <p class="section-kicker">V1.0 · LOCAL REVIEW</p>
+        <h2 id="jiufen-method-title">解析当前真题，保存到复习库</h2>
+        <p>点击“解析当前真题”后，网页会进入本地解析流程。当前版本先支持保存阅读材料和题目，答案与解析可以在后续版本继续补充。</p>
+        <div class="jiufen-method-steps" aria-label="使用流程">
+          <span><b>01</b>打开当前真题</span><span><b>02</b>读取材料与题目</span><span><b>03</b>保存到本地复习库</span>
+        </div>
+        <button class="jiufen-primary" type="button" data-jiufen-capture>解析当前真题 <span aria-hidden="true">→</span></button>
+      </section>
+
+      <section class="jiufen-library" aria-labelledby="jiufen-library-title">
+        <div class="section-heading">
+          <div><p class="section-kicker">REVIEW LIBRARY</p><h2 id="jiufen-library-title">我的复习库</h2></div>
+          <p class="section-note" data-jiufen-count>0 篇已保存</p>
+        </div>
+        <div class="jiufen-records" data-jiufen-records></div>
+      </section>
+    </main>
+
+    <dialog class="jiufen-dialog" data-jiufen-dialog>
+      <form method="dialog" class="jiufen-dialog-card" data-jiufen-form>
+        <button class="jiufen-dialog-close" value="cancel" aria-label="关闭">×</button>
+        <p class="section-kicker">LOCAL CAPTURE</p>
+        <h2>解析当前真题</h2>
+        <p class="jiufen-dialog-lead">网页会优先尝试连接本地解析桥接；如果当前环境没有桥接，可将九分学长中的材料与题目粘贴到下方，仍然可以保存复习。</p>
+        <div class="jiufen-bridge-status" data-jiufen-status role="status" aria-live="polite">等待本地解析</div>
+        <label>文章标题<input name="title" placeholder="例如：The history of urban transport" required /></label>
+        <label>阅读材料<textarea name="passage" rows="6" placeholder="粘贴当前阅读文章内容" required></textarea></label>
+        <label>题目与选项<textarea name="questions" rows="6" placeholder="粘贴题目、选项或题号内容" required></textarea></label>
+        <div class="jiufen-dialog-actions"><button type="button" class="jiufen-secondary" data-jiufen-bridge>尝试连接本地解析</button><button class="jiufen-primary" value="default">保存到复习库</button></div>
+      </form>
+    </dialog>
+
+    <script src="site-header.js"></script>
+    <script src="access-entry.js"></script>
+    <script src="word-lookup.js"></script>
+    <script src="jiufen.js"></script>
+  </body>
+</html>

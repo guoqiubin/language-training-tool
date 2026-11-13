@@ -12,6 +12,7 @@
     ["阅读悬赏", "任务中心 · 英语阅读", "reading-rewards.html"],
     ["专项英语", "Python 与心理学专业概念", "special-english.html"],
     ["雅思专区", "雅思听力、写作、阅读与口语", "ielts.html"],
+    ["九分学长", "雅思阅读真题解析与复习记录", "jiufen.html"],
     ["雅思听力", "句子级听力、答案规范与解析", "ielts-listening.html"],
     ["长难句", "输入句子，拆解意群与句法结构", "long-sentence.html"],
     ["造句训练", "独立专项训练，随时切换难度", "sentence-building.html"],

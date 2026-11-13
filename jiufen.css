@@ -1,0 +1,44 @@
+.jiufen-page { background: #fbfaf7; color: #25332f; }
+.jiufen-shell { max-width: 1180px; margin: 0 auto; padding: 118px 28px 80px; }
+.jiufen-hero { display: flex; align-items: flex-end; justify-content: space-between; gap: 36px; padding: 40px 0 38px; }
+.jiufen-hero h1 { margin: 10px 0; font-size: clamp(60px, 8vw, 104px); line-height: .94; letter-spacing: -.08em; }
+.jiufen-hero p:not(.section-kicker) { margin: 0; color: #71817a; font-size: 20px; line-height: 1.7; }
+.jiufen-mark { display: grid; width: 118px; height: 118px; place-items: center; border: 1px solid #e2c6aa; border-radius: 28px; background: #fff3e7; color: #b46f46; font: 700 60px/1 "DM Sans", sans-serif; }
+.jiufen-mark span { margin-left: 4px; font: 700 20px "Noto Sans SC", sans-serif; }
+.jiufen-method { margin-top: 12px; padding: 34px 38px; border: 1px solid #e2d1be; border-radius: 24px; background: #fff1e3; }
+.jiufen-method h2, .jiufen-library h2 { margin: 10px 0 8px; font-size: 36px; letter-spacing: -.05em; }
+.jiufen-method > p:not(.section-kicker) { max-width: 820px; margin: 0; color: #786b60; font-size: 17px; line-height: 1.8; }
+.jiufen-method-steps { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
+.jiufen-method-steps span { padding: 9px 13px; border: 1px solid #e6cbb0; border-radius: 999px; background: rgba(255,255,255,.7); color: #785d49; font-size: 14px; }
+.jiufen-method-steps b { margin-right: 7px; color: #b46f46; font: 700 12px "DM Sans", sans-serif; letter-spacing: .08em; }
+.jiufen-primary, .jiufen-secondary { border: 0; border-radius: 13px; padding: 13px 18px; cursor: pointer; font: 700 14px "Noto Sans SC", sans-serif; }
+.jiufen-primary { background: #243330; color: #fff; }
+.jiufen-primary:hover { background: #3b5149; }
+.jiufen-library { margin-top: 44px; padding-top: 34px; border-top: 1px solid #dfe7e0; }
+.jiufen-records { display: grid; gap: 16px; margin-top: 22px; }
+.jiufen-empty { padding: 42px 30px; border: 1px dashed #cbd9cf; border-radius: 20px; color: #819089; text-align: center; background: #fff; }
+.jiufen-record { padding: 26px 28px; border: 1px solid #d8e4db; border-radius: 20px; background: #fff; box-shadow: 0 12px 30px rgba(54,84,65,.06); }
+.jiufen-record-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.jiufen-record h3 { margin: 0; font-size: 24px; }
+.jiufen-record time { color: #91a097; font-size: 13px; }
+.jiufen-record-meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 13px 0 17px; color: #5e8269; font-size: 13px; }
+.jiufen-record-meta span { padding: 5px 9px; border-radius: 999px; background: #eef7f0; }
+.jiufen-record details { border-top: 1px solid #e6eee8; padding-top: 14px; }
+.jiufen-record summary { cursor: pointer; color: #4d795e; font-weight: 700; }
+.jiufen-record-content { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 14px; }
+.jiufen-record-content section { padding: 16px; border-radius: 14px; background: #f6faf6; }
+.jiufen-record-content h4 { margin: 0 0 8px; color: #63806e; font-size: 13px; letter-spacing: .08em; }
+.jiufen-record-content p { margin: 0; white-space: pre-wrap; color: #35433e; font-size: 15px; line-height: 1.8; }
+.jiufen-delete { margin-top: 17px; border: 0; background: none; color: #b56350; cursor: pointer; font: inherit; }
+.jiufen-dialog { width: min(720px, calc(100% - 32px)); padding: 0; border: 0; border-radius: 22px; background: transparent; }
+.jiufen-dialog::backdrop { background: rgba(33,45,42,.38); backdrop-filter: blur(3px); }
+.jiufen-dialog-card { position: relative; padding: 30px; border: 1px solid #d5e3d8; border-radius: 22px; background: #fff; box-shadow: 0 24px 70px rgba(29,48,39,.2); }
+.jiufen-dialog-card h2 { margin: 9px 0; font-size: 32px; }
+.jiufen-dialog-lead { margin: 0 0 18px; color: #71817a; line-height: 1.7; }
+.jiufen-dialog-close { position: absolute; top: 16px; right: 18px; border: 0; background: none; color: #72827a; font-size: 28px; cursor: pointer; }
+.jiufen-bridge-status { margin: 15px 0; padding: 12px 14px; border-radius: 12px; background: #f1f7f2; color: #527861; font-size: 14px; }
+.jiufen-dialog-card label { display: grid; gap: 7px; margin-top: 15px; color: #587165; font-size: 14px; font-weight: 700; }
+.jiufen-dialog-card input, .jiufen-dialog-card textarea { width: 100%; box-sizing: border-box; border: 1px solid #d5e3d8; border-radius: 12px; padding: 12px 13px; color: #263633; background: #fbfdfb; font: 15px/1.6 "Noto Sans SC", sans-serif; resize: vertical; }
+.jiufen-dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
+.jiufen-secondary { border: 1px solid #c7ddd0; background: #f2f8f3; color: #4e765e; }
+@media (max-width: 700px) { .jiufen-shell { padding: 90px 20px 52px; } .jiufen-hero { display: block; } .jiufen-hero h1 { font-size: 64px; } .jiufen-hero p:not(.section-kicker) { font-size: 17px; } .jiufen-mark { margin-top: 22px; } .jiufen-method { padding: 24px 20px; } .jiufen-method h2, .jiufen-library h2 { font-size: 28px; line-height: 1.35; } .jiufen-method > p:not(.section-kicker) { font-size: 14px; } .jiufen-record { padding: 20px; } .jiufen-record-head { display: block; } .jiufen-record time { display: block; margin-top: 8px; } .jiufen-record-content { grid-template-columns: 1fr; } .jiufen-dialog-actions { flex-direction: column-reverse; } .jiufen-dialog-actions button { width: 100%; } }
