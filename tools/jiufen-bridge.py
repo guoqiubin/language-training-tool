@@ -14,24 +14,39 @@ import time
 HOST = "127.0.0.1"
 PORT = 47821
 APP_NAME = "九分学长考雅机考平台"
-APP_PATH = "/Applications/九分学长考雅机考平台.app"
+APP_BUNDLE_ID = "com.9fnnn.ielts"
 
 
 def run_osascript(script):
     result = subprocess.run(["osascript", "-e", script], text=True, capture_output=True)
     if result.returncode:
-        raise RuntimeError(result.stderr.strip() or "无法控制九分学长窗口，请检查 macOS 辅助功能权限")
+        message = result.stderr.strip() or "无法控制九分学长窗口"
+        if "-1728" in message or "不能获得" in message:
+            message = "找不到九分学长应用，请先打开并保持阅读页面。"
+        elif "Connection invalid" in message or "辅助功能" in message or "access" in message.lower():
+            message = "macOS 辅助功能权限未生效，请在系统设置中允许 Terminal/Python 控制电脑后重启桥接。"
+        raise RuntimeError(message)
     return result.stdout.strip()
 
 
 def copy_visible_page():
-    subprocess.run(["open", "-a", APP_PATH], check=False, capture_output=True)
-    script = '''tell application "System Events"
-    set frontProcess to first application process whose frontmost is true
-    set frontmost of frontProcess to true
-    keystroke "a" using command down
-    delay 0.15
-    keystroke "c" using command down
+    launch = subprocess.run(["open", "-b", APP_BUNDLE_ID], text=True, capture_output=True)
+    if launch.returncode:
+        raise RuntimeError("找不到九分学长应用，请先打开并保持阅读页面。")
+    time.sleep(0.8)
+    script = f'''tell application "System Events"
+    set matchingProcesses to every application process whose name contains "{APP_NAME}"
+    if (count of matchingProcesses) is 0 then
+        error "找不到九分学长窗口"
+    end if
+    set targetProcess to item 1 of matchingProcesses
+    set frontmost of targetProcess to true
+    delay 0.25
+    tell targetProcess
+        keystroke "a" using command down
+        delay 0.15
+        keystroke "c" using command down
+    end tell
 end tell'''
     run_osascript(script)
     time.sleep(0.25)
